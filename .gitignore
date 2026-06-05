@@ -1,0 +1,8 @@
+# Références design & fichiers de travail (non nécessaires au site en ligne)
+_refs/
+uploads/
+
+# Système
+.thumbnail
+.DS_Store
+Thumbs.db

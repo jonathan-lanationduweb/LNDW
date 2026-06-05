@@ -1,0 +1,66 @@
+/* ============================================================
+   La Nation du Web — coded dotted rocket trajectory
+   round dots (#F5F3FA), non-scaling stroke, mask draw-in reveal,
+   subtle continuous drift. Replaces all path-dotted-*.svg images.
+   ============================================================ */
+.dotted-path{
+  position:absolute;inset:0;width:100%;height:100%;
+  pointer-events:none;overflow:visible;z-index:1;
+}
+.dp-dots{
+  fill:none;stroke:#F7F4FA;stroke-width:8;
+  stroke-linecap:round;stroke-linejoin:round;
+  stroke-dasharray:1 18;vector-effect:non-scaling-stroke;
+}
+/* mask fully open: dots are STATIC — no draw-in, no dashoffset movement.
+   The pointillés are a fixed decor; only the rocket sticker travels on them. */
+.dp-mask{
+  fill:none;stroke:#fff;stroke-linecap:round;stroke-linejoin:round;
+  stroke-width:46;vector-effect:non-scaling-stroke;
+}
+/* paths appear with a simple opacity fade — never a dash/offset movement */
+.dotted-path{opacity:0;transition:opacity .7s var(--ease)}
+.dotted-path.in{opacity:1}
+
+/* the rocket that travels the Avis trajectory */
+.avis-rocket.travelling{animation:none}
+@keyframes badge-bounce{
+  0%{transform:scale(1)}
+  30%{transform:scale(1.18) translateY(-10px)}
+  55%{transform:scale(.94) translateY(4px)}
+  75%{transform:scale(1.06) translateY(-3px)}
+  100%{transform:scale(1) translateY(0)}
+}
+.final-rocket.bounce{animation:badge-bounce .9s var(--ease)}
+
+@media (max-width:1024px){
+  .dp-dots{stroke-width:6}
+}
+@media (max-width:760px){
+  .dp-dots{stroke-width:5;stroke-dasharray:1 14}
+  .dp-mask{stroke-width:32}
+}
+@media (prefers-reduced-motion:reduce){
+  .dotted-path{opacity:1;transition:none}
+}
+
+/* keep important content above the static trajectory (.dotted-path = z-index:1) */
+.hero-grid,
+.cta-stage,
+.cred-stage,
+.vision .wrap,
+.pillars .wrap,
+.arsenal-wrap,
+.missions .wrap,
+.missions-splide,
+.avis-grid,
+.avis-final,
+.footer{
+  position:relative;z-index:3;
+}
+
+/* standalone purple rocket bridging Missions -> Avis */
+.missions-rocket{
+  position:absolute;left:34%;bottom:2%;width:clamp(64px,7vw,104px);z-index:5;
+  animation:floatrot 8s var(--ease-soft) infinite;
+}
