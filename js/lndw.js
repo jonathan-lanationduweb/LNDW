@@ -13,8 +13,7 @@
       if(e.isIntersecting){ e.target.classList.add('in'); revObs.unobserve(e.target); }
     });
   },{threshold:.18, rootMargin:'0px 0px -8% 0px'});
-  const revList = $$('.reveal,.reveal-pop').filter(el=> !(el.classList.contains('final-card')||el.classList.contains('final-cta')))
-                    .concat($$('.dotted-path'));
+  const revList = $$('.reveal,.reveal-pop');
   revList.forEach((el)=>{
     if(el.parentElement && el.parentElement.classList.contains('vision-text')){
       el.style.transitionDelay = (Array.prototype.indexOf.call(el.parentElement.children,el)*0.12)+'s';
