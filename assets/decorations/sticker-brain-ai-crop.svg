@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 88 88">
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="50%" r="50%">
+      <stop offset="0%"   stop-color="#3a0075"/>
+      <stop offset="55%"  stop-color="#1c0048"/>
+      <stop offset="100%" stop-color="#090018"/>
+    </radialGradient>
+    <linearGradient id="ring" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%"   stop-color="#f04a13"/>
+      <stop offset="50%"  stop-color="#ec00c8"/>
+      <stop offset="100%" stop-color="#7000ff"/>
+    </linearGradient>
+    <filter id="gl" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="1.6" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <!-- Anneau gradient orange→magenta→violet -->
+  <circle cx="44" cy="44" r="43" fill="url(#ring)"/>
+  <!-- Fond sombre intérieur -->
+  <circle cx="44" cy="44" r="40" fill="url(#bg)"/>
+  <!-- Cerveau — paths Lucide brain × scale 3, centré sur (44,44) -->
+  <g transform="translate(8,11) scale(3)"
+     fill="none" stroke="white" stroke-width="0.9"
+     stroke-linecap="round" stroke-linejoin="round"
+     filter="url(#gl)">
+    <path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96-.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 1.98-3L9 3"/>
+    <path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96-.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-1.98-3L15 3"/>
+  </g>
+</svg>

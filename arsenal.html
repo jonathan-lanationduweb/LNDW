@@ -8,18 +8,19 @@
 <link rel="stylesheet" href="css/base.css">
 <link rel="stylesheet" href="css/sections.css">
 <link rel="stylesheet" href="css/pages.css">
+<script src="js/arsenal.js" defer></script>
 </head>
 <body class="subpage">
 
-<!-- ============================ HEADER ============================ -->
-<header class="site-header" data-screen-label="Header">
+<!-- ======================== HEADER ======================== -->
+<header class="site-header">
   <div class="wrap header-inner">
-    <a class="brand" href="index.html#top" aria-label="La Nation du Web">
+    <a class="brand" href="index.html" aria-label="La Nation du Web">
       <img src="assets/logos/lndw-logo-white.svg" alt="LNDW — La Nation du Web">
       <span class="brand-base">LA NATION DU WEB</span>
     </a>
     <nav class="main-nav">
-      <a href="arsenal.html">ARSENAL</a>
+      <a href="arsenal.html" class="is-active">ARSENAL</a>
       <a href="la-nation.html">LA NATION</a>
       <a href="missions-clients.html">MISSIONS CLIENTS</a>
       <a href="backlinks.html">BACKLINKS</a>
@@ -36,100 +37,129 @@
 </header>
 
 <main>
+
+<!-- ======================== BLOC PRINCIPAL ARSENAL ======================== -->
 <section class="ars-hero">
   <div class="wrap">
+
+    <!-- Grande carte avec bordure dégradé -->
     <div class="ars-card">
       <div class="ars-card-inner">
-        <div class="ars-photos">
-          <img src="assets/photos/missions/mission-interior-01.jpg" alt="">
-          <img src="assets/photos/missions/mission-business-01.jpg" alt="">
-          <img src="assets/photos/missions/mission-interior-02.jpg" alt="">
-          <span class="ars-brain" aria-hidden="true">
-            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3a3 3 0 0 0-3 3 3 3 0 0 0-1 5 3 3 0 0 0 1 5 3 3 0 0 0 3 3 2.5 2.5 0 0 0 3 0V3.5A2.5 2.5 0 0 0 9 3z"/><path d="M15 3a3 3 0 0 1 3 3 3 3 0 0 1 1 5 3 3 0 0 1-1 5 3 3 0 0 1-3 3 2.5 2.5 0 0 1-3 0"/></svg>
-          </span>
+
+        <!-- Pile de 3 images superposées -->
+        <div class="ars-media-stack">
+          <img id="arsImgLeft"
+               class="ars-media ars-media--left"
+               src="image/assets/sections/arsenal/cropped/arsenal-image-left-crop.png"
+               alt="Arsenal gauche" loading="eager">
+          <img id="arsImgCenter"
+               class="ars-media ars-media--center"
+               src="image/assets/sections/arsenal/cropped/arsenal-image-center-crop.png"
+               alt="Arsenal centre" loading="eager">
+          <img id="arsImgRight"
+               class="ars-media ars-media--right"
+               src="image/assets/sections/arsenal/cropped/arsenal-image-right-crop.png"
+               alt="Arsenal droite" loading="eager">
         </div>
-        <p id="arsText">Pilotez une stratégie de croissance digitale globale et cohérente. Nous synchronisons tous vos leviers d'acquisition pour maximiser votre retour sur investissement (ROI) et alimenter la puissance de votre moteur de croissance.</p>
-        <a class="btn-mission" href="contact.html"><span class="rk"><img src="assets/icons/icon-rocket-line.svg" alt=""></span><span>Lancer ma mission ?</span></a>
+
+        <!-- Badge cerveau : sticker-brain-ai.svg via background-image CSS (cerveau exact Canva) -->
+        <div class="ars-brain-badge" aria-hidden="true"></div>
+
+        <!-- Texte descriptif (mis à jour par JS au clic) -->
+        <p id="arsText">Pilotez une stratégie de croissance digitale globale et cohérente. Nous synchronisons tous vos leviers d'acquisition pour maximiser votre retour sur investissement et alimenter la puissance de votre moteur de croissance.</p>
+
+        <!-- Bouton CTA -->
+        <a class="btn-mission" href="contact.html">
+          <span class="rk"><img src="assets/icons/icon-rocket-line.svg" alt=""></span>
+          <span>Lancer ma mission ?</span>
+        </a>
+
       </div>
     </div>
-  </div>
 
-  <div class="ars-moon-stage">
-    <div class="ars-moon" id="arsMoon"><img src="assets/textures/planet-omniscience.png" alt=""></div>
+  </div><!-- /.wrap -->
+
+  <!-- ======================== SECTION LUNE + EXPERTISES ======================== -->
+  <div class="ars-orbit-section">
+
+    <!-- Expertises en arc au-dessus de la lune -->
     <div class="ars-services" id="arsServices">
-      <span class="ars-service" style="left:8%;top:64%;--a:-42deg"  data-i="0">META ADS</span>
-      <span class="ars-service" style="left:19%;top:44%;--a:-30deg" data-i="1">WEB</span>
-      <span class="ars-service" style="left:33%;top:29%;--a:-16deg" data-i="2">SOCIAL MEDIA</span>
-      <span class="ars-service active" style="left:50%;top:22%;--a:0deg" data-i="3">MARKETING DIGITAL</span>
-      <span class="ars-service" style="left:66%;top:28%;--a:13deg"  data-i="4">IA</span>
-      <span class="ars-service" style="left:78%;top:40%;--a:24deg"  data-i="5">GRAPHISME</span>
-      <span class="ars-service" style="left:88%;top:55%;--a:35deg"  data-i="6">SEO</span>
-      <span class="ars-service" style="left:95%;top:70%;--a:44deg"  data-i="7">GOOGLE ADS</span>
+      <span class="ars-service" data-i="0" data-angle="155" data-rotation="-52">META ADS</span>
+      <span class="ars-service" data-i="1" data-angle="138" data-rotation="-35">WEB</span>
+      <span class="ars-service" data-i="2" data-angle="118" data-rotation="-15">SOCIAL MEDIA</span>
+      <span class="ars-service" data-i="3" data-angle="90"  data-rotation="0">MARKETING DIGITAL</span>
+      <span class="ars-service" data-i="4" data-angle="68"  data-rotation="12">IA</span>
+      <span class="ars-service" data-i="5" data-angle="48"  data-rotation="25">GRAPHISME</span>
+      <span class="ars-service" data-i="6" data-angle="34"  data-rotation="38">SEO</span>
+      <span class="ars-service" data-i="7" data-angle="22"  data-rotation="48">GOOGLE ADS</span>
     </div>
-  </div>
+
+    <!-- Grande lune tournante -->
+    <div class="ars-moon" id="arsMoon">
+      <img src="image/assets/sections/arsenal/cropped/arsenal-moon-main-crop.png" alt="Lune Arsenal">
+    </div>
+
+  </div><!-- /.ars-orbit-section -->
+
 </section>
+
 </main>
 
-<!-- ============================ FOOTER ============================ -->
-<footer class="footer" data-screen-label="Footer">
+<!-- ======================== FOOTER ======================== -->
+<footer class="footer">
   <div class="wrap">
     <div class="footer-top">
+
       <div class="footer-brand">
-        <div class="footer-logo"><img src="assets/logos/lndw-logo-white.svg" alt="LNDW"></div>
+        <div class="footer-logo">
+          <img src="assets/logos/lndw-logo-white.svg" alt="LNDW — La Nation du Web">
+        </div>
         <p class="footer-base">propulseur de stratégies.</p>
       </div>
+
       <div class="footer-cols">
-        <div class="footer-col"><h4>Vision</h4><a href="index.html#vision">Notre vision</a><a href="index.html#missions">Missions clients</a></div>
-        <div class="footer-col"><h4>Expertises</h4><a href="arsenal.html">Notre arsenal</a><a href="backlinks.html">Backlinks</a></div>
-        <div class="footer-col"><h4>Mentions Légales</h4><a href="mentions-legales.html">Mentions légales</a></div>
-        <div class="footer-col"><h4>FAQ</h4><a href="la-nation.html#faq">Questions fréquentes</a></div>
-        <div class="footer-col"><h4>CGU</h4><a href="cgu.html">Conditions d'utilisation</a><a href="cgv.html">CGV</a></div>
+        <div class="footer-col">
+          <h4>Vision</h4>
+          <a href="index.html#vision">Notre vision</a>
+          <a href="missions-clients.html">Missions clients</a>
+        </div>
+        <div class="footer-col">
+          <h4>Expertises</h4>
+          <a href="arsenal.html">Notre arsenal</a>
+          <a href="backlinks.html">Backlinks</a>
+        </div>
+        <div class="footer-col">
+          <h4>Mentions Légales</h4>
+          <a href="mentions-legales.html">Mentions légales</a>
+        </div>
+        <div class="footer-col">
+          <h4>FAQ</h4>
+          <a href="la-nation.html#faq">Questions fréquentes</a>
+        </div>
+        <div class="footer-col">
+          <h4>CGU</h4>
+          <a href="cgu.html">Conditions d'utilisation</a>
+          <a href="cgv.html">CGV</a>
+        </div>
       </div>
+
     </div>
   </div>
-  <div class="wrap">
+
+  <!-- Barre dégradé + icônes sociales chevauchant le haut de la barre -->
+  <div class="wrap footer-bar-section">
+    <div class="footer-socials">
+      <a class="fsoc fsoc--li" href="#" aria-label="LinkedIn"></a>
+      <a class="fsoc fsoc--tt" href="#" aria-label="TikTok"></a>
+      <a class="fsoc fsoc--ig" href="#" aria-label="Instagram"></a>
+      <a class="fsoc fsoc--fb" href="#" aria-label="Facebook"></a>
+    </div>
     <div class="footer-bar">
-      <div class="footer-socials">
-        <a class="soc" href="#" aria-label="LinkedIn"><img src="assets/icons/socials/icon-linkedin.svg" alt="LinkedIn"></a>
-        <a class="soc" href="#" aria-label="TikTok"><img src="assets/icons/socials/icon-tiktok.svg" alt="TikTok"></a>
-        <a class="soc" href="#" aria-label="Instagram"><img src="assets/icons/socials/icon-instagram.svg" alt="Instagram"></a>
-        <a class="soc" href="#" aria-label="Facebook"><img src="assets/icons/socials/icon-facebook.svg" alt="Facebook"></a>
-      </div>
       <div class="footer-copy">© 2026 La Nation du Web. Tous droits réservés.</div>
     </div>
   </div>
+
 </footer>
 
-<script>
-  (function(){
-    var header=document.querySelector('.site-header');
-    addEventListener('scroll',function(){header.style.background=scrollY>40?'rgba(31,30,36,.9)':'rgba(40,39,46,.72)';},{passive:true});
-    var t=document.querySelector('.nav-toggle');
-    if(t)t.addEventListener('click',function(){document.body.classList.toggle('nav-open');});
-
-    // ----- Arsenal : cadran de services -----
-    var SERVICES=[
-      {n:'META ADS', t:"Touchez vos audiences là où elles passent leur temps. Nos campagnes Meta Ads (Facebook & Instagram) combinent ciblage chirurgical, créas qui stoppent le scroll et optimisation continue du coût d'acquisition."},
-      {n:'WEB', t:"Sites vitrines, e-commerce, landing pages : nous concevons des plateformes rapides, responsive et pensées pour la conversion, avec une base SEO technique solide dès la livraison."},
-      {n:'SOCIAL MEDIA', t:"Une présence sociale qui fédère. Ligne éditoriale, calendrier de contenus, formats natifs et community management pour transformer votre audience en communauté engagée."},
-      {n:'MARKETING DIGITAL', t:"Pilotez une stratégie de croissance digitale globale et cohérente. Nous synchronisons tous vos leviers d'acquisition pour maximiser votre retour sur investissement (ROI) et alimenter la puissance de votre moteur de croissance."},
-      {n:'IA', t:"Agents IA sur mesure, chatbots et workflows automatisés : nous intégrons l'intelligence artificielle au cœur de vos process pour gagner du temps et démultiplier votre capacité d'exécution."},
-      {n:'GRAPHISME', t:"Identité visuelle, charte graphique et déclinaisons : un univers de marque cohérent et mémorable, du logo sur mesure jusqu'aux supports print et digitaux."},
-      {n:'SEO', t:"Audit technique, optimisation on-page, contenus et netlinking : nous bâtissons votre autorité pour vous installer durablement en tête des résultats de recherche."},
-      {n:'GOOGLE ADS', t:"Campagnes Search et Performance Max pilotées par la donnée. Ciblage, suivi des conversions et arbitrage budgétaire pour un coût par acquisition maîtrisé."}
-    ];
-    var svc=document.getElementById('arsServices');
-    var txt=document.getElementById('arsText');
-    var moon=document.getElementById('arsMoon');
-    var rot=0;
-    if(svc)svc.addEventListener('click',function(e){
-      var el=e.target.closest('.ars-service'); if(!el)return;
-      svc.querySelectorAll('.ars-service').forEach(function(x){x.classList.remove('active');});
-      el.classList.add('active');
-      var i=+el.dataset.i; txt.textContent=SERVICES[i].t;
-      rot+=22; if(moon)moon.style.transform='translateX(-50%) rotate('+rot+'deg)';
-    });
-  })();
-</script>
 </body>
 </html>

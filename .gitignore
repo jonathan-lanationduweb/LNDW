@@ -2,6 +2,12 @@
 _refs/
 uploads/
 
+# Junction Windows locale (pointe vers LNDW SITE/image/)
+image/
+
+# Config Claude Code
+.claude/
+
 # Système
 .thumbnail
 .DS_Store
