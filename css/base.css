@@ -226,25 +226,25 @@ section{position:relative}
 .fsoc:hover{transform:translateY(-4px) scale(1.09);opacity:.85}
 /* LinkedIn  bbox(630,268)→(756,393) 126×125 → 40px */
 .fsoc--li{
-  background-image:url('../image/assets/icons/socials/icon-linkedin.svg');
+  background-image:url('../assets/icons/socials/icon-linkedin.svg');
   background-size:434px 244px;
   background-position:-198px -83px;
 }
 /* TikTok  bbox(598,190)→(716,309) 118×119 → 40px */
 .fsoc--tt{
-  background-image:url('../image/assets/icons/socials/icon-tiktok.svg');
+  background-image:url('../assets/icons/socials/icon-tiktok.svg');
   background-size:463px 260px;
   background-position:-201px -62px;
 }
 /* Instagram  bbox(603,239)→(734,380) 131×141 → 40px (h) + centrage x */
 .fsoc--ig{
-  background-image:url('../image/assets/icons/socials/icon-instagram.svg');
+  background-image:url('../assets/icons/socials/icon-instagram.svg');
   background-size:388px 218px;
   background-position:-168px -66px;
 }
 /* Facebook  bbox(792,200)→(923,332) 131×132 → 40px */
 .fsoc--fb{
-  background-image:url('../image/assets/icons/socials/icon-facebook.svg');
+  background-image:url('../assets/icons/socials/icon-facebook.svg');
   background-size:417px 235px;
   background-position:-240px -59px;
 }

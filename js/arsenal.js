@@ -25,9 +25,9 @@
   /* -----------------------------------------------------------------
      Chemins des images (junction image/ → LNDW SITE/image/)
   ----------------------------------------------------------------- */
-  var L = 'image/assets/sections/arsenal/cropped/arsenal-image-left-crop.png';
-  var C = 'image/assets/sections/arsenal/cropped/arsenal-image-center-crop.png';
-  var R = 'image/assets/sections/arsenal/cropped/arsenal-image-right-crop.png';
+  var L = 'assets/sections/arsenal/cropped/arsenal-image-left-crop.png';
+  var C = 'assets/sections/arsenal/cropped/arsenal-image-center-crop.png';
+  var R = 'assets/sections/arsenal/cropped/arsenal-image-right-crop.png';
 
   /* -----------------------------------------------------------------
      8 services — data-i correspond à l'index dans ce tableau
