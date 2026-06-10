@@ -98,10 +98,9 @@
   function getOrbit(container) {
     var W = container.offsetWidth  || 1280;
     var H = container.offsetHeight || 700;
-    var moonR  = Math.min(1280, W) / 2;
-    var moonCY = H + 775 - moonR;   // centre lune Y dans les coords de la section
+    /* centre lune Y = H + 140 — cohérent avec CSS bottom:calc(-140px - moonR) */
     var cx = W / 2;
-    var cy = moonCY;
+    var cy = H + 140;
     var ry = cy - H * 0.08;         // label actif à 8 % du haut de la section
     var rx = W * 0.39;
     return { W: W, H: H, cx: cx, cy: cy, rx: rx, ry: ry };

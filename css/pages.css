@@ -239,7 +239,7 @@
 /* Lune : très grande demi-lune au bas de section */
 .ars-moon{
   position:absolute;
-  left:50%;bottom:-775px;
+  left:50%;bottom:calc(-140px - min(1280px,100vw) / 2);
   width:min(1280px,100vw);
   transform:translateX(-50%) rotate(var(--moon-deg,0deg));
   transform-origin:center center;
