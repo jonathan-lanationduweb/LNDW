@@ -1,0 +1,522 @@
+/* ============================================================
+   La Nation du Web — styles spécifiques la-nation.html
+   S'appuie sur les tokens de base.css (--ink, --purple, --grad, etc.)
+   ============================================================ */
+
+/* ============================ SECTION 1 — HERO ============================ */
+.ln2-hero {
+  padding: 150px 0 80px;
+  position: relative;
+  overflow: hidden;
+}
+.ln2-hero-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  align-items: start;
+  position: relative;
+}
+.ln2-title {
+  font-family: var(--font-display);
+  font-weight: 900;
+  text-transform: uppercase;
+  line-height: .86;
+  font-size: clamp(80px, 15vw, 240px);
+  color: var(--cream);
+  letter-spacing: -.01em;
+  text-shadow: 0 18px 50px rgba(0,0,0,.45);
+}
+.ln2-hero-right {
+  padding-top: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  position: relative;
+}
+.ln2-hero-right p {
+  color: var(--muted);
+  font-size: clamp(15px, 1.3vw, 19px);
+  line-height: 1.7;
+  max-width: 460px;
+  margin-left: auto;
+}
+.ln2-shuriken {
+  position: absolute;
+  width: clamp(180px, 22vw, 280px);
+  right: -4%;
+  top: -20px;
+  pointer-events: none;
+  z-index: 2;
+  /* état initial : hors écran gauche */
+  transform: translateX(-130vw) translateY(-60px) rotate(0deg);
+  opacity: 0;
+}
+.ln2-shuriken.shuriken-in {
+  animation: shuriken-fly 1.4s cubic-bezier(.16,.84,.44,1) forwards;
+}
+@keyframes shuriken-fly {
+  0%   { transform: translateX(-130vw) translateY(-60px) rotate(0deg);   opacity: 0; }
+  10%  { opacity: 1; }
+  100% { transform: translateX(0)      translateY(0)     rotate(720deg); opacity: 1; }
+}
+
+/* ============================ SECTION 2 — TIMELINE CARROUSEL ============================ */
+.ln2-timeline {
+  padding: 80px 0 100px;
+  background: var(--ink-2);
+  position: relative;
+  overflow: hidden;
+}
+.ln2-timeline-path-wrap {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+.ln2-tl-path {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: .18;
+}
+.ln2-tl-inner {
+  position: relative;
+  z-index: 2;
+}
+.ln2-tl-slides {
+  min-height: 320px;
+  position: relative;
+}
+.ln2-tl-slide {
+  display: none;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+  padding: 20px 0 40px;
+}
+.ln2-tl-slide.active {
+  display: grid;
+  animation: tl-fade-in .5s var(--ease);
+}
+@keyframes tl-fade-in {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: none; }
+}
+.ln2-tl-year {
+  display: block;
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: clamp(48px, 8vw, 120px);
+  line-height: 1;
+  margin-bottom: .12em;
+  background: var(--grad-text);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+.ln2-tl-ttl {
+  font-family: var(--font-display);
+  font-weight: 900;
+  text-transform: uppercase;
+  font-size: clamp(24px, 3vw, 46px);
+  color: var(--cream);
+  line-height: 1;
+  margin-bottom: .5em;
+}
+.ln2-tl-txt {
+  color: var(--muted);
+  font-size: clamp(14px, 1.2vw, 17px);
+  line-height: 1.7;
+  max-width: 500px;
+}
+.ln2-tl-img {
+  min-height: 280px;
+  border-radius: 24px;
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(255,255,255,.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.ln2-tl-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.ln2-tl-dots {
+  display: flex;
+  gap: 14px;
+  justify-content: center;
+  padding-top: 12px;
+}
+.ln2-tl-dots button {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: rgba(255,255,255,.18);
+  border: 2px solid transparent;
+  transition: background .3s, transform .3s, border-color .3s;
+  cursor: pointer;
+}
+.ln2-tl-dots button.active {
+  background: transparent;
+  border-color: var(--cream);
+  transform: scale(1.3);
+}
+
+/* ============================ SECTION 3 — STATISTIQUES ============================ */
+.ln2-stats {
+  padding: clamp(60px, 8vw, 110px) 0;
+  position: relative;
+}
+.ln2-stats-title {
+  font-family: var(--font-display);
+  font-weight: 900;
+  text-transform: uppercase;
+  font-size: clamp(22px, 2.8vw, 40px);
+  color: var(--cream);
+  text-align: center;
+  margin-bottom: 52px;
+  letter-spacing: .04em;
+}
+.ln2-stats-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  align-items: center;
+  justify-content: center;
+}
+.ln2-stat-item {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+}
+.ln2-stat-item img {
+  width: clamp(160px, 18vw, 230px);
+  height: auto;
+  display: block;
+}
+.ln2-stat-text {
+  position: absolute;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  pointer-events: none;
+}
+.ln2-stat-text b {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: clamp(22px, 3vw, 40px);
+  color: #fff;
+  line-height: 1;
+  display: block;
+}
+.ln2-stat-text span {
+  font-size: clamp(10px, 1vw, 13px);
+  color: rgba(255,255,255,.75);
+  text-transform: uppercase;
+  letter-spacing: .04em;
+  margin-top: 4px;
+  font-weight: 700;
+}
+
+/* ============================ SECTION 4 — MISSIONS STICKY ============================ */
+.ln2-missions-section {
+  height: 300vh;
+  position: relative;
+}
+.ln2-missions-sticky {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  background: var(--purple);
+}
+.ln2-missions-bg {
+  position: absolute;
+  inset: auto;
+  width: 80vmax;
+  height: 80vmax;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255,255,255,.07) 0%, transparent 70%);
+  transform: scale(0);
+  left: 50%;
+  top: 50%;
+  margin-left: -40vmax;
+  margin-top: -40vmax;
+  pointer-events: none;
+  transition: transform .6s var(--ease);
+  z-index: 0;
+}
+.ln2-missions-content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+.ln2-missions-list {
+  display: grid;
+  gap: 4px;
+}
+.ln2-mission-item {
+  font-family: var(--font-display);
+  font-weight: 900;
+  text-transform: uppercase;
+  font-size: clamp(28px, 4.5vw, 72px);
+  line-height: 1.05;
+  color: rgba(255,255,255,.22);
+  cursor: pointer;
+  transition: color .4s var(--ease), text-shadow .4s var(--ease);
+}
+.ln2-mission-item.active {
+  color: #fff;
+  text-shadow: 0 0 40px rgba(255,255,255,.25);
+}
+.ln2-missions-desc {
+  color: rgba(255,255,255,.9);
+  font-size: clamp(15px, 1.3vw, 19px);
+  line-height: 1.72;
+  max-width: 460px;
+}
+#lnMissionText {
+  transition: opacity .3s var(--ease);
+}
+#lnMissionText.fade-out {
+  opacity: 0;
+}
+
+/* ============================ SECTION 5 — POURQUOI CARTES ============================ */
+.ln2-why-section {
+  height: 400vh;
+  position: relative;
+}
+.ln2-why-sticky {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--ink);
+}
+.ln2-why-bg-text {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: .04em;
+  pointer-events: none;
+  z-index: 1;
+}
+.ln2-why-bg-text span {
+  font-family: var(--font-display);
+  font-weight: 900;
+  text-transform: uppercase;
+  color: rgba(250,248,255,.04);
+  font-size: clamp(60px, 11vw, 180px);
+  line-height: .92;
+  white-space: nowrap;
+}
+.ln2-why-cards {
+  position: relative;
+  z-index: 2;
+  width: min(900px, 90vw);
+  height: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.ln2-why-card {
+  position: absolute;
+  background: linear-gradient(160deg, #fff, #efeaff);
+  color: #211c2e;
+  border-radius: 22px;
+  padding: 32px 30px;
+  width: min(300px, 82vw);
+  box-shadow: 0 30px 70px -20px rgba(0,0,0,.55);
+  transform: rotate(var(--rot)) translateY(130vh);
+  transition: box-shadow .3s;
+}
+.ln2-why-card.card-in {
+  /* JS gère le translateY via style.transform inline */
+}
+.ln2-why-card:nth-child(1) { --rot: -4deg; left: 4%; }
+.ln2-why-card:nth-child(2) { --rot:  3deg; left: 27%; }
+.ln2-why-card:nth-child(3) { --rot: -3deg; left: 50%; }
+.ln2-why-card:nth-child(4) { --rot:  5deg; left: 68%; }
+.ln2-why-card-icon {
+  font-size: 30px;
+  margin-bottom: 14px;
+}
+.ln2-why-card h4 {
+  font-family: var(--font-display);
+  font-weight: 900;
+  text-transform: uppercase;
+  font-size: 16px;
+  color: #1d1b24;
+  margin-bottom: 10px;
+  line-height: 1.1;
+}
+.ln2-why-card p {
+  font-size: 13.5px;
+  line-height: 1.6;
+  color: #3a3447;
+}
+
+/* ============================ SECTION 6 — LE CŒUR DU RÉACTEUR ============================ */
+.ln2-reactor {
+  padding: clamp(60px, 8vw, 110px) 0 60px;
+  background: linear-gradient(170deg, #e9defb, #d9c8f5);
+  color: #211c2e;
+  overflow: hidden;
+}
+.ln2-reactor-title {
+  font-family: var(--font-display);
+  font-weight: 900;
+  text-transform: uppercase;
+  font-size: clamp(28px, 4.5vw, 68px);
+  color: #2a1147;
+  line-height: 1;
+  margin-bottom: .3em;
+  text-align: center;
+}
+.ln2-reactor-sub {
+  font-size: clamp(14px, 1.2vw, 18px);
+  line-height: 1.7;
+  color: rgba(42,17,71,.7);
+  max-width: 640px;
+  text-align: center;
+  margin: 0 auto 40px;
+}
+.ln2-reactor-stage {
+  position: relative;
+  height: 560px;
+  overflow: visible;
+  margin: 0 -20px;
+}
+.ln2-reactor-path-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+.reactor-progress-path {
+  stroke-dasharray: 9999;
+  stroke-dashoffset: 9999;
+}
+.ln2-reactor-rocket {
+  position: absolute;
+  width: 52px;
+  height: auto;
+  z-index: 5;
+  transform-origin: center center;
+  pointer-events: none;
+  top: 50%;
+  left: 0;
+  transform: translate(-50%, -50%);
+  filter: drop-shadow(0 6px 14px rgba(100,40,200,.4));
+}
+.ln2-reactor-profiles {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+}
+.ln2-rp {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  transform: translate(-50%, -50%);
+}
+.ln2-rp img {
+  width: 100px;
+  height: 100px;
+  border-radius: 14px;
+  object-fit: cover;
+  opacity: 0;
+  transform: scale(.7) translateY(14px);
+  transition: opacity .5s var(--ease), transform .5s var(--ease);
+  border: 3px solid rgba(255,255,255,.9);
+  box-shadow: 0 10px 28px rgba(80,20,160,.3);
+}
+.ln2-rp.visible img {
+  opacity: 1;
+  transform: scale(1) translateY(0);
+}
+.ln2-rp-label {
+  text-align: center;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity .45s var(--ease) .15s, transform .45s var(--ease) .15s;
+}
+.ln2-rp.visible .ln2-rp-label {
+  opacity: 1;
+  transform: none;
+}
+.ln2-rp-label b {
+  display: block;
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: 13px;
+  text-transform: uppercase;
+  color: #2a1147;
+  letter-spacing: .04em;
+}
+.ln2-rp-label span {
+  display: block;
+  font-size: 11px;
+  color: #7000ff;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+}
+
+/* ============================ RESPONSIVE ============================ */
+@media (max-width: 1080px) {
+  .ln2-hero-grid { grid-template-columns: 1fr; gap: 20px; }
+  .ln2-hero-right p { margin-left: 0; }
+  .ln2-shuriken { position: relative; right: auto; top: auto; width: clamp(140px, 30vw, 200px); margin-top: 20px; }
+  .ln2-tl-slide.active { grid-template-columns: 1fr; gap: 30px; }
+  .ln2-tl-img { min-height: 200px; }
+  .ln2-missions-content { grid-template-columns: 1fr; gap: 30px; }
+  .ln2-missions-desc { max-width: none; }
+  .ln2-why-card { width: min(250px, 78vw); padding: 24px 22px; }
+  .ln2-why-card:nth-child(1) { left: 1%; }
+  .ln2-why-card:nth-child(2) { left: 26%; }
+  .ln2-why-card:nth-child(3) { left: 52%; }
+  .ln2-why-card:nth-child(4) { left: 72%; }
+}
+@media (max-width: 760px) {
+  .ln2-tl-slide.active { padding: 16px 0 28px; }
+  .ln2-stats-grid { gap: 10px; }
+  .ln2-stat-item img { width: clamp(130px, 42vw, 180px); }
+  .ln2-missions-section { height: 250vh; }
+  .ln2-mission-item { font-size: clamp(22px, 5.5vw, 44px); }
+  .ln2-why-section { height: 350vh; }
+  .ln2-why-cards { height: 420px; }
+  .ln2-why-card { width: min(230px, 70vw); }
+  .ln2-why-card:nth-child(1) { left: 2%; }
+  .ln2-why-card:nth-child(2) { left: 22%; }
+  .ln2-why-card:nth-child(3) { left: 44%; }
+  .ln2-why-card:nth-child(4) { left: 66%; }
+  .ln2-reactor-stage { height: 400px; }
+  .ln2-rp img { width: 72px; height: 72px; border-radius: 10px; }
+  .ln2-reactor-rocket { width: 36px; }
+}
