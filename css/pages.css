@@ -466,12 +466,13 @@
 /* barre de progression */
 .mc-progress-wrap{margin-top:18px;padding-right:22px}
 .mc-progress{
-  position:relative;height:4px;border-radius:4px;
-  background:rgba(255,255,255,.14);overflow:hidden
+  position:relative;height:5px;border-radius:999px;
+  background:rgba(255,255,255,.18);overflow:hidden
 }
 .mc-progress-fill{
-  position:absolute;left:0;top:0;height:100%;border-radius:4px;
-  background:var(--grad);
+  position:absolute;left:0;top:0;height:100%;border-radius:999px;
+  background:#c9a7ff;
+  box-shadow:0 0 10px rgba(201,167,255,.32);
   transition:width .4s var(--ease),transform .4s var(--ease)
 }
 
