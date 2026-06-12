@@ -137,8 +137,9 @@
     if(t)t.addEventListener('click',function(){document.body.classList.toggle('nav-open');});
     if(typeof Splide!=='undefined'){
       var el=document.getElementById('mcSplide');
-      var sp=new Splide(el,{type:'loop',focus:'center',perPage:2,gap:'1.4rem',arrows:false,pagination:false,
-        drag:true,autoplay:false,updateOnMove:true,breakpoints:{980:{perPage:1,padding:'14%'}}});
+      var sp=new Splide(el,{type:'loop',perPage:2,padding:{right:'18%'},gap:'1.4rem',arrows:false,pagination:false,
+        drag:true,autoplay:false,updateOnMove:true,
+        breakpoints:{980:{perPage:1,padding:{right:'28%'}},600:{perPage:1,padding:{right:'12%'}}}});
       var fill=document.getElementById('mcProgress');
       function upd(){var len=sp.length,i=sp.index;if(fill){fill.style.width=(100/len)+'%';fill.style.transform='translateX('+(i*100)+'%)';}}
       sp.on('mounted move moved',upd);
