@@ -12,7 +12,7 @@
 </head>
 <body class="subpage">
 
-<!-- ============================ HEADER ============================ -->
+<!-- ======================== HEADER ======================== -->
 <header class="site-header" data-screen-label="Header">
   <div class="wrap header-inner">
     <a class="brand" href="index.html#top" aria-label="La Nation du Web">
@@ -21,7 +21,7 @@
     </a>
     <nav class="main-nav">
       <a href="arsenal.html">ARSENAL</a>
-      <a href="la-nation.html">LA NATION</a>
+      <a href="la-nation.html" class="active">LA NATION</a>
       <a href="missions-clients.html">MISSIONS CLIENTS</a>
       <a href="backlinks.html">BACKLINKS</a>
       <a href="blog.html">BLOG</a>
@@ -38,101 +38,122 @@
 
 <main>
 
-<!-- ============================ SECTION 1 — HERO ============================ -->
-<section class="ln2-hero">
-  <div class="wrap ln2-hero-grid">
-    <h1 class="ln2-title">LA<br>NATION</h1>
-    <div class="ln2-hero-right">
+<!-- ======================== S1 — HERO ======================== -->
+<section class="ln-hero">
+  <div class="wrap ln-hero-inner">
+    <h1 class="ln-title">LA<br>NATION</h1>
+    <div class="ln-hero-text">
       <p>Le digital est un univers qui s'étend sans fin, et il est facile de s'y perdre entre des outils déconnectés. La Nation du Web est née pour être votre point de ralliement.</p>
     </div>
-    <img class="ln2-shuriken" id="lnShuriken"
-         src="assets/decorations/sticker-shuriken-purple.svg" alt="">
   </div>
+  <!-- Shuriken en dehors du grid pour placement libre -->
+  <img class="ln-shuriken" id="lnShuriken"
+       src="assets/decorations/sticker-shuriken-purple.svg"
+       alt="" aria-hidden="true">
 </section>
 
-<!-- ============================ SECTION 2 — TIMELINE CARROUSEL ============================ -->
-<section class="ln2-timeline">
-  <div class="ln2-timeline-path-wrap" aria-hidden="true">
+<!-- ======================== S2 — TIMELINE ======================== -->
+<section class="ln-timeline">
+  <!-- SVG décoratif derrière tout -->
+  <div class="ln-tl-path-wrap" aria-hidden="true">
     <img src="assets/sections/nation/timeline/timeline-path.svg"
-         class="ln2-tl-path" alt="">
+         class="ln-tl-path-img" alt="">
   </div>
-  <div class="ln2-tl-inner wrap">
-    <div class="ln2-tl-slides" id="lnTlSlides">
 
-      <!-- Slide 1 -->
-      <div class="ln2-tl-slide active" data-year="2016">
-        <div class="ln2-tl-content">
-          <span class="ln2-tl-year">2016</span>
-          <h3 class="ln2-tl-ttl">Le Big Bang.</h3>
-          <p class="ln2-tl-txt">Tout a commencé par une conviction simple : le digital ne devait plus être un assemblage de pièces détachées, mais un écosystème cohérent. À une époque où le SEO, le Web et les réseaux sociaux ne se parlaient pas, nous avons posé les bases de ce qui allait devenir notre Vision Galactique.</p>
-        </div>
-        <div class="ln2-tl-img" aria-hidden="true"></div>
-      </div>
+  <div class="wrap ln-tl-wrap">
+    <!-- Slides -->
+    <div class="ln-tl-slides" id="lnTlSlides">
 
-      <!-- Slide 2 -->
-      <div class="ln2-tl-slide" data-year="2020">
-        <div class="ln2-tl-content">
-          <span class="ln2-tl-year">2020</span>
-          <h3 class="ln2-tl-ttl">Le Saut Hypersonique.</h3>
-          <p class="ln2-tl-txt">L'explosion du digital durant le COVID a été notre accélérateur de particules. Alors que le monde physique s'arrêtait, nous avons transformé chaque clic en orbite. Nous avons compris que la croissance devait devenir plus rapide, plus agile et plus interconnectée.</p>
+      <article class="ln-tl-slide active" data-year="2016">
+        <div class="ln-tl-content">
+          <span class="ln-tl-year">2016</span>
+          <h3 class="ln-tl-ttl">Le Big Bang.</h3>
+          <p class="ln-tl-body">Tout a commencé par une conviction simple : le digital ne devait plus être un assemblage de pièces détachées, mais un écosystème cohérent. À une époque où le SEO, le Web et les réseaux sociaux ne se parlaient pas, nous avons posé les bases de ce qui allait devenir notre Vision Galactique.</p>
         </div>
-        <div class="ln2-tl-img" aria-hidden="true"></div>
-      </div>
+        <div class="ln-tl-media" aria-hidden="true">
+          <div class="ln-tl-media-inner"></div>
+        </div>
+      </article>
 
-      <!-- Slide 3 -->
-      <div class="ln2-tl-slide" data-year="2026">
-        <div class="ln2-tl-content">
-          <span class="ln2-tl-year">2026</span>
-          <h3 class="ln2-tl-ttl">Le Renouveau.</h3>
-          <p class="ln2-tl-txt">Ce qui était autrefois une intuition est devenu une vision complète. Aujourd'hui, La Nation du Web rassemble stratégie, technologie et créativité pour propulser chaque projet dans son propre univers.</p>
+      <article class="ln-tl-slide" data-year="2020">
+        <div class="ln-tl-content">
+          <span class="ln-tl-year">2020</span>
+          <h3 class="ln-tl-ttl">Le Saut Hypersonique.</h3>
+          <p class="ln-tl-body">L'explosion du digital durant le COVID a été notre accélérateur de particules. Alors que le monde physique s'arrêtait, nous avons transformé chaque clic en orbite. Nous avons compris que la croissance devait devenir plus rapide, plus agile et plus interconnectée.</p>
         </div>
-        <div class="ln2-tl-img" aria-hidden="true"></div>
-      </div>
+        <div class="ln-tl-media" aria-hidden="true">
+          <div class="ln-tl-media-inner"></div>
+        </div>
+      </article>
+
+      <article class="ln-tl-slide" data-year="2026">
+        <div class="ln-tl-content">
+          <span class="ln-tl-year">2026</span>
+          <h3 class="ln-tl-ttl">Le Renouveau.</h3>
+          <p class="ln-tl-body">Ce qui était autrefois une intuition est devenu une vision complète. Aujourd'hui, La Nation du Web rassemble stratégie, technologie et créativité pour propulser chaque projet dans son propre univers.</p>
+        </div>
+        <div class="ln-tl-media" aria-hidden="true">
+          <div class="ln-tl-media-inner"></div>
+        </div>
+      </article>
 
     </div>
 
-    <!-- Dots navigation -->
-    <div class="ln2-tl-dots" id="lnTlDots" role="tablist" aria-label="Navigation timeline">
-      <button class="active" data-n="0" aria-label="2016 — Le Big Bang"></button>
-      <button data-n="1" aria-label="2020 — Le Saut Hypersonique"></button>
-      <button data-n="2" aria-label="2026 — Le Renouveau"></button>
+    <!-- Navigation -->
+    <div class="ln-tl-nav">
+      <button class="ln-tl-btn" id="lnTlPrev" aria-label="Précédent">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+      </button>
+      <div class="ln-tl-dots" id="lnTlDots" role="tablist" aria-label="Étapes timeline">
+        <button class="active" data-n="0" role="tab" aria-label="2016"></button>
+        <button data-n="1" role="tab" aria-label="2020"></button>
+        <button data-n="2" role="tab" aria-label="2026"></button>
+      </div>
+      <button class="ln-tl-btn" id="lnTlNext" aria-label="Suivant">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+      </button>
     </div>
   </div>
 </section>
 
-<!-- ============================ SECTION 3 — STATISTIQUES ============================ -->
-<section class="ln2-stats">
+<!-- ======================== S3 — STATS ======================== -->
+<section class="ln-stats">
   <div class="wrap">
-    <h2 class="ln2-stats-title">AUJOURD'HUI C'EST,</h2>
-    <div class="ln2-stats-grid">
+    <h2 class="ln-stats-title">AUJOURD'HUI C'EST,</h2>
 
-      <div class="ln2-stat-item">
-        <img src="assets/sections/nation/stats/stat-diamond-gradient.png" alt="">
-        <div class="ln2-stat-text">
+    <div class="ln-stats-cluster" aria-label="Chiffres clés">
+
+      <!-- Diamond gradient — +300% -->
+      <div class="ln-stat" data-shape="diamond">
+        <img src="assets/sections/nation/stats/stat-diamond-gradient.png" alt="Forme diamant gradient">
+        <div class="ln-stat-txt">
           <b>+300%</b>
           <span>de croissance</span>
         </div>
       </div>
 
-      <div class="ln2-stat-item">
-        <img src="assets/sections/nation/stats/stat-starburst-purple.png" alt="">
-        <div class="ln2-stat-text">
+      <!-- Starburst purple — 10 ans -->
+      <div class="ln-stat" data-shape="purple">
+        <img src="assets/sections/nation/stats/stat-starburst-purple.png" alt="Étoile violette">
+        <div class="ln-stat-txt">
           <b>10 ans</b>
           <span>d'exploration</span>
         </div>
       </div>
 
-      <div class="ln2-stat-item">
-        <img src="assets/sections/nation/stats/stat-starburst-lavender.png" alt="">
-        <div class="ln2-stat-text">
+      <!-- Starburst lavender — +900h -->
+      <div class="ln-stat" data-shape="lavender">
+        <img src="assets/sections/nation/stats/stat-starburst-lavender.png" alt="Étoile lavande">
+        <div class="ln-stat-txt">
           <b>+900h</b>
           <span>d'IA intégrée</span>
         </div>
       </div>
 
-      <div class="ln2-stat-item">
-        <img src="assets/sections/nation/stats/stat-blob-white.png" alt="">
-        <div class="ln2-stat-text">
+      <!-- Blob white — 8 -->
+      <div class="ln-stat" data-shape="blob">
+        <img src="assets/sections/nation/stats/stat-blob-white.png" alt="Blob blanc">
+        <div class="ln-stat-txt dark">
           <b>8</b>
           <span>pôles d'expertises</span>
         </div>
@@ -142,221 +163,217 @@
   </div>
 </section>
 
-<!-- ============================ SECTION 4 — NOS MISSIONS STICKY ============================ -->
-<section class="ln2-missions-section">
-  <div class="ln2-missions-sticky">
-    <div class="ln2-missions-bg" id="lnMissionsBg" aria-hidden="true"></div>
-    <div class="ln2-missions-content wrap">
+<!-- ======================== S4 — MISSIONS STICKY ======================== -->
+<section class="ln-missions-section">
+  <div class="ln-missions-sticky">
+    <!-- Carré violet qui s'agrandit au scroll -->
+    <div class="ln-missions-square" id="lnMissionsSquare" aria-hidden="true"></div>
 
-      <div class="ln2-missions-list" role="list">
-        <div class="ln2-mission-item active" data-i="0" role="listitem">SOUVERAINETÉ DIGITALE</div>
-        <div class="ln2-mission-item" data-i="1" role="listitem">PERFORMANCE ACCÉLÉRÉE</div>
-        <div class="ln2-mission-item" data-i="2" role="listitem">OMNISCIENCE TACTIQUE</div>
-        <div class="ln2-mission-item" data-i="3" role="listitem">EXPANSION GALACTIQUE</div>
+    <div class="wrap ln-missions-layout">
+      <div class="ln-missions-left">
+        <p class="ln-missions-eyebrow">Nos missions</p>
+        <ul class="ln-missions-list" id="lnMissionsList">
+          <li class="ln-mission-item active" data-i="0">SOUVERAINETÉ DIGITALE</li>
+          <li class="ln-mission-item" data-i="1">PERFORMANCE ACCÉLÉRÉE</li>
+          <li class="ln-mission-item" data-i="2">OMNISCIENCE TACTIQUE</li>
+          <li class="ln-mission-item" data-i="3">EXPANSION GALACTIQUE</li>
+        </ul>
       </div>
-
-      <div class="ln2-missions-desc" id="lnMissionsDesc">
-        <p id="lnMissionText">Vous rendre totalement maître de votre univers digital : vos accès, vos données, vos outils. Pas de boîte noire, pas de dépendance — vous gardez la souveraineté complète sur votre croissance.</p>
+      <div class="ln-missions-right">
+        <p id="lnMissionText" class="ln-mission-desc">Vous rendre totalement maître de votre univers digital&nbsp;: vos accès, vos données, vos outils. Pas de boîte noire, pas de dépendance&nbsp;— vous gardez la souveraineté complète sur votre croissance.</p>
       </div>
-
     </div>
   </div>
 </section>
 
-<!-- ============================ SECTION 5 — POURQUOI NOUS CHOISIR ============================ -->
-<section class="ln2-why-section">
-  <div class="ln2-why-sticky">
-    <div class="ln2-why-bg-text" aria-hidden="true">
+<!-- ======================== S5 — POURQUOI ======================== -->
+<section class="ln-why-section">
+  <div class="ln-why-sticky">
+
+    <!-- Grand texte arrière-plan -->
+    <div class="ln-why-bg" aria-hidden="true">
       <span>Pourquoi</span>
-      <span>NOUS CHOISIR ?</span>
+      <span>NOUS CHOISIR&nbsp;?</span>
     </div>
 
-    <div class="ln2-why-cards" id="lnWhyCards">
+    <!-- Cartes — arrivent une par une au scroll -->
+    <div class="ln-why-cards" id="lnWhyCards">
 
-      <div class="ln2-why-card" data-i="0" style="--rot:-4deg">
-        <div class="ln2-why-card-icon">🔭</div>
+      <div class="ln-why-card" data-i="0" style="--rot:-4deg">
+        <div class="ln-card-dot" aria-hidden="true"></div>
         <h4>VISION GALACTIQUE 360°</h4>
-        <p>Nous faisons le lien. Chez nous, une vue globale SEO + Ads + IA, c'est plus qu'un joli schéma : c'est une stratégie totale avec un objectif réel.</p>
+        <p>Nous faisons le lien. Chez nous, une vue globale SEO + Ads + IA, c'est plus qu'un joli schéma&nbsp;: c'est une stratégie totale avec un objectif réel.</p>
       </div>
 
-      <div class="ln2-why-card" data-i="1" style="--rot:3deg">
-        <div class="ln2-why-card-icon">⚡</div>
+      <div class="ln-why-card" data-i="1" style="--rot:3.5deg">
+        <div class="ln-card-dot" aria-hidden="true"></div>
         <h4>ARSENAL CHRONOLOGIQUE</h4>
         <p>Nous ne suivons pas les tendances, nous maîtrisons les cycles. De l'automatisation par l'IA au développement haute performance, nous utilisons la technologie pour accélérer votre trajectoire.</p>
       </div>
 
-      <div class="ln2-why-card" data-i="2" style="--rot:-3deg">
-        <div class="ln2-why-card-icon">🔍</div>
+      <div class="ln-why-card" data-i="2" style="--rot:-2.5deg">
+        <div class="ln-card-dot" aria-hidden="true"></div>
         <h4>TRANSPARENCE RADICALE</h4>
         <p>Fini les zones d'ombre. Vous gardez le contrôle total sur vos accès, vos outils et vos données. Vous savez toujours ce qui est fait, pourquoi et avec quel ROI.</p>
       </div>
 
-      <div class="ln2-why-card" data-i="3" style="--rot:5deg">
-        <div class="ln2-why-card-icon">🎯</div>
+      <div class="ln-why-card" data-i="3" style="--rot:4.5deg">
+        <div class="ln-card-dot" aria-hidden="true"></div>
         <h4>EXPERTISE TERRAIN</h4>
-        <p>Chaque 360°, nous l'avons poussé sur le terrain : e-commerce, réseaux, SaaS, artisans et marques locales. Cette expérience nous permet d'aller vite et juste.</p>
+        <p>Chaque 360°, nous l'avons poussé sur le terrain&nbsp;: e-commerce, réseaux, SaaS, artisans et marques locales. Cette expérience nous permet d'aller vite et juste.</p>
       </div>
 
     </div>
   </div>
 </section>
 
-<!-- ============================ SECTION 6 — LE CŒUR DU RÉACTEUR ============================ -->
-<section class="ln2-reactor">
+<!-- ======================== S6 — RÉACTEUR ======================== -->
+<section class="ln-reactor">
+
   <div class="wrap">
-    <h2 class="ln2-reactor-title">LE CŒUR DU RÉACTEUR.</h2>
-    <p class="ln2-reactor-sub">Derrière chaque ligne de code, chaque campagne et chaque stratégie, il y a La Nation : un collectif d'experts soudés par une mission unique.</p>
+    <h2 class="ln-reactor-title">LE CŒUR DU RÉACTEUR.</h2>
+    <p class="ln-reactor-sub">Derrière chaque ligne de code, chaque campagne et chaque stratégie, il y a La Nation&nbsp;: un collectif d'experts soudés par une mission unique.</p>
   </div>
 
-  <!-- Scène SVG + fusée + profils -->
-  <div class="ln2-reactor-stage">
+  <div class="ln-reactor-stage" id="lnReactorStage">
 
-    <!-- Chemin SVG inline -->
-    <svg class="ln2-reactor-path-svg"
-         viewBox="0 0 1200 600"
+    <!-- Chemin SVG — z-index 1, pointer-events none -->
+    <svg class="ln-reactor-svg"
+         viewBox="0 0 1200 480"
          xmlns="http://www.w3.org/2000/svg"
          aria-hidden="true"
          preserveAspectRatio="none">
       <defs>
         <linearGradient id="rktGrad" x1="0%" y1="0%" x2="100%" y2="0%">
           <stop offset="0%"   stop-color="#c248c9"/>
+          <stop offset="60%"  stop-color="#9a2dff"/>
           <stop offset="100%" stop-color="#ff7a3d"/>
         </linearGradient>
-        <marker id="rkt-tip" viewBox="0 0 10 10" refX="5" refY="5"
-                markerWidth="4" markerHeight="4">
-          <circle cx="5" cy="5" r="4" fill="#c248c9"/>
-        </marker>
       </defs>
-
-      <!-- Chemin de base (discret, utilisé pour les calculs JS) -->
-      <path id="reactorPathBase"
-        d="M 80 300 C 200 150, 380 450, 560 300 S 880 150, 1120 300"
+      <!-- Chemin de base — inactif -->
+      <path id="rktPathBase"
+        d="M 60 360 C 130 360 220 130 310 130 S 440 355 520 330 S 650 100 720 100 S 850 350 920 340 S 1080 130 1160 140"
         fill="none"
-        stroke="rgba(160,80,230,0.25)"
-        stroke-width="3"
-        stroke-dasharray="8 10"
+        stroke="rgba(180,100,230,0.22)"
+        stroke-width="2.5"
+        stroke-dasharray="7 13"
         stroke-linecap="round"/>
-
-      <!-- Chemin de progression lumineux (dashoffset animé via JS) -->
-      <path id="reactorPathProgress"
-        d="M 80 300 C 200 150, 380 450, 560 300 S 880 150, 1120 300"
+      <!-- Chemin de progression — révélé au scroll -->
+      <path id="rktPathProgress"
+        d="M 60 360 C 130 360 220 130 310 130 S 440 355 520 330 S 650 100 720 100 S 850 350 920 340 S 1080 130 1160 140"
         fill="none"
         stroke="url(#rktGrad)"
-        stroke-width="5"
-        stroke-dasharray="8 10"
+        stroke-width="4"
+        stroke-dasharray="7 13"
         stroke-linecap="round"
-        class="reactor-progress-path"/>
+        class="ln-path-progress"/>
     </svg>
 
-    <!-- Fusée (position pilotée par JS) -->
-    <img id="reactorRocket"
-         class="ln2-reactor-rocket"
+    <!-- Fusée -->
+    <img id="lnRocket"
+         class="ln-reactor-rocket"
          src="assets/decorations/sticker-rocket-purple.svg"
-         alt="">
+         alt="" aria-hidden="true">
 
-    <!-- Profils de l'équipe -->
-    <div class="ln2-reactor-profiles">
+    <!-- Équipe — 6 profils principaux -->
+    <div class="ln-profiles">
 
-      <div class="ln2-rp" data-name="THAÏLYCE" data-role="Social / Ads"
-           style="left:10%;top:50%">
-        <img src="assets/sections/nation/reactor/reactor-thailyce.png"
-             alt="Thaïlyce — Social / Ads">
-        <div class="ln2-rp-label">
-          <b>THAÏLYCE</b>
-          <span>Social / Ads</span>
+      <div class="ln-profile" data-idx="0" style="left:8%;top:76%">
+        <img src="assets/sections/nation/reactor/reactor-thailyce.png" alt="Thaïlyce">
+        <div class="ln-profile-label">
+          <b>THAÏLYCE</b><span>Social / Ads</span>
+        </div>
+        <div class="ln-profile-bubble" role="tooltip">
+          Social Media &amp; Ads<br>Gestion de communauté
         </div>
       </div>
 
-      <div class="ln2-rp" data-name="THOMAS" data-role="Web"
-           style="left:26%;top:25%">
-        <img src="assets/sections/nation/reactor/reactor-thomas.png"
-             alt="Thomas — Web">
-        <div class="ln2-rp-label">
-          <b>THOMAS</b>
-          <span>Web</span>
+      <div class="ln-profile" data-idx="1" style="left:26%;top:27%">
+        <img src="assets/sections/nation/reactor/reactor-thomas.png" alt="Thomas">
+        <div class="ln-profile-label">
+          <b>THOMAS</b><span>Web</span>
+        </div>
+        <div class="ln-profile-bubble" role="tooltip">
+          Développement Web<br>Intégration &amp; Performance
         </div>
       </div>
 
-      <div class="ln2-rp" data-name="VINCENT" data-role="Web"
-           style="left:43%;top:62%">
-        <img src="assets/sections/nation/reactor/reactor-vincent.png"
-             alt="Vincent — Web">
-        <div class="ln2-rp-label">
-          <b>VINCENT</b>
-          <span>Web</span>
+      <div class="ln-profile" data-idx="2" style="left:44%;top:70%">
+        <img src="assets/sections/nation/reactor/reactor-vincent.png" alt="Vincent">
+        <div class="ln-profile-label">
+          <b>VINCENT</b><span>Web</span>
+        </div>
+        <div class="ln-profile-bubble" role="tooltip">
+          Développement Web<br>Architecture &amp; CMS
         </div>
       </div>
 
-      <div class="ln2-rp" data-name="JONATHAN" data-role="IA"
-           style="left:58%;top:28%">
-        <img src="assets/sections/nation/reactor/reactor-jonathan.png"
-             alt="Jonathan — IA">
-        <div class="ln2-rp-label">
-          <b>JONATHAN</b>
-          <span>IA</span>
+      <div class="ln-profile" data-idx="3" style="left:61%;top:22%">
+        <img src="assets/sections/nation/reactor/reactor-jonathan.png" alt="Jonathan">
+        <div class="ln-profile-label">
+          <b>JONATHAN</b><span>IA</span>
+        </div>
+        <div class="ln-profile-bubble" role="tooltip">
+          Intelligence Artificielle<br>Automatisation &amp; Agents
         </div>
       </div>
 
-      <div class="ln2-rp" data-name="AMINE" data-role="SEO"
-           style="left:73%;top:55%">
-        <img src="assets/sections/nation/reactor/reactor-amine.png"
-             alt="Amine — SEO">
-        <div class="ln2-rp-label">
-          <b>AMINE</b>
-          <span>SEO</span>
+      <div class="ln-profile" data-idx="4" style="left:77%;top:72%">
+        <img src="assets/sections/nation/reactor/reactor-amine.png" alt="Amine">
+        <div class="ln-profile-label">
+          <b>AMINE</b><span>SEO</span>
+        </div>
+        <div class="ln-profile-bubble" role="tooltip">
+          SEO &amp; Autorité<br>Référencement naturel
         </div>
       </div>
 
-      <div class="ln2-rp" data-name="NICOLAS" data-role="Dev"
-           style="left:87%;top:32%">
-        <img src="assets/sections/nation/reactor/reactor-nicolas.png"
-             alt="Nicolas — Dev">
-        <div class="ln2-rp-label">
-          <b>NICOLAS</b>
-          <span>Dev</span>
+      <div class="ln-profile" data-idx="5" style="left:92%;top:30%">
+        <img src="assets/sections/nation/reactor/reactor-sofia.png" alt="Sofia">
+        <div class="ln-profile-label">
+          <b>SOFIA</b><span>Graphisme</span>
+        </div>
+        <div class="ln-profile-bubble" role="tooltip">
+          Design &amp; Identité<br>Création visuelle
         </div>
       </div>
 
-      <div class="ln2-rp" data-name="SOFIA" data-role="Graphisme"
-           style="left:97%;top:50%">
-        <img src="assets/sections/nation/reactor/reactor-sofia.png"
-             alt="Sofia — Graphisme">
-        <div class="ln2-rp-label">
-          <b>SOFIA</b>
-          <span>Graphisme</span>
-        </div>
-      </div>
+    </div><!-- /.ln-profiles -->
 
-    </div>
-
-  </div><!-- /.ln2-reactor-stage -->
+  </div><!-- /.ln-reactor-stage -->
 </section>
 
-<!-- ============================ SECTION 7 — FAQ ============================ -->
+<!-- ======================== S7 — FAQ ======================== -->
 <section class="ln-faq" id="faq">
   <span class="ln-faq-head" aria-hidden="true">FAQ</span>
   <div class="wrap ln-faq-grid">
     <div></div>
     <div>
       <div class="faq-list" id="faqList">
+
         <div class="faq-item open">
           <button class="faq-q">Pourquoi choisir une agence qui regroupe plusieurs spécialités&nbsp;?<span class="pm">+</span></button>
           <div class="faq-a"><p>Parce que la performance vient de l'interconnexion. Quand le web, le SEO, les ads et le social sont pilotés par une seule équipe, chaque levier renforce les autres — fini les prestataires qui se renvoient la balle.</p></div>
         </div>
+
         <div class="faq-item">
           <button class="faq-q">Combien de temps avant de voir des résultats&nbsp;?<span class="pm">+</span></button>
-          <div class="faq-a"><p>Cela dépend des leviers activés. Les campagnes Ads produisent des effets rapides ; le SEO et l'autorité se construisent sur quelques mois. Nous fixons des jalons clairs dès le départ.</p></div>
+          <div class="faq-a"><p>Cela dépend des leviers activés. Les campagnes Ads produisent des effets rapides&nbsp;; le SEO et l'autorité se construisent sur quelques mois. Nous fixons des jalons clairs dès le départ.</p></div>
         </div>
+
         <div class="faq-item">
           <button class="faq-q">Gardez-vous le contrôle de mes accès et de mes données&nbsp;?<span class="pm">+</span></button>
           <div class="faq-a"><p>Vous restez propriétaire de l'ensemble de vos comptes, accès et données. La transparence et la souveraineté sont au cœur de notre fonctionnement.</p></div>
         </div>
+
         <div class="faq-item">
           <button class="faq-q">Travaillez-vous avec l'intelligence artificielle&nbsp;?<span class="pm">+</span></button>
           <div class="faq-a"><p>Oui. Nous concevons des agents IA et des automatisations sur mesure pour accélérer vos process, tout en gardant une validation humaine sur les contenus diffusés.</p></div>
         </div>
-      </div>
-      <div class="faq-aside" style="margin-top:30px">
+
+      </div><!-- /.faq-list -->
+
+      <div class="faq-aside" style="margin-top:32px">
         <h4>D'autres questions&nbsp;?</h4>
         <p>Notre équipe vous répond sous 24h. Lançons la conversation autour de votre projet.</p>
         <a class="btn-mission" href="contact.html">
@@ -374,14 +391,12 @@
 <footer class="footer">
   <div class="wrap">
     <div class="footer-top">
-
       <div class="footer-brand">
         <div class="footer-logo">
           <img src="assets/logos/lndw-logo-white.svg" alt="LNDW — La Nation du Web">
         </div>
         <p class="footer-base">propulseur de stratégies.</p>
       </div>
-
       <div class="footer-cols">
         <div class="footer-col">
           <h4>Vision</h4>
@@ -407,11 +422,8 @@
           <a href="cgv.html">CGV</a>
         </div>
       </div>
-
     </div>
   </div>
-
-  <!-- Barre dégradé + icônes sociales chevauchant le haut de la barre -->
   <div class="wrap footer-bar-section">
     <div class="footer-socials">
       <a class="fsoc fsoc--li" href="#" aria-label="LinkedIn"></a>
@@ -423,38 +435,32 @@
       <div class="footer-copy">© 2026 La Nation du Web. Tous droits réservés.</div>
     </div>
   </div>
-
 </footer>
 
-<!-- Scripts globaux du projet -->
 <script>
 (function(){
-  /* Header scroll opacity */
+  'use strict';
   var header = document.querySelector('.site-header');
-  addEventListener('scroll', function(){
-    header.style.background = scrollY > 40
+  window.addEventListener('scroll', function(){
+    header.style.background = window.scrollY > 40
       ? 'rgba(31,30,36,.9)'
       : 'rgba(40,39,46,.72)';
   }, { passive: true });
-  /* Mobile nav toggle */
   var t = document.querySelector('.nav-toggle');
   if(t) t.addEventListener('click', function(){
     document.body.classList.toggle('nav-open');
   });
-  /* FAQ accordéon */
   var faq = document.getElementById('faqList');
   if(faq) faq.addEventListener('click', function(e){
     var q = e.target.closest('.faq-q');
     if(!q) return;
     var item = q.parentElement;
-    var open = item.classList.contains('open');
+    var isOpen = item.classList.contains('open');
     faq.querySelectorAll('.faq-item').forEach(function(x){ x.classList.remove('open'); });
-    if(!open) item.classList.add('open');
+    if(!isOpen) item.classList.add('open');
   });
 })();
 </script>
-
-<!-- Script spécifique La Nation -->
 <script src="js/la-nation.js"></script>
 
 </body>
