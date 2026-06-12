@@ -12,19 +12,66 @@
   var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   /* ============================================================
-     1. SHURIKEN -- arc courbe au chargement
+     1. SHURIKEN + TEXT REVEAL
+     Le shuriken arrive en arc puis déclenche l'apparition lettre par
+     lettre du titre via clip-path wipe, puis fade-in du sous-titre.
      ============================================================ */
   var shuriken = document.getElementById("lnShuriken");
+  var lnTitle  = document.querySelector(".ln-title");
+  var lnHText  = document.querySelector(".ln-hero-text");
+
+  /* éclate le titre en <span class="ln-letter"> par caractère */
+  function splitIntoLetters(el) {
+    var nodes = Array.from(el.childNodes);
+    el.innerHTML = "";
+    nodes.forEach(function (n) {
+      if (n.nodeType === 3) {
+        n.textContent.split("").forEach(function (ch) {
+          var s = document.createElement("span");
+          s.className = "ln-letter";
+          s.textContent = ch;
+          s.style.clipPath = "inset(0 108% 0 0)";
+          el.appendChild(s);
+        });
+      } else {
+        el.appendChild(n.cloneNode(true));
+      }
+    });
+  }
+
+  var titleRevealed = false;
+  function revealTitle() {
+    if (titleRevealed) return;
+    titleRevealed = true;
+    var letters = lnTitle ? Array.from(lnTitle.querySelectorAll(".ln-letter")) : [];
+    letters.forEach(function (l, i) {
+      setTimeout(function () {
+        l.style.transition = "clip-path .55s cubic-bezier(.16,.84,.44,1)";
+        l.style.clipPath    = "inset(0 0% 0 0)";
+      }, i * 58);
+    });
+    var totalMs = letters.length * 58 + 360;
+    setTimeout(function () {
+      if (lnHText) lnHText.classList.add("lh-in");
+    }, totalMs);
+  }
+
   if (shuriken) {
     if (reduce) {
       shuriken.style.transform = "none";
       shuriken.style.opacity   = "1";
+      if (lnTitle) { /* pas de split — texte déjà visible */ }
+      if (lnHText) { lnHText.style.transition = "none"; lnHText.classList.add("lh-in"); }
     } else {
+      if (lnTitle) splitIntoLetters(lnTitle);
       requestAnimationFrame(function () {
         requestAnimationFrame(function () {
           shuriken.classList.add("fly-in");
         });
       });
+      shuriken.addEventListener("animationend", revealTitle, { once: true });
+      /* fallback si animationend ne tire pas */
+      setTimeout(revealTitle, 2200);
     }
   }
 

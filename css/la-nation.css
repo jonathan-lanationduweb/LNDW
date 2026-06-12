@@ -29,12 +29,24 @@
 }
 .ln-hero-text {
   padding-top: 36px;
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity .7s cubic-bezier(.16,.84,.44,1), transform .7s cubic-bezier(.16,.84,.44,1);
+}
+.ln-hero-text.lh-in {
+  opacity: 1;
+  transform: translateY(0);
 }
 .ln-hero-text p {
   color: var(--muted, rgba(255,255,255,.55));
   font-size: clamp(14px, 1.15vw, 17px);
   line-height: 1.78;
   max-width: 400px;
+}
+/* letters split by JS — inline-block needed for clip-path */
+.ln-letter {
+  display: inline-block;
+  will-change: clip-path;
 }
 
 /* Shuriken — position libre, entre les sections */
