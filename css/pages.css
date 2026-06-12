@@ -365,30 +365,38 @@
 
 /* ============================================================ MISSIONS CLIENTS */
 
-/* header transparent sur hero (mc-page) */
+/* header transparent + aligné 8vw sur mc-page */
 .mc-page .site-header{
   background:transparent;
   backdrop-filter:none;-webkit-backdrop-filter:none;
   border-bottom-color:transparent;
 }
+.mc-page .header-inner{
+  max-width:100%;
+  padding-left:clamp(40px,8vw,112px);
+  padding-right:clamp(24px,3vw,52px)
+}
 .main-nav a.active{color:var(--cream)}
 .main-nav a.active::after{right:0}
 
-/* hero plein écran */
-.mc-hero{position:relative;min-height:100vh;display:flex;flex-direction:column;overflow:hidden}
+/* hero — hauteur proche maquette (660-760px) */
+.mc-hero{position:relative;min-height:clamp(660px,76vh,760px);display:flex;flex-direction:column;overflow:hidden}
 .mc-hero-bg{position:absolute;inset:0;z-index:0}
 .mc-hero-bg img{width:100%;height:100%;object-fit:cover;object-position:center center}
-/* overlay : gauche ~48% (texte lisible) → quasi transparent droite (image visible) */
+/* overlay subtil — image parquet visible, texte lisible gauche */
 .mc-hero-bg::after{
   content:"";position:absolute;inset:0;
   background:
-    linear-gradient(to bottom, transparent 58%, rgba(0,0,0,.36) 100%),
-    linear-gradient(to right,
-      rgba(0,0,0,.48) 0%,
-      rgba(0,0,0,.34) 28%,
-      rgba(0,0,0,.14) 52%,
-      rgba(0,0,0,.04) 72%,
-      rgba(0,0,0,.01) 100%
+    linear-gradient(90deg,
+      rgba(10,8,20,.65) 0%,
+      rgba(10,8,20,.42) 28%,
+      rgba(10,8,20,.14) 50%,
+      rgba(10,8,20,.04) 68%,
+      rgba(10,8,20,.01) 100%
+    ),
+    linear-gradient(180deg,
+      rgba(10,8,20,.08) 0%,
+      rgba(10,8,20,.28) 100%
     )
 }
 
@@ -405,7 +413,7 @@
   grid-template-columns:minmax(0,1fr) minmax(0,1.08fr);
   gap:44px;align-items:center;
   width:100%;
-  padding-left:clamp(32px,5.5vw,88px);padding-right:0 /* fluide → pas de centrage sur grand écran */
+  padding-left:clamp(40px,8vw,112px);padding-right:0 /* 8vw fluide — aligne avec header */
 }
 .mc-left{}
 .mc-right{
@@ -440,15 +448,15 @@
 /* cartes portrait */
 .mc-carousel .splide__slide{padding:0}
 .mc-card{
-  position:relative;display:block;border-radius:28px;overflow:hidden;
-  aspect-ratio:9/13;background:#0a0810;
+  position:relative;display:block;border-radius:30px;overflow:hidden;
+  height:370px;background:#0a0810;
   box-shadow:0 22px 52px -18px rgba(0,0,0,.65);
-  transform:scale(.92);filter:brightness(.62);
+  transform:scale(.92);filter:brightness(.58);
   transition:transform .5s var(--ease),filter .5s var(--ease),box-shadow .5s var(--ease)
 }
 .mc-card img{
   width:100%;height:100%;object-fit:cover;display:block;background:#0a0810;
-  transform:scale(1.28);transform-origin:center 42%;
+  transform:scale(1.42);transform-origin:center 36%;
   transition:transform .5s var(--ease)
 }
 .mc-cap{
