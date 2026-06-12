@@ -11,8 +11,8 @@
 </head>
 <body class="subpage sp2-page">
 
-<!-- ============================  HEADER  ============================ -->
-<header class="site-header" data-screen-label="Header">
+<!-- =====================  HEADER  ===================== -->
+<header class="site-header" id="site-header">
   <div class="wrap header-inner">
     <a class="brand" href="index.html#top" aria-label="La Nation du Web">
       <img src="assets/logos/lndw-logo-white.svg" alt="LNDW — La Nation du Web">
@@ -37,11 +37,12 @@
 
 <main>
 
-<!-- ============================  HERO  ============================ -->
+<!-- =====================  01 — HERO  ===================== -->
 <section class="sp2-hero">
   <div class="sp2-hero-bg">
     <img src="assets/photos/missions/premibel-hero-bg.png"
-         alt="Intérieur Premibel Parquet — cheminée et parquet clair">
+         alt="Intérieur Premibel Parquet — cheminée et parquet clair"
+         loading="eager">
   </div>
 
   <div class="sp2-hero-inner">
@@ -67,7 +68,7 @@
           <div class="sp2-badges">
 
             <div class="sp2-badge sp2-badge--lavender">
-              <img src="assets/sections/mission/result-starburst-lavender.svg" alt="">
+              <img src="assets/sections/nation/stats/stat-starburst-lavender.png" alt="">
               <div class="sp2-badge-text">
                 <strong>+250%</strong>
                 <span>d'impressions<br>sur Instagram</span>
@@ -75,7 +76,7 @@
             </div>
 
             <div class="sp2-badge sp2-badge--white">
-              <img src="assets/sections/mission/result-blob-white.svg" alt="">
+              <img src="assets/sections/nation/stats/stat-blob-white.png" alt="">
               <div class="sp2-badge-text">
                 <strong>2×</strong>
                 <span>de commandes<br>d'internet</span>
@@ -83,7 +84,7 @@
             </div>
 
             <div class="sp2-badge sp2-badge--purple">
-              <img src="assets/sections/mission/result-starburst-purple.svg" alt="">
+              <img src="assets/sections/nation/stats/stat-starburst-purple.png" alt="">
               <div class="sp2-badge-text">
                 <strong>1er</strong>
                 <span>sur le moteur<br>Google</span>
@@ -98,7 +99,7 @@
   </div><!-- /.sp2-hero-inner -->
 </section>
 
-<!-- ============================  INFO BAR  ============================ -->
+<!-- =====================  02 — INFO PROJET  ===================== -->
 <section class="sp2-info">
   <div class="wrap sp2-info-grid">
     <div>
@@ -107,10 +108,10 @@
     </div>
     <div>
       <span class="sp2-info-label">Secteur</span>
-      <p class="sp2-info-val">Parquet &amp; Revêtement de sol</p>
+      <p class="sp2-info-val">Parquet haut de gamme</p>
     </div>
     <div>
-      <span class="sp2-info-label">Services déployés</span>
+      <span class="sp2-info-label">Missions réalisées</span>
       <ul class="sp2-info-val">
         <li>Optimisation technique</li>
         <li>SEO e-commerce</li>
@@ -121,7 +122,7 @@
       </ul>
     </div>
     <div>
-      <span class="sp2-info-label">Résultats clés</span>
+      <span class="sp2-info-label">Résultats</span>
       <ul class="sp2-info-val">
         <li>+250% d'impressions Instagram</li>
         <li>2× de commandes internet</li>
@@ -131,28 +132,29 @@
   </div>
 </section>
 
-<!-- ============================  PROBLÉMATIQUES  ============================ -->
+<!-- =====================  03 — PROBLÉMATIQUES  ===================== -->
 <section class="sp2-problems">
   <div class="wrap">
     <div class="sp2-problems-grid sp2-reveal">
       <div class="sp2-problems-img">
         <img src="assets/sections/mission/premibel-laptop-catalogue.png"
-             alt="Premibel — Catalogue produits">
+             alt="Premibel — Catalogue produits sur laptop">
       </div>
       <div class="sp2-problems-text">
         <span class="sp2-section-tag">Contexte</span>
         <h2>PROBLÉ-<br>MATIQUES</h2>
         <p>À notre arrivée, le défi était de taille : propulser un site de moins de 12 mois dans une arène dominée par des acteurs historiques installés depuis plus d'une décennie. Malgré la qualité premium des produits, l'architecture actuelle et le design du site ne permettaient pas à Premibel de se positionner comme une référence sur internet.</p>
-        <p style="margin-top:16px">La marque possédait une vraie valeur de conversion organique et artisanale, mais cette richesse restait invisible. Il fallait construire un écosystème progressif : ne pas réduire l'acquisition à un seul canal, mais créer une mécanique capable de faire de chaque page un levier de visibilité et chaque contenu un accélérateur de confiance.</p>
+        <p>La marque possédait une vraie valeur de conversion organique et artisanale, mais cette richesse restait invisible. Il fallait construire un écosystème progressif : ne pas réduire l'acquisition à un seul canal, mais créer une mécanique capable de faire de chaque page un levier de visibilité et chaque contenu un accélérateur de confiance.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============================  ARSENAL  ============================ -->
+<!-- =====================  04 — ARSENAL DÉPLOYÉ  ===================== -->
 <section class="sp2-arsenal">
   <div class="wrap">
     <div class="sp2-arsenal-grid">
+
       <div>
         <h2 class="sp2-reveal">L'ARSENAL<br>DÉPLOYÉ</h2>
         <div class="sp2-arsenal-items">
@@ -196,46 +198,59 @@
         </div>
       </div>
 
+      <!-- Image sticky -->
       <div class="sp2-arsenal-media sp2-reveal">
         <img src="assets/sections/mission/premibel-laptop-foire-paris.png"
-             alt="Premibel — Foire de Paris">
+             alt="Premibel — Page Foire de Paris sur laptop">
       </div>
 
     </div>
   </div>
 </section>
 
-<!-- ============================  VIDÉO PRINCIPALE  ============================ -->
+<!-- =====================  05 — VIDÉO PRINCIPALE  ===================== -->
 <section class="sp2-video">
   <video autoplay muted loop playsinline>
     <source src="assets/sections/mission/premibel-video-main.mp4" type="video/mp4">
   </video>
 </section>
 
-<!-- ============================  SPLIT : FOIRE DE PARIS  ============================ -->
+<!-- =====================  06 — FOIRE DE PARIS  ===================== -->
 <section class="sp2-split sp2-reveal">
   <div class="sp2-split-img">
     <img src="assets/sections/mission/premibel-laptop-foire-paris.png"
-         alt="Premibel — Foire de Paris">
+         alt="Premibel — Page événementielle Foire de Paris">
   </div>
   <div class="sp2-split-body">
     <span class="sp2-split-tag">Web / Événementiel</span>
-    <h3>La Foire<br>de Paris</h3>
-    <p>Une page événement pensée pour convertir. Intégrée en moins de 14 jours, elle a généré des centaines de demandes de devis lors du salon. Performance, responsive et expérience premium — à l'image de la marque.</p>
+    <h3>LA FOIRE<br>DE PARIS</h3>
+    <p>Une page événementielle pensée pour convertir l'intérêt autour de la foire et générer des demandes de devis sur la durée. Intégrée en moins de 14 jours, elle a concentré l'énergie de la marque sur un temps fort. Performance, mémorisation et expérience premium — à l'image de Premibel.</p>
   </div>
 </section>
 
-<!-- ============================  SOCIAL MEDIA — SECTION ROUGE  ============================ -->
-<section class="sp2-social-red sp2-reveal">
-  <div class="sp2-social-red-img">
-    <img src="assets/sections/mission/premibel-social-media.png"
-         alt="Premibel — Social Media">
+<!-- =====================  07 — DUO MÉDIAS  ===================== -->
+<section class="sp2-media-duo">
+  <div class="sp2-media-duo-item sp2-reveal">
+    <img src="assets/sections/mission/premibel-laptop-foire-paris.png"
+         alt="Premibel — Foire de Paris">
   </div>
-  <div class="sp2-social-red-txt">
-    <span class="sp2-split-tag">Social Media &amp; Ads</span>
-    <h3>Une marque<br>qui rayonne</h3>
-    <p>Ligne éditoriale cohérente, contenus produits haut de gamme et campagnes Meta pilotées par la donnée pour multiplier la portée organique et payante.</p>
-    <div style="margin-top:28px;display:flex;gap:16px;flex-wrap:wrap">
+  <div class="sp2-media-duo-item sp2-reveal">
+    <img src="assets/sections/mission/premibel-laptop-catalogue.png"
+         alt="Premibel — Catalogue produits">
+  </div>
+</section>
+
+<!-- =====================  08 — SOCIAL MEDIA ROUGE  ===================== -->
+<section class="sp2-social-red">
+  <div class="sp2-social-red-img sp2-reveal">
+    <img src="assets/sections/mission/premibel-social-media.png"
+         alt="Premibel — Contenus Social Media">
+  </div>
+  <div class="sp2-social-red-txt sp2-reveal">
+    <span class="sp2-split-tag" style="color:rgba(255,255,255,.55)">Social Media &amp; Ads</span>
+    <h3>UNE MARQUE<br>QUI RAYONNE</h3>
+    <p>Une direction artistique forte, des contenus courts et des formats immersifs pour nourrir la visibilité de la marque et renforcer sa présence digitale au quotidien.</p>
+    <div style="display:flex;gap:20px;flex-wrap:wrap;margin-top:4px">
       <div class="sp2-red-stat">
         <strong>×7</strong>
         <span>portée</span>
@@ -248,41 +263,41 @@
   </div>
 </section>
 
-<!-- ============================  VIDÉO 2  ============================ -->
+<!-- =====================  09 — VIDÉO 2  ===================== -->
 <section class="sp2-video">
   <video autoplay muted loop playsinline>
     <source src="assets/sections/mission/premibel-video-29mo.mp4" type="video/mp4">
   </video>
 </section>
 
-<!-- ============================  CATALOGUE / TERRAIN  ============================ -->
-<section class="sp2-street sp2-reveal">
+<!-- =====================  10 — TERRAIN / SHOWROOM  ===================== -->
+<section class="sp2-street">
   <div class="sp2-street-bg">
     <img src="assets/photos/missions/mission-interior-02.jpg"
-         alt="Premibel — Showroom">
+         alt="Premibel — Showroom parquet">
   </div>
   <div class="sp2-street-overlay"></div>
-  <div class="sp2-street-content wrap">
-    <span class="sp2-section-tag" style="color:rgba(255,255,255,.6)">Catalogue &amp; Terrain</span>
-    <h3>Un catalogue<br>qui performe</h3>
-    <p>Architecture SEO repensée de A à Z, balisage sémantique, fiches produits enrichies. Résultat : +250% de croissance organique en moins d'un an.</p>
+  <div class="sp2-street-content sp2-reveal">
+    <span class="sp2-section-tag" style="color:rgba(255,255,255,.55)">Présence terrain</span>
+    <h3>UN ANCRAGE<br>PHYSIQUE FORT</h3>
+    <p>Une marque qui vit au-delà du digital. Le showroom Premibel incarne l'expérience produit haut de gamme que la stratégie web vient prolonger et amplifier.</p>
   </div>
 </section>
 
-<!-- ============================  SPLIT : CATALOGUE  ============================ -->
-<section class="sp2-split" style="flex-direction:row-reverse" data-rev>
-  <div class="sp2-split-img" style="background:#06040e">
+<!-- =====================  11 — CATALOGUE / SEO  ===================== -->
+<section class="sp2-split sp2-split--rev sp2-reveal">
+  <div class="sp2-split-body">
+    <span class="sp2-split-tag">SEO e-commerce</span>
+    <h3>UN CATALOGUE<br>QUI PERFORME</h3>
+    <p>Architecture SEO repensée de A à Z, balisage sémantique renforcé, fiches produits enrichies et cocon thématique sur le parquet. Résultat : une croissance organique durable qui place Premibel premier sur Google pour les requêtes à fort volume.</p>
+  </div>
+  <div class="sp2-split-img">
     <img src="assets/sections/mission/premibel-laptop-catalogue.png"
-         alt="Premibel — Catalogue">
-  </div>
-  <div class="sp2-split-body sp2-reveal">
-    <span class="sp2-split-tag">SEO</span>
-    <h3>Un catalogue<br>qui performe</h3>
-    <p>Architecture SEO repensée de A à Z, balisage sémantique, fiches produits enrichies et cocon thématique sur le parquet. +250% de croissance organique en moins d'un an.</p>
+         alt="Premibel — Catalogue SEO">
   </div>
 </section>
 
-<!-- ============================  RECAP + PROJET SUIVANT  ============================ -->
+<!-- =====================  12 — RECAP + PROJET SUIVANT  ===================== -->
 <section class="sp2-recap">
   <div class="wrap sp2-recap-grid">
 
@@ -300,7 +315,8 @@
 
     <div class="sp2-reveal">
       <a class="sp2-next-card" href="missions-clients.html">
-        <img src="assets/photos/missions/mission-fashion.jpg" alt="Maison Quivernay">
+        <img src="assets/photos/missions/mission-fashion.jpg"
+             alt="Maison Quivernay">
         <div class="sp2-next-card-overlay"></div>
         <div class="sp2-next-card-body">
           <span class="sp2-next-label">Mission suivante</span>
@@ -313,7 +329,7 @@
   </div>
 </section>
 
-<!-- ============================  CTA FINAL  ============================ -->
+<!-- =====================  CTA FINAL  ===================== -->
 <section class="cta-final-band">
   <a class="btn-mission" href="contact.html">
     <span class="rk"><img src="assets/icons/icon-rocket-line.svg" alt=""></span>
@@ -323,7 +339,7 @@
 
 </main>
 
-<!-- ============================  FOOTER  ============================ -->
+<!-- =====================  FOOTER  ===================== -->
 <footer class="footer">
   <div class="wrap">
     <div class="footer-top">
@@ -373,66 +389,63 @@
   </div>
 </footer>
 
-<!-- ============================  SCRIPTS  ============================ -->
+<!-- =====================  SCRIPTS  ===================== -->
 <script>
 (function () {
-  var header   = document.querySelector('.site-header');
+  var header = document.getElementById('site-header');
   var navToggle = document.querySelector('.nav-toggle');
 
-  /* header transparent → opaque au scroll */
+  /* ─ Header transparent → opaque au scroll */
   function setHeader(y) {
     var opaque = y > 60;
-    header.style.background          = opaque ? 'rgba(14,12,20,.92)' : 'transparent';
-    header.style.backdropFilter       = opaque ? 'blur(14px)'        : 'none';
-    header.style.webkitBackdropFilter = opaque ? 'blur(14px)'        : 'none';
-    header.style.borderBottomColor    = opaque ? 'rgba(250,248,255,.06)' : 'transparent';
+    header.style.background          = opaque ? 'rgba(10,8,20,.94)' : 'transparent';
+    header.style.backdropFilter       = opaque ? 'blur(16px)' : 'none';
+    header.style.webkitBackdropFilter = opaque ? 'blur(16px)' : 'none';
+    header.style.borderBottomColor    = opaque ? 'rgba(250,248,255,.07)' : 'transparent';
   }
   setHeader(window.scrollY || 0);
   window.addEventListener('scroll', function () { setHeader(window.scrollY); }, { passive: true });
 
-  /* menu mobile */
+  /* ─ Menu mobile */
   if (navToggle) {
     navToggle.addEventListener('click', function () {
       document.body.classList.toggle('nav-open');
     });
   }
 
-  /* scroll reveal — IntersectionObserver */
-  var reveals = document.querySelectorAll('.sp2-reveal');
-  var badges  = document.querySelectorAll('.sp2-badge');
-
-  if ('IntersectionObserver' in window) {
-    var io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (e) {
-        if (e.isIntersecting) {
-          e.target.classList.add('sp2-in');
-          io.unobserve(e.target);
-        }
-      });
-    }, { threshold: 0.12 });
-
-    reveals.forEach(function (el) { io.observe(el); });
-
-    /* badges avec délai échelonné */
-    var badgeObs = new IntersectionObserver(function (entries) {
-      entries.forEach(function (e) {
-        if (e.isIntersecting) {
-          var idx = Array.from(badges).indexOf(e.target);
-          setTimeout(function () {
-            e.target.classList.add('sp2-in');
-          }, idx * 180);
-          badgeObs.unobserve(e.target);
-        }
-      });
-    }, { threshold: 0.2 });
-
-    badges.forEach(function (b) { badgeObs.observe(b); });
-
-  } else {
-    /* fallback sans IO */
-    reveals.forEach(function (el) { el.classList.add('sp2-in'); });
-    badges.forEach(function (b)  { b.classList.add('sp2-in'); });
+  /* ─ IntersectionObserver — scroll reveals */
+  if (!('IntersectionObserver' in window)) {
+    document.querySelectorAll('.sp2-reveal,.sp2-badge').forEach(function (el) {
+      el.classList.add('sp2-in');
+    });
+    return;
   }
+
+  /* Reveals classiques */
+  var revealIO = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (!e.isIntersecting) return;
+      e.target.classList.add('sp2-in');
+      revealIO.unobserve(e.target);
+    });
+  }, { threshold: 0.10, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.sp2-reveal').forEach(function (el) {
+    revealIO.observe(el);
+  });
+
+  /* Badges — entrée échelonnée avec spring */
+  var badges = document.querySelectorAll('.sp2-badge');
+  var badgeIO = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (!e.isIntersecting) return;
+      var idx = Array.from(badges).indexOf(e.target);
+      setTimeout(function () { e.target.classList.add('sp2-in'); }, idx * 200);
+      badgeIO.unobserve(e.target);
+    });
+  }, { threshold: 0.15 });
+
+  badges.forEach(function (b) { badgeIO.observe(b); });
 
 })();
 </script>
