@@ -40,7 +40,8 @@
 
 /* big CTA band reused at the bottom of pages */
 .cta-final-band{padding:90px 0 110px;text-align:center}
-.cta-final-band .btn-mission{font-size:clamp(18px,1.9vw,26px);padding:20px 40px 20px 28px}
+.cta-final-band .btn-mission{font-size:clamp(26px,3.5vw,50px);padding:24px 56px 24px 42px}
+.cta-final-band .btn-mission .rk{width:1.4em;height:1.4em}
 
 /* ============================================================ CONTACT */
 .contact-hero{padding:150px 0 30px;text-align:center}
@@ -363,30 +364,111 @@
 .faq-aside p{color:var(--muted);font-size:14.5px;line-height:1.6;margin-bottom:20px}
 
 /* ============================================================ MISSIONS CLIENTS */
-.mc-hero{position:relative;min-height:92vh;display:flex;align-items:center;overflow:hidden}
+
+/* header transparent sur hero (mc-page) */
+.mc-page .site-header{
+  background:transparent;
+  backdrop-filter:none;-webkit-backdrop-filter:none;
+  border-bottom-color:transparent;
+}
+.main-nav a.active{color:var(--cream)}
+.main-nav a.active::after{right:0}
+
+/* hero plein écran */
+.mc-hero{position:relative;min-height:100vh;display:flex;flex-direction:column;overflow:hidden}
 .mc-hero-bg{position:absolute;inset:0;z-index:0}
-.mc-hero-bg img{width:100%;height:100%;object-fit:cover}
-.mc-hero-bg::after{content:"";position:absolute;inset:0;
-  background:linear-gradient(100deg,rgba(20,18,26,.92) 30%,rgba(20,18,26,.55) 70%,rgba(20,18,26,.4))}
-.mc-hero-inner{position:relative;z-index:2;width:100%;padding:150px 0 70px}
-.mc-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
-.mc-title{font-family:var(--font-display);font-weight:900;text-transform:uppercase;line-height:.9;
-  font-size:clamp(46px,6.5vw,104px);color:var(--cream)}
-.mc-desc{color:rgba(250,248,255,.82);line-height:1.65;max-width:440px;margin:22px 0 26px;font-size:15px}
-.mc-tags{margin-top:26px}
-.mc-carousel .splide__track{overflow:visible}
-.mc-card{position:relative;border-radius:24px;overflow:hidden;aspect-ratio:300/420;
-  box-shadow:0 24px 50px -20px rgba(0,0,0,.7);transform:scale(.9);filter:brightness(.7);
-  transition:transform .5s var(--ease),filter .5s var(--ease)}
-.mc-card img{width:100%;height:100%;object-fit:cover}
-.mc-card .mc-cap{position:absolute;left:0;right:0;bottom:0;padding:18px;
-  background:linear-gradient(to top,rgba(10,8,16,.9),transparent);
-  font-family:var(--font-display);font-weight:800;text-transform:uppercase;color:#fff;font-size:15px}
-.mc-carousel .is-active .mc-card{transform:scale(1);filter:none;
-  box-shadow:0 30px 70px -18px rgba(120,50,220,.7)}
-.mc-progress{position:relative;height:4px;border-radius:4px;background:rgba(255,255,255,.15);margin-top:30px;overflow:hidden}
-.mc-progress-fill{position:absolute;left:0;top:0;height:100%;border-radius:4px;background:var(--grad);width:33%;
-  transition:width .4s var(--ease),transform .4s var(--ease)}
+.mc-hero-bg img{width:100%;height:100%;object-fit:cover;object-position:center 55%}
+/* gradient : sombre gauche (texte lisible) → quasi transparent droite (image visible) */
+.mc-hero-bg::after{
+  content:"";position:absolute;inset:0;
+  background:
+    linear-gradient(to bottom, transparent 58%, rgba(10,8,16,.82) 100%),
+    linear-gradient(to right,
+      rgba(10,8,16,.82) 0%,
+      rgba(10,8,16,.62) 22%,
+      rgba(10,8,16,.30) 46%,
+      rgba(10,8,16,.08) 64%,
+      rgba(10,8,16,.02) 100%
+    )
+}
+
+/* zone de contenu hero */
+.mc-hero-inner{
+  position:relative;z-index:2;flex:1;
+  display:flex;flex-direction:column;justify-content:center;
+  padding-top:110px;padding-bottom:64px
+}
+
+/* grille : gauche (texte) + droite (carrousel dépasse vers le bord viewport) */
+.mc-layout{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) minmax(0,1.08fr);
+  gap:44px;align-items:center;
+  max-width:var(--maxw);margin:0 auto;width:100%;
+  padding-left:48px;padding-right:0 /* pas de padding droit → carrousel va au bord */
+}
+.mc-left{}
+.mc-right{
+  overflow:hidden; /* clip les cartes au bord droit de cette zone */
+  margin-right:0
+}
+
+/* titre */
+.mc-title{
+  font-family:var(--font-display);font-weight:900;text-transform:uppercase;
+  line-height:.88;font-size:clamp(64px,10.2vw,148px);
+  color:#fff;letter-spacing:-.02em;text-shadow:0 8px 44px rgba(0,0,0,.44)
+}
+
+/* description */
+.mc-desc{
+  color:rgba(255,255,255,.78);font-size:clamp(13px,1.05vw,15.5px);
+  line-height:1.72;max-width:380px;margin:20px 0 26px
+}
+
+/* tags */
+.mc-tags{margin-top:20px}
+.mc-tags .chip{
+  font-size:11px;padding:6px 13px;
+  border-color:rgba(255,255,255,.32);color:rgba(255,255,255,.82)
+}
+
+/* carrousel */
+.mc-carousel{overflow:visible}
+.mc-carousel .splide__track{overflow:visible!important}
+
+/* cartes portrait */
+.mc-card{
+  position:relative;display:block;border-radius:22px;overflow:hidden;
+  aspect-ratio:9/13;
+  box-shadow:0 22px 52px -18px rgba(0,0,0,.65);
+  transform:scale(.92);filter:brightness(.62);
+  transition:transform .5s var(--ease),filter .5s var(--ease),box-shadow .5s var(--ease)
+}
+.mc-card img{width:100%;height:100%;object-fit:cover;display:block}
+.mc-cap{
+  position:absolute;left:0;right:0;bottom:0;
+  padding:72px 18px 20px;
+  background:linear-gradient(to top,rgba(6,4,16,.92) 0%,transparent 100%);
+  font-family:var(--font-display);font-weight:800;text-transform:uppercase;
+  color:#fff;font-size:13.5px;letter-spacing:.04em
+}
+.splide__slide.is-active .mc-card{
+  transform:scale(1);filter:brightness(1);
+  box-shadow:0 30px 68px -14px rgba(120,50,220,.6)
+}
+
+/* barre de progression */
+.mc-progress-wrap{margin-top:18px;padding-right:22px}
+.mc-progress{
+  position:relative;height:4px;border-radius:4px;
+  background:rgba(255,255,255,.14);overflow:hidden
+}
+.mc-progress-fill{
+  position:absolute;left:0;top:0;height:100%;border-radius:4px;
+  background:var(--grad);
+  transition:width .4s var(--ease),transform .4s var(--ease)
+}
 
 /* ============================================================ SINGLE PROJECT */
 .sp-hero{padding:150px 0 70px}
@@ -468,11 +550,12 @@
   .form-rocket{display:none}
   .ln-hero-grid,.ln-tl-grid,.ln-faq-grid{grid-template-columns:1fr}
   .ln-hero-right p,.ln-hero-badge{margin-left:0}
-  .mc-grid,.sp-hero-grid{grid-template-columns:1fr}
+  .mc-layout{grid-template-columns:1fr;padding-left:32px;padding-right:32px;gap:32px}
+  .mc-right{margin-right:-32px}
+  .sp-hero-grid{grid-template-columns:1fr}
   .sp-split,.sp-social{grid-template-columns:1fr}
   .sp-split .sp-split-media{min-height:50vw}
   .sp-social .sp-social-media{min-height:50vw}
-  /* on mobile: show media first for reversed split */
   .sp-split:nth-child(even) .sp-split-txt{order:-1}
 }
 

@@ -4,13 +4,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Missions Clients | La Nation du Web</title>
-<meta name="description" content="Découvrez les missions clients réalisées par La Nation du Web.">
+<meta name="description" content="Découvrez les missions clients réalisées par La Nation du Web — Premibel Parquet, Maison Quivernay, Ashoka et plus.">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide-core.min.css" crossorigin="anonymous">
 <link rel="stylesheet" href="css/base.css">
 <link rel="stylesheet" href="css/sections.css">
 <link rel="stylesheet" href="css/pages.css">
 </head>
-<body class="subpage">
+<body class="subpage mc-page">
 
 <!-- ============================ HEADER ============================ -->
 <header class="site-header" data-screen-label="Header">
@@ -22,7 +22,7 @@
     <nav class="main-nav">
       <a href="arsenal.html">ARSENAL</a>
       <a href="la-nation.html">LA NATION</a>
-      <a href="missions-clients.html">MISSIONS CLIENTS</a>
+      <a href="missions-clients.html" class="active">MISSIONS CLIENTS</a>
       <a href="backlinks.html">BACKLINKS</a>
       <a href="blog.html">BLOG</a>
     </nav>
@@ -37,42 +37,103 @@
 </header>
 
 <main>
+
 <!-- ============================ HERO ============================ -->
 <section class="mc-hero">
-  <div class="mc-hero-bg"><img src="assets/photos/missions/mission-interior-02.jpg" alt=""></div>
-  <div class="mc-hero-inner">
-    <div class="wrap mc-grid">
-      <div>
-        <h1 class="mc-title">Premibel<br>Parquet</h1>
-        <p class="mc-desc">De la refonte du site à la stratégie SEO et social media, nous avons propulsé Premibel Parquet dans une nouvelle dimension digitale. Un écosystème complet, connecté et piloté pour la performance.</p>
-        <a class="btn-pill" href="single-project.html">Voir la mission</a>
-        <div class="chip-row mc-tags">
-          <span class="chip">Web</span><span class="chip">SEO</span><span class="chip">Social Media</span>
-          <span class="chip">Marketing Digital</span><span class="chip">Ads</span>
-        </div>
-      </div>
-      <div>
-        <div class="splide mc-carousel" id="mcSplide">
-          <div class="splide__track"><ul class="splide__list">
-            <li class="splide__slide"><a class="mc-card" href="single-project.html"><img src="assets/photos/missions/mission-fashion.jpg" alt="Maison Quivernay"><span class="mc-cap">Maison Quivernay</span></a></li>
-            <li class="splide__slide"><a class="mc-card" href="single-project.html"><img src="assets/photos/missions/mission-maison-quivernay.jpg" alt="Ashoka"><span class="mc-cap">Ashoka</span></a></li>
-            <li class="splide__slide"><a class="mc-card" href="single-project.html"><img src="assets/photos/missions/mission-business-01.jpg" alt="Annuaire France Gratuit"><span class="mc-cap">Annuaire France Gratuit</span></a></li>
-            <li class="splide__slide"><a class="mc-card" href="single-project.html"><img src="assets/photos/missions/mission-interior-01.jpg" alt="Over Parquet"><span class="mc-cap">Over Parquet</span></a></li>
-          </ul></div>
-        </div>
-        <div class="mc-progress"><div class="mc-progress-fill" id="mcProgress"></div></div>
-      </div>
-    </div>
+
+  <!-- fond plein écran -->
+  <div class="mc-hero-bg" aria-hidden="true">
+    <img src="assets/photos/missions/mission-interior-02.jpg"
+         alt="Intérieur parquet Premibel">
   </div>
+
+  <!-- contenu hero -->
+  <div class="mc-hero-inner">
+    <div class="mc-layout">
+
+      <!-- ── GAUCHE : texte projet ── -->
+      <div class="mc-left">
+        <h1 class="mc-title">PREMIBEL<br>PARQUET</h1>
+
+        <p class="mc-desc">Passer de simple site vitrine à leader du secteur sur Google. On a combiné technique web et stratégie publicitaire pour que Premibel devienne le premier réflexe de quiconque cherche du parquet.</p>
+
+        <a class="btn-pill" href="single-project.html">VOIR LA MISSION</a>
+
+        <div class="chip-row mc-tags">
+          <span class="chip">WEB</span>
+          <span class="chip">SEO</span>
+          <span class="chip">SOCIAL MEDIA</span>
+          <span class="chip">MARKETING DIGITAL</span>
+          <span class="chip">ADS</span>
+        </div>
+      </div>
+
+      <!-- ── DROITE : carrousel + barre progression ── -->
+      <div class="mc-right">
+        <div class="splide mc-carousel" id="mcSplide" aria-label="Projets clients">
+          <div class="splide__track">
+            <ul class="splide__list">
+
+              <li class="splide__slide">
+                <a class="mc-card" href="single-project.html">
+                  <img src="assets/photos/missions/mission-fashion.jpg"
+                       alt="Maison Quivernay">
+                  <span class="mc-cap">MAISON QUIVERNAY</span>
+                </a>
+              </li>
+
+              <li class="splide__slide">
+                <a class="mc-card" href="single-project.html">
+                  <img src="assets/photos/missions/mission-maison-quivernay.jpg"
+                       alt="Ashoka">
+                  <span class="mc-cap">ASHOKA</span>
+                </a>
+              </li>
+
+              <li class="splide__slide">
+                <a class="mc-card" href="single-project.html">
+                  <img src="assets/photos/missions/mission-business-01.jpg"
+                       alt="Annuaire France Gratuit">
+                  <span class="mc-cap">ANNUAIRE FRANCE GRATUIT</span>
+                </a>
+              </li>
+
+              <li class="splide__slide">
+                <a class="mc-card" href="single-project.html">
+                  <img src="assets/photos/missions/mission-interior-01.jpg"
+                       alt="Over Parquet">
+                  <span class="mc-cap">OVER PARQUET</span>
+                </a>
+              </li>
+
+            </ul>
+          </div>
+        </div>
+
+        <!-- barre de progression -->
+        <div class="mc-progress-wrap">
+          <div class="mc-progress">
+            <div class="mc-progress-fill" id="mcProgress"></div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /.mc-layout -->
+  </div><!-- /.mc-hero-inner -->
+
 </section>
 
 <!-- ============================ CTA FINAL ============================ -->
 <section class="cta-final-band">
-  <a class="btn-mission" href="contact.html"><span class="rk"><img src="assets/icons/icon-rocket-line.svg" alt=""></span><span>Lancer ma mission ?</span></a>
+  <a class="btn-mission" href="contact.html">
+    <span class="rk"><img src="assets/icons/icon-rocket-line.svg" alt=""></span>
+    <span>LANCER MA MISSION ?</span>
+  </a>
 </section>
+
 </main>
 
-<!-- ======================== FOOTER ======================== -->
+<!-- ============================ FOOTER ============================ -->
 <footer class="footer">
   <div class="wrap">
     <div class="footer-top">
@@ -113,7 +174,6 @@
     </div>
   </div>
 
-  <!-- Barre dégradé + icônes sociales chevauchant le haut de la barre -->
   <div class="wrap footer-bar-section">
     <div class="footer-socials">
       <a class="fsoc fsoc--li" href="#" aria-label="LinkedIn"></a>
@@ -125,28 +185,78 @@
       <div class="footer-copy">© 2026 La Nation du Web. Tous droits réservés.</div>
     </div>
   </div>
-
 </footer>
 
+<!-- ============================ SCRIPTS ============================ -->
 <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js" crossorigin="anonymous"></script>
 <script>
-  (function(){
-    var header=document.querySelector('.site-header');
-    addEventListener('scroll',function(){header.style.background=scrollY>40?'rgba(31,30,36,.9)':'rgba(40,39,46,.72)';},{passive:true});
-    var t=document.querySelector('.nav-toggle');
-    if(t)t.addEventListener('click',function(){document.body.classList.toggle('nav-open');});
-    if(typeof Splide!=='undefined'){
-      var el=document.getElementById('mcSplide');
-      var sp=new Splide(el,{type:'loop',perPage:2,padding:{right:'18%'},gap:'1.4rem',arrows:false,pagination:false,
-        drag:true,autoplay:false,updateOnMove:true,
-        breakpoints:{980:{perPage:1,padding:{right:'28%'}},600:{perPage:1,padding:{right:'12%'}}}});
-      var fill=document.getElementById('mcProgress');
-      function upd(){var len=sp.length,i=sp.index;if(fill){fill.style.width=(100/len)+'%';fill.style.transform='translateX('+(i*100)+'%)';}}
-      sp.on('mounted move moved',upd);
-      sp.on('click',function(S){sp.go(S.index);});
-      sp.mount(); upd();
+(function () {
+  var header    = document.querySelector('.site-header');
+  var isMcPage  = document.body.classList.contains('mc-page');
+  var navToggle = document.querySelector('.nav-toggle');
+
+  /* ── header transparent sur le hero, opaque au scroll ── */
+  function setHeader(y) {
+    if (isMcPage) {
+      var opaque = y > 60;
+      header.style.background       = opaque ? 'rgba(14,12,20,.92)'          : 'transparent';
+      header.style.backdropFilter   = opaque ? 'blur(14px)'                  : 'none';
+      header.style.webkitBackdropFilter = opaque ? 'blur(14px)'              : 'none';
+      header.style.borderBottomColor = opaque ? 'rgba(250,248,255,.06)'      : 'transparent';
+    } else {
+      header.style.background = y > 40 ? 'rgba(31,30,36,.9)' : 'rgba(40,39,46,.72)';
     }
-  })();
+  }
+
+  /* état initial (avant tout scroll) */
+  setHeader(window.scrollY || 0);
+  window.addEventListener('scroll', function () { setHeader(window.scrollY); }, { passive: true });
+
+  /* menu mobile */
+  if (navToggle) {
+    navToggle.addEventListener('click', function () {
+      document.body.classList.toggle('nav-open');
+    });
+  }
+
+  /* ── Carrousel Splide ── */
+  if (typeof Splide !== 'undefined') {
+    var el = document.getElementById('mcSplide');
+    var sp = new Splide(el, {
+      type        : 'loop',
+      perPage     : 2,
+      padding     : { right: '14%' }, /* partiel de la 3e carte visible */
+      gap         : '16px',
+      arrows      : false,
+      pagination  : false,
+      drag        : true,
+      autoplay    : false,
+      updateOnMove: true,
+      breakpoints : {
+        980 : { perPage: 1, padding: { right: '28%' } },
+        600 : { perPage: 1, padding: { right: '14%' } }
+      }
+    });
+
+    var fill = document.getElementById('mcProgress');
+
+    /* met à jour la barre de progression */
+    function updProgress() {
+      if (!fill) return;
+      var len = sp.length;
+      var i   = sp.index;
+      /* segment glissant : largeur = 1/N, translateX = i × 100% */
+      fill.style.width     = (100 / len) + '%';
+      fill.style.transform = 'translateX(' + (i * 100) + '%)';
+    }
+
+    sp.on('mounted move moved', updProgress);
+    /* clic sur une carte → naviguer vers ce slide */
+    sp.on('click', function (s) { sp.go(s.index); });
+    sp.mount();
+    updProgress();
+  }
+})();
 </script>
 </body>
 </html>
