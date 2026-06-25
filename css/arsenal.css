@@ -1,0 +1,145 @@
+/* ============================================================
+   La Nation du Web — arsenal.css
+   Styles SPÉCIFIQUES à la page Arsenal (arsenal.html).
+   Dépend de base.css / sections.css / pages.css pour les styles
+   globaux (reset, header, footer, .btn-mission, variables, typo…).
+   Déplacé depuis pages.css pour isoler le code de la page.
+   ============================================================ */
+
+.ars-hero{padding:140px 0 0}
+
+/* ---- Carte principale avec pseudo-bordure dégradé ---- */
+.ars-card{
+  position:relative;
+  width:min(900px,88vw);margin:0 auto 60px;
+  border-radius:32px;
+  background:rgba(18,16,25,.78);
+  box-shadow:0 40px 90px rgba(0,0,0,.35)
+}
+/* Bordure dégradé via ::before */
+.ars-card::before{
+  content:"";position:absolute;inset:0;border-radius:inherit;
+  padding:2px;
+  background:linear-gradient(135deg,#f04a13,#f000c8,#5317ff);
+  -webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);
+  -webkit-mask-composite:xor;
+  mask-composite:exclude;
+  pointer-events:none
+}
+.ars-card-inner{
+  position:relative;border-radius:31px;
+  padding:52px 56px 64px;
+  text-align:center;overflow:visible
+}
+
+/* ---- Pile de 3 images superposées (portrait, fidèle à la référence) ---- */
+.ars-media-stack{
+  position:relative;
+  width:min(760px,90vw);
+  height:400px;
+  margin:0 auto 16px;
+}
+/* Images : <img> uniquement, jamais <video> */
+.ars-media{
+  position:absolute;display:block;
+  object-fit:cover;object-position:center center;
+  border-radius:22px;
+  box-shadow:0 28px 60px rgba(0,0,0,.48);
+  transition:opacity .3s ease
+}
+.ars-media--left{
+  width:270px;height:335px;
+  left:60px;top:55px;
+  transform:rotate(-8deg);
+  z-index:1;opacity:.82
+}
+.ars-media--center{
+  width:295px;height:375px;
+  left:50%;top:12px;
+  transform:translateX(-50%);
+  z-index:3;
+  box-shadow:0 32px 72px rgba(0,0,0,.68)
+}
+.ars-media--right{
+  width:270px;height:335px;
+  right:60px;top:55px;
+  transform:rotate(8deg);
+  z-index:1;opacity:.82
+}
+
+/* ---- Badge cerveau : sticker-brain-ai.svg affiché par background-image ---- */
+/* Sticker exact extrait du Canva — bbox SVG (614,332)→(756,473), 142×141px    */
+/* Scale 0.9155 → sticker 130px dans container 140px (5px marge chaque côté)  */
+/* bg-size  = 1366×0.9155 × 768×0.9155 = 1250px 703px                        */
+/* bg-pos   = -(614×0.9155)+5 -(332×0.9155)+5 = -557px -299px                */
+.ars-brain-badge{
+  width:140px;height:140px;
+  margin:0 auto 28px;
+  flex-shrink:0;
+  background-image:url('../assets/decorations/sticker-brain-ai.svg');
+  background-size:1250px 703px;
+  background-position:-557px -299px;
+  background-repeat:no-repeat;
+  filter:drop-shadow(0 0 14px rgba(255,255,255,.5)) drop-shadow(0 0 28px rgba(200,100,255,.4))
+}
+.brain-badge-bg{ display:none }
+.brain-badge-icon{ display:none }
+
+/* ---- Texte et bouton ---- */
+.ars-card p{
+  color:rgba(250,248,255,.92);
+  font-size:clamp(16px,1.25vw,20px);
+  line-height:1.6;
+  margin:0 auto 36px;
+  max-width:560px;
+  transition:opacity .26s ease
+}
+
+/* ---- Section lune + arc expertises ---- */
+.ars-orbit-section{
+  position:relative;
+  min-height:700px;
+  overflow:hidden
+}
+/* Lune : très grande demi-lune au bas de section */
+.ars-moon{
+  position:absolute;
+  left:50%;bottom:calc(-140px - min(1280px,100vw) / 2);
+  width:min(1280px,100vw);
+  transform:translateX(-50%) rotate(var(--moon-deg,0deg));
+  transform-origin:center center;
+  transition:transform .8s cubic-bezier(.22,1,.36,1);
+  z-index:1
+}
+.ars-moon img{
+  width:100%;display:block;
+  animation:spin-slow 160s linear infinite
+}
+/* Anneau des expertises */
+.ars-services{
+  position:absolute;inset:0;
+  font-size:clamp(11px,1vw,17px);
+  z-index:3
+}
+.ars-service{
+  position:absolute;
+  font-family:var(--font-display);font-weight:800;
+  text-transform:uppercase;letter-spacing:.02em;
+  color:rgba(250,248,255,.38);white-space:nowrap;cursor:pointer;
+  /* left/top animés par JS + CSS transition pour l'orbite */
+  transition:left .55s cubic-bezier(.22,1,.36,1),
+             top  .55s cubic-bezier(.22,1,.36,1),
+             color .35s var(--ease),
+             text-shadow .35s,
+             transform .35s var(--ease);
+  transform:translate(-50%,-50%) rotate(var(--a,0deg))
+}
+.ars-service:hover{
+  color:rgba(250,248,255,.76);
+  transform:translate(-50%,-50%) rotate(var(--a,0deg)) scale(1.06)
+}
+.ars-service.active{
+  color:#fff;
+  font-size:clamp(24px,1.8vw,30px);
+  text-shadow:0 0 36px rgba(220,80,255,.9),0 0 10px rgba(220,80,255,.55)
+}

@@ -1,0 +1,188 @@
+/* ============================================================
+   La Nation du Web — contact.css
+   Styles SPÉCIFIQUES à contact.html (déplacés depuis pages.css + enrichis :
+   panneau de créneaux, résumé de réservation, responsive).
+   S'appuie sur base.css / sections.css pour le global (header, footer, vars…).
+   ============================================================ */
+
+/* ---------------- HERO ---------------- */
+.contact-hero{padding:150px 0 30px;text-align:center}
+.contact-hero .page-title{
+  font-family:var(--font-display);font-weight:900;text-transform:uppercase;
+  line-height:.86;letter-spacing:-.02em;color:var(--cream);
+  font-size:clamp(70px,16vw,260px);
+}
+/* Le hero peut être un peu plus large que le reste pour aligner les 3 blocs sur une ligne */
+.contact-hero .wrap{max-width:1780px}
+
+/* ---------------- LIGNE INFOS CONTACT (téléphone · réseaux · e-mail) ---------------- */
+.contact-info-row{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:34px;width:100%;margin-top:24px}
+
+/* Capsule commune : contour lavande fin, fond sombre transparent, radius 999px, même hauteur */
+.contact-chip{
+  height:86px;border-radius:999px;box-sizing:border-box;
+  border:4px solid rgba(214,181,244,.95);
+  background:rgba(255,255,255,.045);
+  display:flex;align-items:center;
+  text-decoration:none;color:#fff;
+  transition:border-color .25s,background .25s,transform .25s}
+.contact-chip:hover{border-color:rgba(214,181,244,1);background:rgba(255,255,255,.07)}
+
+/* --- Téléphone & e-mail : grand rond gradient + texte large peu gras --- */
+.contact-phone-chip,.contact-email-chip{padding:0 44px 0 0;gap:34px}
+.contact-phone-icon,.contact-email-icon{width:92px;height:92px;margin-left:-6px;border-radius:50%;
+  background:linear-gradient(135deg,#ff4a1f 0%,#ff00a8 45%,#6e00ff 100%);
+  display:grid;place-items:center;flex:0 0 auto}
+.contact-phone-icon svg{width:44px;height:44px;stroke:#fff;fill:none;stroke-width:2}
+.contact-email-icon svg{width:48px;height:48px;stroke:#fff;fill:none;stroke-width:2}
+.contact-phone-text{font-size:clamp(28px,3.3vw,48px);line-height:1;font-weight:500;letter-spacing:.02em;color:#fff;white-space:nowrap}
+.contact-email-text{font-size:clamp(24px,2.7vw,42px);line-height:1;font-weight:500;letter-spacing:-.02em;color:#fff;white-space:nowrap}
+
+/* ---------------- BLOC RÉSEAUX (compact) — capsule lavande + 4 formes distinctes ----------------
+   Icônes = EXACTEMENT les mêmes SVG que le footer, via les classes .fsoc--li/tt/ig/fb
+   (définies dans base.css : background-image des assets/icons/socials/icon-*.svg, recadré
+   comme dans le footer). Aucune forme/clip-path/blob recréés en CSS, aucun filtre couleur. */
+.contact-social-pill{justify-content:center;gap:18px;padding:0 34px}
+/* Le lien EST le .fsoc (44px, forme + couleurs dans le SVG) — taille identique au footer. */
+.contact-social-link{flex:0 0 auto}
+
+/* Laptops (≤1700px) : on réduit progressivement pour garder les 3 blocs sur une ligne
+   (cf. consigne « réduire les tailles, ne pas casser la ligne trop tôt »). */
+@media (max-width:1700px){
+  .contact-info-row{gap:22px}
+  .contact-chip{height:74px}
+  .contact-phone-icon,.contact-email-icon{width:72px;height:72px}
+  .contact-phone-icon svg{width:36px;height:36px}
+  .contact-email-icon svg{width:38px;height:38px}
+  .contact-phone-chip,.contact-email-chip{padding:0 32px 0 0;gap:24px}
+  .contact-phone-text{font-size:clamp(22px,2.5vw,34px)}
+  .contact-email-text{font-size:clamp(18px,2vw,27px)}
+  .contact-social-pill{gap:14px;padding:0 26px}
+}
+/* Mobile : on empile les 3 blocs */
+@media (max-width:760px){
+  .contact-info-row{flex-direction:column;gap:16px}
+  .contact-chip{width:100%;max-width:540px;justify-content:center}
+  .contact-phone-text{font-size:clamp(26px,8vw,38px)}
+  .contact-email-text{font-size:clamp(18px,5.4vw,28px)}
+}
+
+/* ---------------- FORMULAIRE ---------------- */
+.contact-form-wrap{position:relative;max-width:1100px;margin:30px auto 0;padding:0 48px}
+/* Badge fusée violet, à gauche du formulaire (partiellement hors zone) */
+.form-rocket{position:absolute;left:-28px;top:78px;z-index:3;pointer-events:none;
+  width:clamp(78px,8vw,108px);height:clamp(78px,8vw,108px);border-radius:50%;
+  display:grid;place-items:center;
+  background:linear-gradient(150deg,#7b00ff,#c026d3);
+  box-shadow:0 18px 42px -10px rgba(123,0,255,.6)}
+/* Badge fusée du formulaire — même asset que les boutons CTA, passé en blanc */
+.form-rocket img{width:54%;height:54%;filter:brightness(0) invert(1)}
+/* Icône du résumé (neutralise le style .rk circulaire) */
+.booking-summary .rk{background:transparent;width:auto;height:auto;font-size:18px;display:inline}
+.form-card{position:relative;background:linear-gradient(160deg,var(--lav,#efe6ff),#d9c8f5);border-radius:32px;
+  padding:clamp(28px,4vw,52px);display:grid;grid-template-columns:1fr 1fr;gap:24px 30px;
+  box-shadow:0 40px 90px -40px rgba(0,0,0,.6)}
+.field{display:flex;flex-direction:column;gap:8px;margin-bottom:14px}
+.field label{font-family:var(--font-display);font-weight:700;text-transform:uppercase;font-size:12px;
+  letter-spacing:.04em;color:#3a2d57}
+.field input,.field textarea{border:none;border-radius:14px;padding:15px 18px;font:inherit;font-size:15px;
+  background:#fff;color:#211c2e;box-shadow:0 6px 16px -8px rgba(0,0,0,.25)}
+.field input:focus,.field textarea:focus{outline:2px solid #7b00ff;outline-offset:1px}
+.field textarea{min-height:230px;resize:vertical}
+.form-col-right .field{height:auto}
+.form-col-right .field,.form-col-right{display:flex;flex-direction:column}
+.form-col-right textarea{flex:1}
+/* Résumé du créneau injecté dans le formulaire */
+.booking-summary{grid-column:1/-1;display:none;align-items:center;gap:10px;
+  background:rgba(123,0,255,.1);border:1px solid rgba(123,0,255,.35);border-radius:14px;
+  padding:14px 18px;color:#2a1147;font-weight:600;font-size:14.5px}
+.booking-summary.is-set{display:flex}
+.booking-summary b{font-weight:800}
+.form-submit{grid-column:1/-1;display:flex;justify-content:flex-end;align-items:center;gap:18px;flex-wrap:wrap}
+.form-msg{display:none;color:#1f7a3d;font-weight:600;font-size:14px}
+.form-msg.is-show{display:block}
+
+/* ---------------- RÉSERVER UN CRÉNEAU ---------------- */
+.reserve{background:var(--violet-bright,#6800db);color:#fff;padding:clamp(50px,7vw,96px) 0;margin-top:70px}
+.reserve-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:40px;align-items:start}
+.reserve h2{font-family:var(--font-display);font-weight:900;text-transform:uppercase;line-height:.92;
+  font-size:clamp(40px,6vw,92px)}
+.reserve h2 span{color:#d9c2ff}
+.reserve .reserve-sub{margin-top:18px;color:rgba(255,255,255,.85);font-size:clamp(15px,1.3vw,18px);max-width:420px}
+
+/* ---------------- WIDGET RÉSERVATION (carte UNIQUE extensible, grille) ---------------- */
+.booking-widget{
+  margin-left:auto;                 /* alignée à droite dans sa colonne */
+  display:grid; grid-template-columns:460px 0px;
+  width:max-content; max-width:100%;
+  background:linear-gradient(160deg,#ffffff,#f5efff);
+  color:#211c2e; border-radius:30px;
+  box-shadow:0 36px 84px -34px rgba(0,0,0,.55);
+  position:relative; overflow:visible;   /* l'horloge dépasse ; le clip se fait sur la colonne horaires */
+  transition:grid-template-columns .5s cubic-bezier(.22,1,.36,1);
+}
+.booking-widget.is-expanded{ grid-template-columns:460px 360px; }
+
+/* Panneau calendrier (plus grand) */
+.booking-calendar-panel{width:460px;max-width:100%;box-sizing:border-box;padding:30px 34px;position:relative}
+.booking-calendar-panel .sel{font-family:var(--font-display);font-weight:800;text-transform:uppercase;font-size:13px;letter-spacing:.05em;color:#6a00ff;display:block;margin-bottom:8px}
+/* losange horloge (reste attaché à la carte même étirée) */
+.clock{position:absolute;right:-16px;top:-16px;width:52px;height:52px;border-radius:15px;background:#1f1e24;
+  display:grid;place-items:center;transform:rotate(45deg);box-shadow:0 12px 26px -8px rgba(0,0,0,.6);z-index:4}
+.clock svg{width:50%;height:50%;stroke:#cda9ff;fill:none;stroke-width:2;transform:rotate(-45deg)}
+.booking-calendar-header{display:flex;justify-content:space-between;align-items:center;margin:8px 0 14px}
+.booking-calendar-header span{font-family:var(--font-display);font-weight:800;font-size:20px}
+.booking-calendar-header button{width:34px;height:34px;border-radius:10px;background:#f0ecf7;color:#6a00ff;font-weight:800;font-size:18px;cursor:pointer}
+.booking-calendar-grid{width:100%;border-collapse:collapse;text-align:center}
+.booking-calendar-grid th{font-size:12.5px;color:#9a90ad;font-weight:700;padding:8px 0}
+.booking-calendar-grid td{padding:5px 0}
+.booking-calendar-grid td button{width:44px;height:44px;border-radius:12px;font-weight:600;font-size:15px;color:#3a3447;cursor:pointer;transition:background .2s,color .2s}
+.booking-calendar-grid td button:hover{background:#efe6ff}
+.booking-calendar-grid td button:focus-visible{outline:2px solid #7b00ff;outline-offset:1px}
+.booking-calendar-grid td button.on,
+.booking-calendar-grid td button.is-selected{background:var(--grad);color:#fff;box-shadow:0 8px 18px -6px rgba(123,0,255,.6)}
+.booking-calendar-grid td button[disabled]{opacity:.32;cursor:not-allowed}
+.booking-calendar-grid td.empty{pointer-events:none}
+
+/* Colonne horaires — intégrée dans la carte, révélée en slide depuis la droite */
+.booking-times-panel{
+  overflow:hidden; min-width:0;
+  opacity:0; transform:translateX(24px); pointer-events:none;
+  transition:opacity .4s ease .05s,transform .4s ease;
+}
+.booking-widget.is-expanded .booking-times-panel{opacity:1;transform:none;pointer-events:auto}
+.booking-times-inner{width:360px;box-sizing:border-box;padding:30px 26px;border-left:1px solid rgba(123,0,255,.12)}
+.booking-times-panel h3{font-family:var(--font-display);font-weight:900;text-transform:uppercase;font-size:17px;color:#2a1147}
+.selected-date-label{font-size:13.5px;color:#6a00ff;font-weight:700;margin:5px 0 18px;text-transform:capitalize}
+.time-slots{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.time-slots button{padding:14px 0;border-radius:13px;background:#fff;border:1px solid #e6dcff;color:#3a3447;font-weight:700;font-size:15px;cursor:pointer;
+  transition:background .2s,color .2s,border-color .2s}
+.time-slots button:hover{background:#efe6ff;border-color:#cdb6ff}
+.time-slots button:focus-visible{outline:2px solid #7b00ff;outline-offset:1px}
+.time-slots button.on{background:var(--grad);color:#fff;border-color:transparent}
+.slot-recap{margin-top:16px;font-size:13.5px;color:#2a1147;background:rgba(123,0,255,.08);border-radius:12px;padding:12px 14px;display:none}
+.slot-recap.is-show{display:block}
+.slot-recap b{font-weight:800}
+.confirm-slot{margin-top:14px;width:100%;justify-content:center;display:none}
+.confirm-slot.is-show{display:inline-flex}
+.slot-result{margin-top:14px;font-size:13.5px;color:#1f7a3d;font-weight:600;display:none}
+.slot-result.is-show{display:block}
+
+/* ---------------- RESPONSIVE ---------------- */
+@media (max-width:980px){
+  .reserve-grid{grid-template-columns:1fr;gap:30px}
+  .booking-widget{margin-left:0}
+}
+@media (max-width:760px){
+  .contact-form-wrap{padding:0 20px}
+  .form-card{grid-template-columns:1fr}
+  .field textarea{min-height:160px}
+  /* widget en COLONNE : horaires SOUS le calendrier, dans la MÊME carte */
+  .booking-widget,.booking-widget.is-expanded{width:100%;grid-template-columns:1fr;overflow:hidden}
+  .booking-calendar-panel{width:100%}
+  .clock{right:14px;top:14px}
+  .booking-times-panel{max-height:0;opacity:0;transform:none;
+    transition:max-height .5s ease,opacity .4s ease}
+  .booking-widget.is-expanded .booking-times-panel{max-height:720px;opacity:1}
+  .booking-times-inner{width:100%;border-left:none;border-top:1px solid rgba(123,0,255,.12)}
+}

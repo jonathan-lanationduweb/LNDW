@@ -1,0 +1,22 @@
+/* ============================================================
+   La Nation du Web — backlinks.css
+   Corrections de fidélité à la maquette PAGE BACKLINKS.png.
+   Surcharge pages.css (chargé après). Ne concerne que backlinks.html.
+   ============================================================ */
+
+/* ---------- HERO : image clavier qui remplit le cadre (bordure gradient déjà sur .bk-img) ---------- */
+.bk-img{align-self:start}
+.bk-img img{aspect-ratio:16/10;height:auto}
+
+/* ---------- NETLINKING : titre contrôlé (plus énorme) + loupe lavande ---------- */
+.netlink h2{font-size:clamp(38px,4vw,58px);line-height:.95;background:none}
+.netlink-circle svg{stroke:#cdb4ff}
+
+/* ---------- NOS PROMESSES : titre grand mais équilibré ---------- */
+.promises h2{font-size:clamp(46px,6vw,90px)}
+
+/* ---------- Cartes promesses : icône en haut, contenu centré (comme la maquette) ---------- */
+.promise-card{text-align:center}
+.promise-icon{display:block;width:56px;height:56px;object-fit:contain;margin:0 auto 16px}
+.promise-card h3{text-align:center}
+.promise-card p{text-align:center}

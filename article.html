@@ -8,6 +8,15 @@
 <link rel="stylesheet" href="css/base.css">
 <link rel="stylesheet" href="css/sections.css">
 <link rel="stylesheet" href="css/pages.css">
+<script>
+/* Filet de secours images : si servi depuis lndw-code (5501), ../LNDW SITE/... renvoie 404
+   → bascule sur le miroir local assets/... pour ne jamais avoir d'image cassée. */
+(function(){
+  function swap(img){ if(img.dataset.fb) return; var s=img.getAttribute('src')||'';
+    var m=s.match(/LNDW(?:%20| )SITE\/image\/assets\/(.*)$/); if(m){img.dataset.fb='1';img.src='assets/'+m[1];} }
+  document.addEventListener('error',function(e){var t=e.target;if(t&&t.tagName==='IMG')swap(t);},true);
+})();
+</script>
 </head>
 <body class="subpage">
 
@@ -23,7 +32,7 @@
       <a href="la-nation.html">LA NATION</a>
       <a href="missions-clients.html">MISSIONS CLIENTS</a>
       <a href="backlinks.html">BACKLINKS</a>
-      <a href="blog.html">BLOG</a>
+      <a href="blog.html" class="active" aria-current="page">BLOG</a>
     </nav>
     <div class="header-cta">
       <a class="btn-mission" href="contact.html">
@@ -38,13 +47,13 @@
 <main>
 <!-- ============================ HERO ============================ -->
 <section class="article-hero">
-  <div class="article-hero-bg"><img src="assets/photos/missions/mission-business-01.jpg" alt=""></div>
+  <div class="article-hero-bg"><img id="articleHeroImage" src="../LNDW%20SITE/image/assets/sections/blog/cards/blog-featured-mobile-ui.png" alt=""></div>
   <div class="article-hero-inner">
     <div class="wrap">
-      <div class="chip-row"><span class="chip">Web</span><span class="chip">Social Media</span></div>
-      <h1>Scroller ou swiper&nbsp;?</h1>
+      <div class="chip-row" id="articleTags"><span class="chip">Web</span><span class="chip">Social Media</span></div>
+      <h1 id="articleTitle">Scroller ou swiper&nbsp;?</h1>
       <div class="article-meta">
-        <span>Par la Rédaction LNDW</span><span>· 1ᵉʳ juin 2026</span><span>· Web</span>
+        <span id="articleMeta">Par la Rédaction LNDW · 1ᵉʳ juin 2026 · Web</span>
         <span class="share">
           <img src="assets/icons/socials/icon-linkedin.svg" alt="Partager LinkedIn">
           <img src="assets/icons/socials/icon-instagram.svg" alt="Partager Instagram">
@@ -57,48 +66,33 @@
 
 <!-- ============================ CONTENU ============================ -->
 <article class="article-body">
-  <h2>L'architecture de l'attention à l'ère de l'hyper-vitesse.</h2>
-  <p>Le scroll vertical et le swipe horizontal ne sont pas de simples gestes : ce sont deux philosophies d'attention. L'un déroule un flux continu, l'autre impose un rythme par cartes. Comprendre lequel servir, et quand, conditionne aujourd'hui l'engagement de votre audience.</p>
-
-  <h2>L'état des forces (les chiffres)</h2>
-  <p>Les plateformes ont tranché : le format vertical concentre désormais l'essentiel du temps d'écran mobile. Mais la donnée brute cache des nuances décisives selon l'intention de l'utilisateur.</p>
-  <ul>
-    <li>Le scroll domine la découverte passive et la consommation longue.</li>
-    <li>Le swipe excelle dans la comparaison rapide et la prise de décision.</li>
-    <li>L'hybridation des deux maximise la rétention.</li>
-  </ul>
+  <h2 id="articleIntroTitle">L'architecture de l'attention à l'ère de l'hyper-vitesse.</h2>
+  <p id="articleIntro">Le scroll vertical et le swipe horizontal ne sont pas de simples gestes : ce sont deux philosophies d'attention. L'un déroule un flux continu, l'autre impose un rythme par cartes.</p>
 
   <div class="quote">
     <span class="q-badge" aria-hidden="true">“</span>
-    <blockquote>Le geste n'est pas neutre : il façonne la manière dont votre message est perçu, mémorisé et partagé.</blockquote>
+    <blockquote id="articleQuote">Le geste n'est pas neutre : il façonne la manière dont votre message est perçu, mémorisé et partagé.</blockquote>
   </div>
 
-  <div class="article-fig"><img src="assets/photos/missions/mission-fashion.jpg" alt=""></div>
+  <div class="article-fig"><img id="articleBodyImage" src="../LNDW%20SITE/image/assets/sections/blog/cards/blog-card-vertical-format.png" alt=""></div>
 
-  <h2>Le scroll : le vecteur de la souveraineté</h2>
-  <p>Le scroll laisse l'utilisateur maître de son rythme. Il favorise l'immersion, le storytelling long et la fidélisation. C'est le format de la profondeur.</p>
-  <ul>
-    <li>Idéal pour le contenu éditorial et le SEO.</li>
-    <li>Renforce l'autorité et la confiance.</li>
-    <li>Demande une hiérarchie visuelle irréprochable.</li>
-  </ul>
-
-  <h2>Le swipe : le propulseur d'efficacité</h2>
-  <p>Le swipe segmente l'information en unités digestes. Il accélère la consommation et booste l'interaction, au prix d'une attention plus volatile. C'est le format de la vitesse.</p>
-
-  <h2>Verdict de l'arsenal : la stratégie hybride</h2>
-  <p>La vraie performance ne consiste pas à choisir un camp, mais à orchestrer les deux : du swipe pour capter, du scroll pour convertir et fidéliser. C'est exactement le type d'arbitrage que nous pilotons pour nos clients.</p>
+  <!-- Sections injectées par article.js selon ?post= -->
+  <div id="articleBody">
+    <h2>Le scroll : le vecteur de la souveraineté</h2>
+    <p>Le scroll laisse l'utilisateur maître de son rythme. Il favorise l'immersion, le storytelling long et la fidélisation.</p>
+    <h2>Le swipe : le propulseur d'efficacité</h2>
+    <p>Le swipe segmente l'information en unités digestes. Il accélère la consommation et booste l'interaction.</p>
+    <h2>Verdict de l'arsenal : la stratégie hybride</h2>
+    <p>La vraie performance ne consiste pas à choisir un camp, mais à orchestrer les deux : du swipe pour capter, du scroll pour convertir.</p>
+  </div>
 </article>
 
 <!-- ============================ À LIRE AUSSI ============================ -->
 <section class="read-also">
   <div class="wrap">
     <h2>À lire aussi…</h2>
-    <div class="post-grid">
-      <a class="post-card" href="article.html"><img src="assets/photos/missions/mission-interior-02.jpg" alt=""><div class="pc-body"><h3>5 automatisations pour le travail</h3><p>Gagnez des heures chaque semaine grâce à des workflows automatisés simples et puissants.</p></div></a>
-      <a class="post-card" href="article.html"><img src="assets/photos/missions/mission-business-01.jpg" alt=""><div class="pc-body"><h3>Shopify vs WordPress</h3><p>Quelle plateforme pour votre e-commerce ? Comparatif honnête selon vos objectifs.</p></div></a>
-      <a class="post-card" href="article.html"><img src="assets/photos/missions/mission-interior-01.jpg" alt=""><div class="pc-body"><h3>Pourquoi il vous faut un agent IA&nbsp;?</h3><p>L'agent IA devient le copilote indispensable de votre activité.</p></div></a>
-    </div>
+    <!-- Cartes injectées par article.js (exclut l'article courant) -->
+    <div class="post-grid" id="relatedPosts"></div>
   </div>
 </section>
 
@@ -163,13 +157,6 @@
 
 </footer>
 
-<script>
-  (function(){
-    var header=document.querySelector('.site-header');
-    addEventListener('scroll',function(){header.style.background=scrollY>40?'rgba(31,30,36,.9)':'rgba(40,39,46,.72)';},{passive:true});
-    var t=document.querySelector('.nav-toggle');
-    if(t)t.addEventListener('click',function(){document.body.classList.toggle('nav-open');});
-  })();
-</script>
+<script src="js/article.js" defer></script>
 </body>
 </html>

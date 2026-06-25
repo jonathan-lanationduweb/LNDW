@@ -7,15 +7,32 @@
 <meta name="description" content="Le journal de La Nation du Web : web, design, IA, social media, SEO, marketing digital, ads.">
 <link rel="stylesheet" href="css/base.css">
 <link rel="stylesheet" href="css/sections.css">
-<link rel="stylesheet" href="css/pages.css">
+<link rel="stylesheet" href="css/blog.css">
+<script>
+/* Filet de secours images : si le serveur est lancé depuis lndw-code (au lieu du
+   dossier parent), les chemins ../LNDW SITE/... renvoient 404. On bascule alors
+   automatiquement sur le miroir local assets/... pour ne JAMAIS avoir d'image cassée. */
+(function(){
+  function swap(img){
+    if(img.dataset.fb) return;
+    var s = img.getAttribute('src') || '';
+    var m = s.match(/LNDW(?:%20| )SITE\/image\/assets\/(.*)$/);
+    if(m){ img.dataset.fb='1'; img.src = 'assets/' + m[1]; }
+  }
+  document.addEventListener('error', function(e){
+    var t = e.target;
+    if(t && t.tagName === 'IMG') swap(t);
+  }, true);
+})();
+</script>
 </head>
-<body class="subpage">
+<body class="subpage blog-page">
 
 <!-- ============================ HEADER ============================ -->
 <header class="site-header" data-screen-label="Header">
   <div class="wrap header-inner">
     <a class="brand" href="index.html#top" aria-label="La Nation du Web">
-      <img src="assets/logos/lndw-logo-white.svg" alt="LNDW — La Nation du Web">
+      <img class="brand-logo" src="assets/logos/lndw-logo-white.svg" alt="LNDW — La Nation du Web">
       <span class="brand-base">LA NATION DU WEB</span>
     </a>
     <nav class="main-nav">
@@ -23,7 +40,7 @@
       <a href="la-nation.html">LA NATION</a>
       <a href="missions-clients.html">MISSIONS CLIENTS</a>
       <a href="backlinks.html">BACKLINKS</a>
-      <a href="blog.html">BLOG</a>
+      <a href="blog.html" class="active" aria-current="page">BLOG</a>
     </nav>
     <div class="header-cta">
       <a class="btn-mission" href="contact.html">
@@ -35,66 +52,108 @@
   </div>
 </header>
 
-<main>
+<main class="blog-main">
+
 <!-- ============================ HERO ============================ -->
 <section class="blog-hero">
   <div class="wrap">
-    <img class="sticker" src="assets/decorations/sticker-rocket-purple.svg" alt="">
-    <h1 class="blog-title">Journal de <span class="grad">blog</span></h1>
+    <div class="blog-hero-title-wrap">
+      <img class="blog-title-sticker" src="../LNDW%20SITE/image/assets/sections/blog/stickers/sticker-blog-pencil-purple.svg" alt="" aria-hidden="true">
+      <h1 class="blog-title">
+        <span class="blog-title-line blog-title-journal">Journal</span>
+        <span class="blog-title-line blog-title-bottom"><span class="blog-title-de">de</span><span class="grad">blog</span></span>
+      </h1>
+    </div>
     <p class="blog-sub">Recevez les dernières actualités directement dans votre boîte mail</p>
-    <form class="newsletter" onsubmit="return false">
-      <input type="email" placeholder="Adresse e-mail …">
-      <button class="btn-pill" type="submit">S'abonner</button>
+
+    <form class="newsletter" id="newsletterForm" novalidate>
+      <input type="email" id="newsletterEmail" placeholder="Adresse e-mail …" aria-label="Adresse e-mail">
+      <button class="btn-sub" type="submit">S'abonner</button>
     </form>
-    <p class="newsletter-note">En vous abonnant vous acceptez notre <a href="mentions-legales.html" style="color:var(--purple-soft)">politique de confidentialité</a></p>
+    <p class="newsletter-note">En vous abonnant vous acceptez notre <a href="mentions-legales.html">politique de confidentialité</a></p>
+    <p class="newsletter-msg" id="newsletterMsg">Merci pour votre inscription.</p>
   </div>
 </section>
 
-<!-- ============================ ARTICLE VEDETTE ============================ -->
-<section class="featured">
+<!-- ============================ ARTICLE MIS EN AVANT ============================ -->
+<section class="blog-featured">
   <div class="wrap">
-    <a class="featured-card" href="article.html">
-      <div class="img"><img src="assets/photos/missions/mission-business-01.jpg" alt=""></div>
-      <div class="txt">
+    <a class="featured-card" href="article.html?post=scroller-ou-swiper">
+      <div class="featured-image">
+        <img class="featured-sticker" src="../LNDW%20SITE/image/assets/sections/blog/stickers/sticker-blog-megaphone-purple.svg" alt="">
+        <img class="featured-photo" src="../LNDW%20SITE/image/assets/sections/blog/cards/blog-featured-mobile-ui-large.png" alt="Deux smartphones affichant des interfaces mobiles">
+      </div>
+      <div class="featured-content">
         <h2>Scroller ou swiper&nbsp;?</h2>
-        <p>L'architecture de l'attention à l'ère de l'hyper-vitesse. Scroll vertical ou swipe horizontal : quel format domine vraiment l'engagement aujourd'hui ? On décrypte les chiffres et la stratégie hybride gagnante.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</p>
       </div>
     </a>
   </div>
 </section>
 
-<!-- ============================ FILTRES + GRILLE ============================ -->
+<!-- ============================ TAGS / FILTRES ============================ -->
 <section>
   <div class="wrap">
-    <div class="filters" id="filters">
-      <button class="filter active">Web</button>
-      <button class="filter">Design</button>
-      <button class="filter">IA</button>
-      <button class="filter">Social Media</button>
-      <button class="filter">SEO</button>
-      <button class="filter">Marketing Digital</button>
-      <button class="filter">Ads</button>
-      <a class="filter-all" href="#">voir tout</a>
+    <div class="blog-tags" id="blogTags">
+      <button class="blog-tag active" type="button">Web</button>
+      <button class="blog-tag" type="button">Design</button>
+      <button class="blog-tag" type="button">IA</button>
+      <button class="blog-tag" type="button">Social Media</button>
+      <button class="blog-tag" type="button">SEO</button>
+      <button class="blog-tag" type="button">Marketing Digital</button>
+      <button class="blog-tag" type="button">Ads</button>
+    </div>
+    <a class="blog-tags-all" href="#">voir tout</a>
+
+    <!-- ============================ GRILLE ARTICLES ============================ -->
+    <div class="blog-grid">
+      <a class="blog-card" href="article.html?post=seo-est-il-mort">
+        <div class="bc-img"><img src="../LNDW%20SITE/image/assets/sections/blog/cards/blog-card-seo-team.png" alt="Équipe travaillant autour d'un bureau"></div>
+        <h3>Le SEO est-il mort&nbsp;?</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+      </a>
+      <a class="blog-card" href="article.html?post=shopify-vs-wordpress">
+        <div class="bc-img"><img src="../LNDW%20SITE/image/assets/sections/blog/cards/blog-card-shopify-cart.png" alt="Caddie de courses sur un clavier d'ordinateur"></div>
+        <h3>Shopify vs WordPress</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+      </a>
+      <a class="blog-card" href="article.html?post=format-vertical">
+        <div class="bc-img"><img src="../LNDW%20SITE/image/assets/sections/blog/cards/blog-card-vertical-format.png" alt="Personne tenant un téléphone en main"></div>
+        <h3>Le format vertical</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+      </a>
+      <a class="blog-card" href="article.html?post=automatisations-travail">
+        <div class="bc-img"><img src="../LNDW%20SITE/image/assets/sections/blog/cards/blog-card-automation-laptop.png" alt="Ordinateur portable sur un bureau de travail"></div>
+        <h3>5 automatisations pour le travail</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+      </a>
+      <a class="blog-card" href="article.html?post=landing-page-2">
+        <div class="bc-img"><img src="../LNDW%20SITE/image/assets/sections/blog/cards/blog-card-shopify-cart.png" alt="Caddie de courses sur un clavier d'ordinateur"></div>
+        <h3>Landing page 2.0</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+      </a>
+      <a class="blog-card" href="article.html?post=agent-ia">
+        <div class="bc-img"><img src="../LNDW%20SITE/image/assets/sections/blog/cards/blog-card-ai-agent.png" alt="Robot IA et femme devant un ordinateur"></div>
+        <h3>Pourquoi il vous faut un agent IA&nbsp;?</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+      </a>
     </div>
 
-    <div class="post-grid">
-      <a class="post-card" href="article.html"><img src="assets/photos/missions/mission-interior-01.jpg" alt=""><div class="pc-body"><h3>Le SEO est-il mort&nbsp;?</h3><p>Entre IA générative et SGE, le référencement naturel se réinvente. Voici ce qui change vraiment pour votre visibilité.</p></div></a>
-      <a class="post-card" href="article.html"><img src="assets/photos/missions/mission-business-01.jpg" alt=""><div class="pc-body"><h3>Shopify vs WordPress</h3><p>Quelle plateforme choisir pour votre e-commerce ? Comparatif honnête selon vos objectifs et votre budget.</p></div></a>
-      <a class="post-card" href="article.html"><img src="assets/photos/missions/mission-fashion.jpg" alt=""><div class="pc-body"><h3>Le format vertical</h3><p>Pourquoi le 9:16 a conquis le web et comment l'exploiter dans votre stratégie de contenu.</p></div></a>
-      <a class="post-card" href="article.html"><img src="assets/photos/missions/mission-interior-02.jpg" alt=""><div class="pc-body"><h3>5 automatisations pour le travail</h3><p>Gagnez des heures chaque semaine grâce à des workflows automatisés simples et puissants.</p></div></a>
-      <a class="post-card" href="article.html"><img src="assets/photos/missions/mission-maison-quivernay.jpg" alt=""><div class="pc-body"><h3>Landing page 2.0</h3><p>Les principes d'une landing page qui convertit en 2026 : structure, vitesse et preuve sociale.</p></div></a>
-      <a class="post-card" href="article.html"><img src="assets/photos/missions/mission-interior-01.jpg" alt=""><div class="pc-body"><h3>Pourquoi il vous faut un agent IA&nbsp;?</h3><p>Support, qualification de leads, reporting : l'agent IA devient le copilote indispensable de votre activité.</p></div></a>
-    </div>
-
-    <div class="pagination">
-      <button class="active">1</button><button>2</button><button>3</button>
+    <!-- ============================ PAGINATION ============================ -->
+    <div class="blog-pagination" id="blogPagination">
+      <button class="active" type="button">1</button>
+      <button type="button">2</button>
+      <button type="button">3</button>
     </div>
   </div>
 </section>
 
 <!-- ============================ CTA FINAL ============================ -->
-<section class="cta-final-band">
-  <a class="btn-mission" href="contact.html"><span class="rk"><img src="assets/icons/icon-rocket-line.svg" alt=""></span><span>Lancer ma mission ?</span></a>
+<section class="blog-cta">
+  <a class="btn-mission" href="contact.html">
+    <span class="rk"><img src="assets/icons/icon-rocket-line.svg" alt=""></span>
+    <span>Lancer ma mission ?</span>
+  </a>
 </section>
 </main>
 
@@ -154,19 +213,6 @@
 
 </footer>
 
-<script>
-  (function(){
-    var header=document.querySelector('.site-header');
-    addEventListener('scroll',function(){header.style.background=scrollY>40?'rgba(31,30,36,.9)':'rgba(40,39,46,.72)';},{passive:true});
-    var t=document.querySelector('.nav-toggle');
-    if(t)t.addEventListener('click',function(){document.body.classList.toggle('nav-open');});
-    var f=document.getElementById('filters');
-    if(f)f.addEventListener('click',function(e){var b=e.target.closest('.filter');if(!b)return;
-      f.querySelectorAll('.filter').forEach(function(x){x.classList.remove('active');});b.classList.add('active');});
-    var pg=document.querySelector('.pagination');
-    if(pg)pg.addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;
-      pg.querySelectorAll('button').forEach(function(x){x.classList.remove('active');});b.classList.add('active');});
-  })();
-</script>
+<script src="js/blog.js" defer></script>
 </body>
 </html>

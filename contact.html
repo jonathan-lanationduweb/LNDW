@@ -8,6 +8,7 @@
 <link rel="stylesheet" href="css/base.css">
 <link rel="stylesheet" href="css/sections.css">
 <link rel="stylesheet" href="css/pages.css">
+<link rel="stylesheet" href="css/contact.css">
 </head>
 <body class="subpage">
 
@@ -40,57 +41,113 @@
 <section class="contact-hero">
   <div class="wrap">
     <h1 class="page-title">Contact</h1>
-    <div class="pill-row">
-      <span class="info-pill"><span class="ic"><img src="assets/icons/icon-rocket-line.svg" alt=""></span>06.07.08.09.10</span>
-      <span class="info-pill"><span class="socials">
-        <img src="assets/icons/socials/icon-linkedin.svg" alt="LinkedIn">
-        <img src="assets/icons/socials/icon-instagram.svg" alt="Instagram">
-        <img src="assets/icons/socials/icon-tiktok.svg" alt="TikTok">
-        <img src="assets/icons/socials/icon-facebook.svg" alt="Facebook">
-      </span></span>
-      <span class="info-pill"><span class="ic"><img src="assets/icons/icon-rocket-line.svg" alt=""></span>contact@lanationduweb.fr</span>
+    <div class="contact-info-row">
+      <a class="contact-chip contact-phone-chip" href="tel:0607080910">
+        <span class="contact-phone-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>
+        <span class="contact-phone-text">06.07.08.09.10</span>
+      </a>
+
+      <div class="contact-chip contact-social-pill">
+        <a class="contact-social-link fsoc fsoc--li" href="#" aria-label="LinkedIn"></a>
+        <a class="contact-social-link fsoc fsoc--tt" href="#" aria-label="TikTok"></a>
+        <a class="contact-social-link fsoc fsoc--ig" href="#" aria-label="Instagram"></a>
+        <a class="contact-social-link fsoc fsoc--fb" href="#" aria-label="Facebook"></a>
+      </div>
+
+      <a class="contact-chip contact-email-chip" href="mailto:contact@lanationduweb.fr">
+        <span class="contact-email-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M16 8v5a3 3 0 0 0 6 0v-1a10 10 0 1 0-3.92 7.94"/></svg></span>
+        <span class="contact-email-text">contact@lanationduweb.fr</span>
+      </a>
     </div>
   </div>
 </section>
 
 <!-- ============================ FORMULAIRE ============================ -->
 <div class="contact-form-wrap">
-  <img class="sticker form-rocket" src="assets/decorations/sticker-rocket-purple.svg" alt="">
-  <form class="form-card" onsubmit="return false">
+  <span class="form-rocket" aria-hidden="true">
+    <img src="assets/icons/icon-rocket-line.svg" alt="">
+  </span>
+  <form class="form-card" id="contactForm" novalidate>
     <div class="form-col-left">
-      <div class="field"><label>Nom &amp; Prénom</label><input type="text" placeholder="Jane Dupont …"></div>
-      <div class="field"><label>Numéro de téléphone</label><input type="tel" placeholder="06.00.00.00.00"></div>
-      <div class="field"><label>Adresse e-mail</label><input type="email" placeholder="jane@dupont.com"></div>
-      <div class="field"><label>Entreprise</label><input type="text" placeholder="Agence …"></div>
+      <div class="field"><label for="cf-name">Nom &amp; Prénom</label><input id="cf-name" type="text" placeholder="Jane Dupont …"></div>
+      <div class="field"><label for="cf-tel">Numéro de téléphone</label><input id="cf-tel" type="tel" placeholder="06.01.02.03.04"></div>
+      <div class="field"><label for="cf-mail">Adresse e-mail</label><input id="cf-mail" type="email" placeholder="jane@dupont.com"></div>
+      <div class="field"><label for="cf-cie">Entreprise</label><input id="cf-cie" type="text" placeholder="Agence …"></div>
     </div>
     <div class="form-col-right">
-      <div class="field" style="flex:1"><label>Message</label><textarea placeholder="Écrivez votre mission …"></textarea></div>
+      <div class="field" style="flex:1"><label for="cf-msg">Message</label><textarea id="cf-msg" placeholder="Écrivez votre mission …"></textarea></div>
     </div>
-    <div class="form-submit"><button class="btn-mission" type="submit"><span class="rk"><img src="assets/icons/icon-rocket-line.svg" alt=""></span><span>Envoyer</span></button></div>
+
+    <!-- Résumé du créneau réservé (rempli depuis le calendrier) -->
+    <div class="booking-summary" id="bookingSummary" aria-live="polite">
+      <span class="rk" aria-hidden="true">📅</span>
+      <span>Créneau sélectionné : <b id="bookingSummaryText"></b></span>
+    </div>
+
+    <div class="form-submit">
+      <span class="form-msg" id="formMsg" role="status"></span>
+      <button class="btn-mission" type="submit">
+        <span class="rk"><img src="assets/icons/icon-rocket-line.svg" alt=""></span>
+        <span>Envoyer ma demande</span>
+      </button>
+    </div>
   </form>
 </div>
 
 <!-- ============================ RÉSERVER UN CRÉNEAU ============================ -->
 <section class="reserve">
   <div class="wrap reserve-grid">
-    <div>
+    <div class="reserve-intro">
       <h2>Réserver un <span>créneau</span></h2>
-      <p>Un appel de 20 minutes afin d'échanger autour de votre projet&nbsp;!</p>
+      <p class="reserve-sub">Un appel de 20 minutes afin d'échanger autour de votre projet&nbsp;!</p>
     </div>
-    <div class="calendar">
-      <div class="clock"><svg viewBox="0 0 24 24" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
-      <div class="calendar-top"><span class="sel">Sélectionner la date</span></div>
-      <div class="month"><button aria-label="Mois précédent">‹</button><b>JUIN 2026</b><button aria-label="Mois suivant">›</button></div>
-      <table id="cal">
-        <thead><tr><th>Su</th><th>Mo</th><th>Tu</th><th>We</th><th>Th</th><th>Fr</th><th>Sa</th></tr></thead>
-        <tbody>
-          <tr><td class="empty"></td><td><button>1</button></td><td><button>2</button></td><td><button>3</button></td><td><button>4</button></td><td><button>5</button></td><td><button>6</button></td></tr>
-          <tr><td><button>7</button></td><td><button>8</button></td><td><button>9</button></td><td><button>10</button></td><td><button>11</button></td><td><button>12</button></td><td><button>13</button></td></tr>
-          <tr><td><button>14</button></td><td><button>15</button></td><td><button class="on">16</button></td><td><button>17</button></td><td><button>18</button></td><td><button>19</button></td><td><button>20</button></td></tr>
-          <tr><td><button>21</button></td><td><button>22</button></td><td><button>23</button></td><td><button>24</button></td><td><button>25</button></td><td><button>26</button></td><td><button>27</button></td></tr>
-          <tr><td><button>28</button></td><td><button>29</button></td><td><button>30</button></td><td class="empty"></td><td class="empty"></td><td class="empty"></td><td class="empty"></td></tr>
-        </tbody>
-      </table>
+
+    <!-- Carte UNIQUE extensible : calendrier + colonne horaires (style Cal.com / J. Devaux) -->
+    <div class="booking-widget" id="bookingWidget" data-expanded="false">
+
+      <!-- Panneau calendrier -->
+      <div class="booking-calendar-panel">
+        <div class="clock" aria-hidden="true"><svg viewBox="0 0 24 24" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
+        <span class="sel">Sélectionner la date</span>
+        <div class="booking-calendar-header">
+          <button type="button" class="calendar-prev" aria-label="Mois précédent">‹</button>
+          <span>JUIN 2026</span>
+          <button type="button" class="calendar-next" aria-label="Mois suivant">›</button>
+        </div>
+        <table id="cal" class="booking-calendar-grid">
+          <thead><tr><th>Su</th><th>Mo</th><th>Tu</th><th>We</th><th>Th</th><th>Fr</th><th>Sa</th></tr></thead>
+          <tbody>
+            <tr><td class="empty"></td><td><button type="button" data-day="1">1</button></td><td><button type="button" data-day="2">2</button></td><td><button type="button" data-day="3">3</button></td><td><button type="button" data-day="4">4</button></td><td><button type="button" data-day="5">5</button></td><td><button type="button" data-day="6">6</button></td></tr>
+            <tr><td><button type="button" data-day="7">7</button></td><td><button type="button" data-day="8">8</button></td><td><button type="button" data-day="9">9</button></td><td><button type="button" data-day="10">10</button></td><td><button type="button" data-day="11">11</button></td><td><button type="button" data-day="12">12</button></td><td><button type="button" data-day="13">13</button></td></tr>
+            <tr><td><button type="button" data-day="14">14</button></td><td><button type="button" data-day="15">15</button></td><td><button type="button" data-day="16">16</button></td><td><button type="button" data-day="17">17</button></td><td><button type="button" data-day="18">18</button></td><td><button type="button" data-day="19">19</button></td><td><button type="button" data-day="20">20</button></td></tr>
+            <tr><td><button type="button" data-day="21">21</button></td><td><button type="button" data-day="22">22</button></td><td><button type="button" data-day="23">23</button></td><td><button type="button" data-day="24">24</button></td><td><button type="button" data-day="25">25</button></td><td><button type="button" data-day="26">26</button></td><td><button type="button" data-day="27">27</button></td></tr>
+            <tr><td><button type="button" data-day="28">28</button></td><td><button type="button" data-day="29">29</button></td><td><button type="button" data-day="30">30</button></td><td class="empty"></td><td class="empty"></td><td class="empty"></td><td class="empty"></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Colonne horaires (apparaît dans la MÊME carte au clic sur une date) -->
+      <div class="booking-times-panel" id="timesPanel" aria-live="polite">
+        <div class="booking-times-inner">
+          <h3>Créneaux disponibles</h3>
+          <p class="selected-date-label" id="selDate">Choisissez une date</p>
+          <div class="time-slots" id="timeSlots">
+            <button type="button">09:00</button>
+            <button type="button">09:30</button>
+            <button type="button">10:00</button>
+            <button type="button">10:30</button>
+            <button type="button">11:00</button>
+            <button type="button">14:00</button>
+            <button type="button">14:30</button>
+            <button type="button">15:00</button>
+            <button type="button">15:30</button>
+            <button type="button">16:00</button>
+          </div>
+          <div class="slot-recap" id="slotRecap"></div>
+          <button class="btn-mission confirm-slot" id="confirmSlot" type="button"><span>Confirmer le créneau</span></button>
+          <div class="slot-result" id="slotResult"></div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -152,17 +209,6 @@
 
 </footer>
 
-<script>
-  (function(){
-    var header=document.querySelector('.site-header');
-    addEventListener('scroll',function(){header.style.background=scrollY>40?'rgba(31,30,36,.9)':'rgba(40,39,46,.72)';},{passive:true});
-    var t=document.querySelector('.nav-toggle');
-    if(t)t.addEventListener('click',function(){document.body.classList.toggle('nav-open');});
-    // calendrier : sélection de date
-    var cal=document.getElementById('cal');
-    if(cal)cal.addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;
-      cal.querySelectorAll('button.on').forEach(function(x){x.classList.remove('on');});b.classList.add('on');});
-  })();
-</script>
+<script src="js/contact.js" defer></script>
 </body>
 </html>

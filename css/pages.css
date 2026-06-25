@@ -43,60 +43,9 @@
 .cta-final-band .btn-mission{font-size:clamp(26px,3.5vw,50px);padding:24px 56px 24px 42px}
 .cta-final-band .btn-mission .rk{width:1.4em;height:1.4em}
 
-/* ============================================================ CONTACT */
-.contact-hero{padding:150px 0 30px;text-align:center}
-.contact-hero .page-title{font-size:clamp(70px,16vw,260px)}
-.pill-row{display:flex;flex-wrap:wrap;gap:16px;justify-content:center;margin-top:26px}
-.info-pill{display:inline-flex;align-items:center;gap:12px;padding:12px 24px;border-radius:999px;
-  background:rgba(250,248,255,.06);border:1px solid rgba(250,248,255,.14);color:var(--cream);
-  font-weight:600;font-size:15px}
-.info-pill .ic{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:var(--grad);flex:0 0 auto}
-.info-pill .ic img{width:55%;height:55%;filter:brightness(0) invert(1)}
-.info-pill .socials{display:flex;gap:8px}
-.info-pill .socials img{width:20px;height:20px}
-
-.contact-form-wrap{position:relative;max-width:1100px;margin:30px auto 0;padding:0 48px}
-.form-rocket{position:absolute;left:-10px;top:90px;width:clamp(70px,7vw,110px);z-index:3;
-  animation:floatrot 8s var(--ease-soft) infinite}
-.form-card{position:relative;background:linear-gradient(160deg,var(--lav),#d9c8f5);border-radius:32px;
-  padding:clamp(28px,4vw,52px);display:grid;grid-template-columns:1fr 1fr;gap:24px 30px;
-  box-shadow:0 40px 90px -40px rgba(0,0,0,.6)}
-.field{display:flex;flex-direction:column;gap:8px;margin-bottom:14px}
-.field label{font-family:var(--font-display);font-weight:700;text-transform:uppercase;font-size:12px;
-  letter-spacing:.04em;color:#3a2d57}
-.field input,.field textarea{border:none;border-radius:14px;padding:15px 18px;font:inherit;font-size:15px;
-  background:#fff;color:#211c2e;box-shadow:0 6px 16px -8px rgba(0,0,0,.25)}
-.field textarea{min-height:230px;resize:vertical}
-.form-col-right .field{height:auto}
-.form-col-right .field,.form-col-right{display:flex;flex-direction:column}
-.form-col-right textarea{flex:1}
-.form-submit{grid-column:1/-1;display:flex;justify-content:flex-end}
-
-/* reserve a slot */
-.reserve{background:var(--violet-bright);color:#fff;padding:clamp(50px,7vw,96px) 0;margin-top:70px}
-.reserve-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
-.reserve h2{font-family:var(--font-display);font-weight:900;text-transform:uppercase;line-height:.92;
-  font-size:clamp(40px,6vw,92px)}
-.reserve h2 span{color:var(--violet-deep);-webkit-text-stroke:1px rgba(255,255,255,.4)}
-.reserve p{margin-top:18px;color:rgba(255,255,255,.85);font-size:clamp(15px,1.3vw,18px);max-width:420px}
-.calendar{background:#fff;color:#211c2e;border-radius:24px;padding:24px 26px;max-width:430px;justify-self:end;
-  box-shadow:0 30px 70px -30px rgba(0,0,0,.5);position:relative}
-.calendar-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px}
-.calendar .sel{font-family:var(--font-display);font-weight:800;text-transform:uppercase;font-size:13px;color:#6a00ff}
-.calendar .clock{position:absolute;right:-14px;top:-14px;width:46px;height:46px;border-radius:14px;background:#1f1e24;
-  display:grid;place-items:center}
-.calendar .clock svg{width:55%;height:55%;stroke:#fff;fill:none}
-.calendar .month{display:flex;justify-content:space-between;align-items:center;margin:8px 0 12px}
-.calendar .month b{font-family:var(--font-display);font-weight:800;font-size:18px}
-.calendar .month button{width:30px;height:30px;border-radius:8px;background:#f0ecf7;color:#6a00ff;font-weight:800}
-.calendar table{width:100%;border-collapse:collapse;text-align:center}
-.calendar th{font-size:12px;color:#9a90ad;font-weight:700;padding:6px 0}
-.calendar td{padding:4px 0}
-.calendar td button{width:34px;height:34px;border-radius:10px;font-weight:600;font-size:14px;color:#3a3447;
-  transition:background .2s,color .2s}
-.calendar td button:hover{background:#f0ecf7}
-.calendar td button.on{background:var(--grad);color:#fff}
-.calendar td.empty{pointer-events:none}
+/* ============================================================ CONTACT
+   → déplacé dans css/contact.css (styles spécifiques à contact.html)
+   ============================================================ */
 
 /* ============================================================ BACKLINKS */
 .bk-hero{padding:150px 0 70px}
@@ -141,144 +90,9 @@
 .promise-card h3{font-family:var(--font-display);font-weight:800;text-transform:uppercase;font-size:19px;margin-bottom:12px}
 .promise-card p{font-size:14px;line-height:1.55;color:#3a3447}
 
-/* ============================================================ ARSENAL */
-.ars-hero{padding:140px 0 0}
-
-/* ---- Carte principale avec pseudo-bordure dégradé ---- */
-.ars-card{
-  position:relative;
-  width:min(900px,88vw);margin:0 auto 60px;
-  border-radius:32px;
-  background:rgba(18,16,25,.78);
-  box-shadow:0 40px 90px rgba(0,0,0,.35)
-}
-/* Bordure dégradé via ::before */
-.ars-card::before{
-  content:"";position:absolute;inset:0;border-radius:inherit;
-  padding:2px;
-  background:linear-gradient(135deg,#f04a13,#f000c8,#5317ff);
-  -webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);
-  -webkit-mask-composite:xor;
-  mask-composite:exclude;
-  pointer-events:none
-}
-.ars-card-inner{
-  position:relative;border-radius:31px;
-  padding:52px 56px 64px;
-  text-align:center;overflow:visible
-}
-
-/* ---- Pile de 3 images superposées (portrait, fidèle à la référence) ---- */
-.ars-media-stack{
-  position:relative;
-  width:min(760px,90vw);
-  height:400px;
-  margin:0 auto 16px;
-}
-/* Images : <img> uniquement, jamais <video> */
-.ars-media{
-  position:absolute;display:block;
-  object-fit:cover;object-position:center center;
-  border-radius:22px;
-  box-shadow:0 28px 60px rgba(0,0,0,.48);
-  transition:opacity .3s ease
-}
-.ars-media--left{
-  width:270px;height:335px;
-  left:60px;top:55px;
-  transform:rotate(-8deg);
-  z-index:1;opacity:.82
-}
-.ars-media--center{
-  width:295px;height:375px;
-  left:50%;top:12px;
-  transform:translateX(-50%);
-  z-index:3;
-  box-shadow:0 32px 72px rgba(0,0,0,.68)
-}
-.ars-media--right{
-  width:270px;height:335px;
-  right:60px;top:55px;
-  transform:rotate(8deg);
-  z-index:1;opacity:.82
-}
-
-/* ---- Badge cerveau : sticker-brain-ai.svg affiché par background-image ---- */
-/* Sticker exact extrait du Canva — bbox SVG (614,332)→(756,473), 142×141px    */
-/* Scale 0.9155 → sticker 130px dans container 140px (5px marge chaque côté)  */
-/* bg-size  = 1366×0.9155 × 768×0.9155 = 1250px 703px                        */
-/* bg-pos   = -(614×0.9155)+5 -(332×0.9155)+5 = -557px -299px                */
-.ars-brain-badge{
-  width:140px;height:140px;
-  margin:0 auto 28px;
-  flex-shrink:0;
-  background-image:url('../assets/decorations/sticker-brain-ai.svg');
-  background-size:1250px 703px;
-  background-position:-557px -299px;
-  background-repeat:no-repeat;
-  filter:drop-shadow(0 0 14px rgba(255,255,255,.5)) drop-shadow(0 0 28px rgba(200,100,255,.4))
-}
-.brain-badge-bg{ display:none }
-.brain-badge-icon{ display:none }
-
-/* ---- Texte et bouton ---- */
-.ars-card p{
-  color:rgba(250,248,255,.92);
-  font-size:clamp(16px,1.25vw,20px);
-  line-height:1.6;
-  margin:0 auto 36px;
-  max-width:560px;
-  transition:opacity .26s ease
-}
-
-/* ---- Section lune + arc expertises ---- */
-.ars-orbit-section{
-  position:relative;
-  min-height:700px;
-  overflow:hidden
-}
-/* Lune : très grande demi-lune au bas de section */
-.ars-moon{
-  position:absolute;
-  left:50%;bottom:calc(-140px - min(1280px,100vw) / 2);
-  width:min(1280px,100vw);
-  transform:translateX(-50%) rotate(var(--moon-deg,0deg));
-  transform-origin:center center;
-  transition:transform .8s cubic-bezier(.22,1,.36,1);
-  z-index:1
-}
-.ars-moon img{
-  width:100%;display:block;
-  animation:spin-slow 160s linear infinite
-}
-/* Anneau des expertises */
-.ars-services{
-  position:absolute;inset:0;
-  font-size:clamp(11px,1vw,17px);
-  z-index:3
-}
-.ars-service{
-  position:absolute;
-  font-family:var(--font-display);font-weight:800;
-  text-transform:uppercase;letter-spacing:.02em;
-  color:rgba(250,248,255,.38);white-space:nowrap;cursor:pointer;
-  /* left/top animés par JS + CSS transition pour l'orbite */
-  transition:left .55s cubic-bezier(.22,1,.36,1),
-             top  .55s cubic-bezier(.22,1,.36,1),
-             color .35s var(--ease),
-             text-shadow .35s,
-             transform .35s var(--ease);
-  transform:translate(-50%,-50%) rotate(var(--a,0deg))
-}
-.ars-service:hover{
-  color:rgba(250,248,255,.76);
-  transform:translate(-50%,-50%) rotate(var(--a,0deg)) scale(1.06)
-}
-.ars-service.active{
-  color:#fff;
-  font-size:clamp(24px,1.8vw,30px);
-  text-shadow:0 0 36px rgba(220,80,255,.9),0 0 10px rgba(220,80,255,.55)
-}
+/* ============================================================ ARSENAL
+   → déplacé dans css/arsenal.css (styles spécifiques à arsenal.html)
+   ============================================================ */
 
 /* ============================================================ LA NATION */
 .ln-hero{padding:150px 0 50px}
@@ -558,7 +372,7 @@
 .sp-social-txt p{color:var(--muted);line-height:1.7;font-size:clamp(14px,1.2vw,17px)}
 
 @media (max-width:980px){
-  .form-card,.reserve-grid,.bk-hero-grid,.netlink-grid,.how-grid{grid-template-columns:1fr}
+  .bk-hero-grid,.netlink-grid,.how-grid{grid-template-columns:1fr}
   .calendar{justify-self:center;margin-top:10px}
   .netlink-circle{margin-bottom:10px}
   .form-rocket{display:none}
@@ -654,7 +468,6 @@
   .post-grid{grid-template-columns:1fr}
 }
 @media (max-width:760px){
-  .contact-form-wrap{padding:0 20px}
   .page-hero,.bk-hero{padding-top:120px}
 }
 

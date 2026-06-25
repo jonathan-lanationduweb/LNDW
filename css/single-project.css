@@ -1,0 +1,188 @@
+/* ============================================================
+   La Nation du Web — single-project.css
+   PAGE PROJET HORIZONTALE (storyboard de mission), fidèle à
+   PAGE SINGLE PROJECT.png. Le scroll vertical pilote un déplacement
+   HORIZONTAL d'un track de 7 slides plein écran (GSAP ScrollTrigger,
+   section épinglée). AUCUN footer : la page finit sur la slide CTA.
+   ============================================================ */
+
+html,body{overflow-x:hidden}
+:root{--project-header-height:104px;--project-progress-height:58px}
+body.sp-page{background:#2d2a32}
+.single-project-page{background:#2d2a32;color:#fff;display:block}
+
+/* ===== TRACK HORIZONTAL ===== */
+.project-horizontal-section{position:relative;min-height:100vh;overflow:hidden;background:#2d2a32}
+.project-horizontal-track{position:relative;display:flex;flex-wrap:nowrap;width:max-content;min-height:100vh;will-change:transform}
+.project-slide{flex:0 0 100vw;width:100vw;min-height:100vh;position:relative;overflow:hidden;z-index:2;
+  padding-top:96px;box-sizing:border-box;display:flex;align-items:center}
+.project-slide-inner{width:min(1120px,calc(100vw - 96px));height:calc(100vh - 120px);margin:0 auto;
+  display:grid;align-items:center;justify-items:stretch}
+
+/* barre de progression du scroll horizontal (fixe en bas) */
+.sp-progress{position:fixed;left:50%;bottom:28px;transform:translateX(-50%);
+  width:min(1120px,86vw);height:4px;border-radius:999px;background:rgba(185,169,242,.18);z-index:60;pointer-events:none}
+.sp-progress span{display:block;height:100%;width:4%;border-radius:999px;
+  background:linear-gradient(90deg,#ff4a1f,#ff00c8,#563bff)}
+
+/* tags / titres communs */
+.sp-tag{font-family:var(--font-display);font-weight:800;text-transform:uppercase;font-size:12px;letter-spacing:.06em;color:var(--purple-soft)}
+.sp-eyebrow{font-family:var(--font-display);font-weight:700;text-transform:uppercase;font-size:12px;letter-spacing:.08em;color:var(--muted-2)}
+.sp-h2{font-family:var(--font-display);font-weight:900;text-transform:uppercase;color:var(--cream);font-size:clamp(28px,3vw,46px);line-height:.98;margin:8px 0 16px}
+.sp-h2--mt{margin-top:30px}
+.sp-text{color:var(--muted);font-size:15px;line-height:1.7;margin:0 0 13px;max-width:520px}
+.sp-chips{display:flex;flex-wrap:wrap;gap:9px;margin-top:24px}
+
+/* ---------------- SLIDE 1 · HERO — texte à gauche + image à droite + 3 stickers (maquette) ----------------
+   Dans la stage (hauteur = viewport - header - barre) : grille 40/60 centrée, tout tient en 100vh. */
+/* slide 1 & 2 transparentes pour laisser voir l'image PONT (qui est dans le track, derrière) */
+.project-slide-hero{padding-top:0;background:transparent}
+.project-slide-problems{background:transparent}
+.project-slide-hero .hero-stage{position:absolute;inset:0;z-index:1}
+.hero-copy{position:absolute;left:clamp(56px,6vw,130px);top:50%;transform:translateY(-50%);width:min(440px,40vw);z-index:4}
+.hero-title{font-family:var(--font-display);font-weight:900;text-transform:uppercase;color:var(--cream);
+  font-size:clamp(50px,5vw,92px);line-height:.88;letter-spacing:-.03em;margin:12px 0 22px}
+.hero-text{color:rgba(255,255,255,.82);font-size:15.5px;line-height:1.55;max-width:420px;margin:0 0 22px}
+
+/* ===== IMAGE SALON « PONT » : enfant du track, s'étend slide 1 (droite) → slide 2 (gauche) =====
+   left:44vw → démarre dans la moitié droite de la slide 1 ; width:94vw → finit dans la gauche de
+   la slide 2. z-index:1 (sous les slides en z-index:2, qui sont transparentes). */
+.hero-bridge{position:absolute;top:var(--project-header-height);left:44vw;width:94vw;
+  height:calc(100vh - var(--project-header-height) - var(--project-progress-height));z-index:1}
+.hero-bridge>img{width:100%;height:100%;object-fit:cover;object-position:center;display:block;
+  border-radius:30px;box-shadow:0 44px 100px -52px rgba(0,0,0,.7)}
+.hero-bridge .premibel-stat{position:absolute;z-index:3;display:grid;place-items:center;aspect-ratio:1;
+  text-align:center;pointer-events:none;filter:drop-shadow(0 16px 32px rgba(0,0,0,.45))}
+.hero-bridge .premibel-stat img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain}
+.hero-bridge .premibel-stat-txt{position:relative;z-index:2;font-family:var(--font-display);font-weight:600;font-size:11px;line-height:1.15}
+.hero-bridge .premibel-stat-txt strong{display:block;font-weight:900;font-size:clamp(20px,2vw,28px);line-height:1;margin-bottom:2px}
+.hero-bridge .premibel-stat-instagram{width:clamp(146px,12vw,184px);left:-3%;top:30%}      /* côté slide 1 */
+.hero-bridge .premibel-stat-instagram .premibel-stat-txt{color:#3a1f4d}
+.hero-bridge .premibel-stat-orders{width:clamp(122px,10vw,154px);left:46%;top:4%}          /* vers la frontière */
+.hero-bridge .premibel-stat-orders .premibel-stat-txt{color:#2a2336}
+.hero-bridge .premibel-stat-google{width:clamp(136px,11vw,176px);left:13%;top:55%}         /* côté slide 1, bas */
+.hero-bridge .premibel-stat-google .premibel-stat-txt{color:#fff}
+
+/* ---------------- SLIDE 2 · PROBLÉMATIQUES + ARSENAL — écran complet, zéro overflow vertical ----------------
+   Tout est dans une "stage" de hauteur = viewport - header - barre de progression.
+   Les images remplissent 100% de cette stage (toujours visibles), le texte est calibré pour tenir. */
+.project-slide-problems{display:block;padding-top:var(--project-header-height);background:transparent}
+.project-slide-problems .project-slide-stage{position:relative;width:100%;
+  height:calc(100vh - var(--project-header-height) - var(--project-progress-height))}
+
+/* grande image intérieure ancrée à gauche, coupée par le bord — remplit la hauteur de la stage */
+.project-slide-problems .problem-left-visual{position:absolute;left:-110px;top:0;
+  width:min(540px,38vw);height:100%;
+  border-radius:0 32px 32px 0;overflow:hidden;z-index:2;box-shadow:0 40px 90px -46px rgba(0,0,0,.7)}
+.project-slide-problems .problem-left-visual img{width:100%;height:100%;object-fit:cover;object-position:center;display:block}
+
+/* texture béton grise, coupée au bord droit (arrière-plan) — remplit la hauteur de la stage */
+.project-slide-problems .problem-right-visual{position:absolute;right:-70px;top:0;
+  width:min(290px,21vw);height:100%;
+  border-radius:32px 0 0 32px;overflow:hidden;z-index:1}
+.project-slide-problems .problem-right-visual img{width:100%;height:100%;object-fit:cover;object-position:center;display:block}
+
+/* stickers (scopés slide 2) */
+.project-slide-problems .sp-sticker{position:absolute;display:grid;place-items:center;aspect-ratio:1;text-align:center;
+  filter:drop-shadow(0 16px 30px rgba(0,0,0,.45));z-index:6}
+.project-slide-problems .sp-sticker img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain}
+.project-slide-problems .sp-sticker-txt{position:relative;z-index:2;font-family:var(--font-display);font-weight:600;font-size:11px;line-height:1.15}
+.project-slide-problems .sp-sticker-txt strong{display:block;font-weight:900;font-size:clamp(20px,2vw,28px);line-height:1;margin-bottom:2px}
+.project-slide-problems .problem-sticker-orders{top:40px;right:54px;width:clamp(132px,11vw,172px)}
+.project-slide-problems .problem-sticker-orders .sp-sticker-txt{color:#2a2336}
+.project-slide-problems .problem-sticker-google{left:-118px;bottom:54px;width:clamp(170px,14vw,210px);z-index:7}
+.project-slide-problems .problem-sticker-google .sp-sticker-txt{color:#fff}
+
+/* bloc texte centre/droite — centré verticalement dans la stage, calibré pour tenir */
+.project-slide-problems .problem-content{position:absolute;top:50%;transform:translateY(-50%);
+  left:clamp(470px,37vw,600px);width:min(720px,46vw);z-index:4}
+.project-slide-problems .problem-kicker{display:block;margin-bottom:8px;font-family:var(--font-display);
+  font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#cdb5ff;font-weight:800}
+.project-slide-problems .problem-content h2{margin:0 0 16px;font-family:var(--font-display);
+  font-size:clamp(40px,3.3vw,62px);line-height:.9;font-weight:900;letter-spacing:-.035em;color:#fff;text-transform:uppercase}
+.project-slide-problems .problem-content h2.problem-arsenal-title{margin-top:clamp(22px,3vh,38px)}
+.project-slide-problems .problem-content p{margin:0;max-width:680px;font-size:14.5px;line-height:1.45;color:rgba(255,255,255,.86)}
+.project-slide-problems .problem-list{list-style:none;margin:14px 0 0;padding:0;max-width:700px;display:grid;gap:clamp(8px,1.1vh,12px)}
+.project-slide-problems .problem-list li{position:relative;padding-left:20px;font-size:13.5px;line-height:1.34;color:rgba(255,255,255,.88)}
+.project-slide-problems .problem-list li::before{content:"";position:absolute;left:0;top:7px;width:7px;height:7px;border-radius:50%;background:var(--grad)}
+.project-slide-problems .problem-list b{color:#fff;font-weight:700}
+
+/* ---------------- SLIDE 3 · DOUBLE LAPTOP (bande) ---------------- */
+.sp-band{width:100%;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.sp-band--single{grid-template-columns:1fr}
+.sp-card{margin:0;height:min(560px,64vh);border-radius:22px;overflow:hidden;background:#15131a;
+  box-shadow:0 34px 78px -42px rgba(0,0,0,.7)}
+.sp-card--wide{height:min(620px,70vh)}
+.sp-card img,.sp-card video{display:block;width:100%;height:100%;object-fit:cover}
+.sp-card figcaption{display:none}
+
+/* ---------------- SLIDES 4-5 · COLLAGES (vidéo + panneau) — dans la stage, alternés ---------------- */
+.project-slide-brochure-social,.project-slide-social-storefront{padding-top:var(--project-header-height)}
+.project-slide-brochure-social .project-slide-stage,
+.project-slide-social-storefront .project-slide-stage{
+  width:min(1340px,calc(100vw - 80px));margin:0 auto;
+  height:calc(100vh - var(--project-header-height) - var(--project-progress-height));
+  display:grid;gap:20px;align-items:center}
+.project-slide-brochure-social .project-slide-stage{grid-template-columns:1.5fr 1fr}   /* brochure large à gauche */
+.project-slide-social-storefront .project-slide-stage{grid-template-columns:1fr 1.5fr} /* vitrine large à droite */
+.collage-card{margin:0;height:min(100%,580px);border-radius:24px;overflow:hidden;background:#15131a;
+  box-shadow:0 34px 78px -42px rgba(0,0,0,.7)}
+.collage-card img,.collage-card video{display:block;width:100%;height:100%;object-fit:cover;object-position:center}
+
+/* ---------------- SLIDE 6 · CONCLUSION + NEXT ---------------- */
+.sp-close-grid{grid-template-columns:1.2fr .8fr;gap:50px;align-items:center}
+.sp-close-title{font-size:clamp(44px,5vw,76px);margin-top:10px}
+.sp-next-card{display:block;text-decoration:none;max-width:360px;margin-left:auto;width:100%;
+  background:linear-gradient(160deg,#36343f,#26252f);border-radius:24px;padding:20px;
+  box-shadow:0 30px 70px -36px rgba(120,60,220,.55),0 0 0 1px rgba(185,169,242,.12);
+  transition:transform .3s var(--ease,ease)}
+.sp-next-card:hover{transform:translateY(-5px)}
+.sp-next-super{font-family:var(--font-display);font-weight:700;text-transform:uppercase;font-size:11px;letter-spacing:.06em;color:var(--muted-2)}
+.sp-next-img{border-radius:16px;overflow:hidden;height:min(300px,34vh);margin:12px 0 14px}
+.sp-next-img img{width:100%;height:100%;object-fit:cover;display:block}
+.sp-next-title{font-family:var(--font-display);font-weight:900;text-transform:uppercase;color:var(--cream);font-size:24px;line-height:.95;margin:0 0 10px}
+.sp-next-link{font-family:var(--font-display);font-weight:800;text-transform:uppercase;font-size:12px;letter-spacing:.04em;
+  background:var(--grad-text);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+
+/* ---------------- SLIDE 7 · CTA FINAL ---------------- */
+.project-slide-final-cta .project-slide-inner{justify-items:center;align-items:center}
+.sp-cta{width:100%;display:flex;justify-content:center}
+.sp-cta .btn-mission{font-size:clamp(18px,2vw,26px);padding:22px 46px 22px 30px;
+  box-shadow:0 24px 60px -22px rgba(233,0,233,.55),0 10px 30px -16px rgba(108,0,255,.5)}
+
+/* ---------------- FALLBACK MOBILE : sous 900px, on désactive l'horizontal
+   (inutilisable au doigt) et on empile verticalement ---------------- */
+@media (max-width:900px){
+  .project-horizontal-section{overflow:visible}
+  .project-horizontal-track{transform:none !important;display:block;width:100%}
+  .project-slide{width:100%;min-height:0;padding:84px 22px 44px}
+  .project-slide-inner{width:100%;height:auto}
+  .sp-progress{display:none}
+  .sp-close-grid{grid-template-columns:1fr;gap:34px}
+  .sp-band{grid-template-columns:1fr;gap:16px}
+  /* slide 2 : on dé-absolutise (stage statique) et on empile image / texte */
+  .project-slide-problems{padding:84px 22px 44px}
+  .project-slide-problems .project-slide-stage{position:static;height:auto}
+  .project-slide-problems .problem-left-visual{position:static;left:auto;top:auto;width:100%;height:300px;border-radius:18px}
+  .project-slide-problems .problem-right-visual{display:none}
+  .project-slide-problems .problem-content{position:static;left:auto;top:auto;transform:none;width:100%;margin-top:26px}
+  .project-slide-problems .problem-sticker-google{left:0;bottom:auto;top:8px;width:130px}
+  .project-slide-problems .problem-sticker-orders{right:8px;top:8px;width:128px}
+  .sp-card,.sp-card--wide{height:auto;min-height:230px}
+  .sp-card img,.sp-card video{height:auto}
+  /* collages 4-5 : empilés */
+  .project-slide-brochure-social .project-slide-stage,
+  .project-slide-social-storefront .project-slide-stage{grid-template-columns:1fr;height:auto;width:100%;gap:16px}
+  .collage-card{height:auto;min-height:220px}
+  .collage-card img,.collage-card video{height:auto}
+  .sp-next-card{margin:0 auto}
+  /* slide 1 hero : texte empilé ; l'image PONT devient un bloc image en haut du track */
+  .project-slide-hero{padding:12px 22px 44px}
+  .project-slide-hero .hero-stage{position:static;inset:auto}
+  .hero-copy{position:static;transform:none;left:auto;top:auto;width:100%}
+  .hero-bridge{position:static;left:auto;top:auto;width:calc(100% - 36px);height:260px;margin:90px auto 0}
+  .hero-bridge>img{border-radius:16px}
+  .hero-bridge .premibel-stat-instagram{width:104px;left:-6px;top:10px}
+  .hero-bridge .premibel-stat-orders{width:92px;left:auto;right:8px;top:8px}
+  .hero-bridge .premibel-stat-google{width:104px;left:14%;top:auto;bottom:14px}
+}

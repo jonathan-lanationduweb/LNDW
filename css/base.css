@@ -75,20 +75,20 @@ section{position:relative}
 .site-header{
   position:fixed;inset:0 0 auto 0;z-index:80;
   background:rgba(40,39,46,.72);backdrop-filter:blur(14px);
-  border-bottom:1px solid rgba(250,248,255,.06);
+  border-bottom:1px solid rgba(250,248,255,.035);
   opacity:0;transform:translateY(-12px);
   animation:hdr-in .8s var(--ease) .1s forwards;
 }
 @keyframes hdr-in{to{opacity:1;transform:none}}
-.header-inner{display:flex;align-items:center;gap:32px;height:92px}
-.brand{flex:0 0 auto;display:flex;flex-direction:column;align-items:flex-start;gap:5px}
-.brand img{height:46px;width:auto}
+.header-inner{display:flex;align-items:center;gap:32px;height:78px}
+.brand{flex:0 0 auto;display:flex;flex-direction:column;align-items:flex-start;gap:3px}
+.brand img{height:38px;width:auto}
 .brand-base{font-family:var(--font-display);font-weight:800;text-transform:uppercase;
   font-size:10.5px;letter-spacing:.18em;color:var(--cream);
   align-self:stretch;text-align:center;padding-left:.18em}
-.main-nav{flex:1;display:flex;justify-content:center;gap:clamp(20px,3vw,52px)}
+.main-nav{flex:1;display:flex;justify-content:center;gap:clamp(16px,2.4vw,42px)}
 .main-nav a{
-  font-family:var(--font-display);font-weight:700;font-size:14.5px;
+  font-family:var(--font-display);font-weight:700;font-size:13px;white-space:nowrap;
   letter-spacing:.04em;color:var(--muted);position:relative;padding:6px 2px;
   transition:color .3s var(--ease);
 }
@@ -98,8 +98,15 @@ section{position:relative}
 }
 .main-nav a:hover{color:var(--cream)}
 .main-nav a:hover::after{right:0}
+/* État ACTIF persistant (page courante) — distinct du hover : plus blanc, gras, surligneur visible */
+.main-nav a.active,
+.main-nav a.is-active,
+.main-nav a[aria-current="page"]{color:#fff;font-weight:800}
+.main-nav a.active::after,
+.main-nav a.is-active::after,
+.main-nav a[aria-current="page"]::after{right:0}
 .header-cta{flex:0 0 auto}
-.header-cta .btn-mission{padding:13px 24px 13px 16px;font-size:14px;gap:12px}
+.header-cta .btn-mission{padding:9px 18px 9px 12px;font-size:12.5px;gap:9px}
 .nav-toggle{display:none}
 
 /* ============================ HERO ============================ */

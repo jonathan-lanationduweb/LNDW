@@ -4,450 +4,179 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Premibel Parquet — Mission | La Nation du Web</title>
-<meta name="description" content="Étude de cas Premibel Parquet — refonte web, SEO, social media et campagnes Ads menés par La Nation du Web. +250% d'impressions, 1er sur Google.">
+<meta name="description" content="Premibel Parquet : de simple site vitrine à leader du secteur sur Google. Mission 360° La Nation du Web.">
 <link rel="stylesheet" href="css/base.css">
 <link rel="stylesheet" href="css/sections.css">
 <link rel="stylesheet" href="css/pages.css">
+<link rel="stylesheet" href="css/single-project.css">
+<script>
+/* Filet de secours images : si servi depuis lndw-code (5501), ../LNDW SITE/... renvoie 404
+   → bascule sur le miroir local assets/... (mêmes chemins) pour ne jamais avoir d'image cassée. */
+(function(){
+  function swap(el,attr){ if(el.dataset.fb) return; var s=el.getAttribute(attr)||'';
+    var m=s.match(/LNDW(?:%20| )SITE\/image\/assets\/(.*)$/); if(m){el.dataset.fb='1';el.setAttribute(attr,'assets/'+m[1]);} }
+  document.addEventListener('error',function(e){var t=e.target;if(t&&(t.tagName==='IMG'))swap(t,'src');if(t&&t.tagName==='SOURCE'){swap(t,'src');var v=t.parentNode;if(v&&v.load)v.load();}},true);
+})();
+</script>
 </head>
-<body class="subpage sp2-page">
+<body class="subpage sp-page">
 
-<!-- =====================  HEADER  ===================== -->
-<header class="site-header" id="site-header">
-  <div class="wrap header-inner">
-    <a class="brand" href="index.html#top" aria-label="La Nation du Web">
-      <img src="assets/logos/lndw-logo-white.svg" alt="LNDW — La Nation du Web">
-      <span class="brand-base">LA NATION DU WEB</span>
-    </a>
-    <nav class="main-nav">
-      <a href="arsenal.html">ARSENAL</a>
-      <a href="la-nation.html">LA NATION</a>
-      <a href="missions-clients.html" class="active">MISSIONS CLIENTS</a>
-      <a href="backlinks.html">BACKLINKS</a>
-      <a href="blog.html">BLOG</a>
-    </nav>
-    <div class="header-cta">
-      <a class="btn-mission" href="contact.html">
-        <span class="rk"><img src="assets/icons/icon-rocket-line.svg" alt=""></span>
-        <span>Lancer ma mission ?</span>
+<main class="single-project-page">
+
+  <!-- ============================ HEADER GLOBAL UNIQUE ============================ -->
+  <header class="site-header" data-screen-label="Header">
+    <div class="wrap header-inner">
+      <a class="brand" href="index.html#top" aria-label="La Nation du Web">
+        <img class="brand-logo" src="assets/logos/lndw-logo-white.svg" alt="LNDW — La Nation du Web">
+        <span class="brand-base">LA NATION DU WEB</span>
       </a>
-    </div>
-    <button class="nav-toggle" aria-label="Menu"><span></span></button>
-  </div>
-</header>
-
-<main>
-
-<!-- =====================  01 — HERO  ===================== -->
-<section class="sp2-hero">
-  <div class="sp2-hero-bg">
-    <img src="assets/photos/missions/premibel-hero-bg.png"
-         alt="Intérieur Premibel Parquet — cheminée et parquet clair"
-         loading="eager">
-  </div>
-
-  <div class="sp2-hero-inner">
-    <div class="wrap">
-      <div class="sp2-hero-grid">
-
-        <!-- Gauche : titre + texte + tags -->
-        <div class="sp2-hero-left">
-          <p class="sp2-eyebrow">001 — Mission Clients</p>
-          <h1 class="sp2-title">PREMIBEL<br>PARQUET</h1>
-          <p class="sp2-desc">Passer de simple site vitrine à leader du secteur sur Google. On a combiné technique web et stratégie publicitaire pour que Premibel devienne le premier réflexe de quiconque cherche du parquet.</p>
-          <div class="chip-row sp2-hero-tags">
-            <span class="chip">WEB</span>
-            <span class="chip">SEO</span>
-            <span class="chip">SOCIAL MEDIA</span>
-            <span class="chip">MARKETING DIGITAL</span>
-            <span class="chip">ADS</span>
-          </div>
-        </div>
-
-        <!-- Droite : badges sticker -->
-        <div class="sp2-hero-right">
-          <div class="sp2-badges">
-
-            <div class="sp2-badge sp2-badge--lavender">
-              <img src="assets/sections/nation/stats/stat-starburst-lavender.png" alt="">
-              <div class="sp2-badge-text">
-                <strong>+250%</strong>
-                <span>d'impressions<br>sur Instagram</span>
-              </div>
-            </div>
-
-            <div class="sp2-badge sp2-badge--white">
-              <img src="assets/sections/nation/stats/stat-blob-white.png" alt="">
-              <div class="sp2-badge-text">
-                <strong>2×</strong>
-                <span>de commandes<br>d'internet</span>
-              </div>
-            </div>
-
-            <div class="sp2-badge sp2-badge--purple">
-              <img src="assets/sections/nation/stats/stat-starburst-purple.png" alt="">
-              <div class="sp2-badge-text">
-                <strong>1er</strong>
-                <span>sur le moteur<br>Google</span>
-              </div>
-            </div>
-
-          </div>
-        </div>
-
-      </div><!-- /.sp2-hero-grid -->
-    </div><!-- /.wrap -->
-  </div><!-- /.sp2-hero-inner -->
-</section>
-
-<!-- =====================  02 — INFO PROJET  ===================== -->
-<section class="sp2-info">
-  <div class="wrap sp2-info-grid">
-    <div>
-      <span class="sp2-info-label">Client</span>
-      <p class="sp2-info-val">Premibel Parquet</p>
-    </div>
-    <div>
-      <span class="sp2-info-label">Secteur</span>
-      <p class="sp2-info-val">Parquet haut de gamme</p>
-    </div>
-    <div>
-      <span class="sp2-info-label">Missions réalisées</span>
-      <ul class="sp2-info-val">
-        <li>Optimisation technique</li>
-        <li>SEO e-commerce</li>
-        <li>Google Ads</li>
-        <li>Social Media</li>
-        <li>Tracking avancé</li>
-        <li>Stratégie de conversion</li>
-      </ul>
-    </div>
-    <div>
-      <span class="sp2-info-label">Résultats</span>
-      <ul class="sp2-info-val">
-        <li>+250% d'impressions Instagram</li>
-        <li>2× de commandes internet</li>
-        <li>1er sur le moteur Google</li>
-      </ul>
-    </div>
-  </div>
-</section>
-
-<!-- =====================  03 — PROBLÉMATIQUES  ===================== -->
-<section class="sp2-problems">
-  <div class="wrap">
-    <div class="sp2-problems-grid sp2-reveal">
-      <div class="sp2-problems-img">
-        <img src="assets/sections/mission/premibel-laptop-catalogue.png"
-             alt="Premibel — Catalogue produits sur laptop">
+      <nav class="main-nav">
+        <a href="arsenal.html">ARSENAL</a>
+        <a href="la-nation.html">LA NATION</a>
+        <a href="missions-clients.html" class="active" aria-current="page">MISSIONS CLIENTS</a>
+        <a href="backlinks.html">BACKLINKS</a>
+        <a href="blog.html">BLOG</a>
+      </nav>
+      <div class="header-cta">
+        <a class="btn-mission" href="contact.html">
+          <span class="rk"><img src="assets/icons/icon-rocket-line.svg" alt=""></span>
+          <span>Lancer ma mission ?</span>
+        </a>
       </div>
-      <div class="sp2-problems-text">
-        <span class="sp2-section-tag">Contexte</span>
-        <h2>PROBLÉ-<br>MATIQUES</h2>
-        <p>À notre arrivée, le défi était de taille : propulser un site de moins de 12 mois dans une arène dominée par des acteurs historiques installés depuis plus d'une décennie. Malgré la qualité premium des produits, l'architecture actuelle et le design du site ne permettaient pas à Premibel de se positionner comme une référence sur internet.</p>
-        <p>La marque possédait une vraie valeur de conversion organique et artisanale, mais cette richesse restait invisible. Il fallait construire un écosystème progressif : ne pas réduire l'acquisition à un seul canal, mais créer une mécanique capable de faire de chaque page un levier de visibilité et chaque contenu un accélérateur de confiance.</p>
-      </div>
+      <button class="nav-toggle" aria-label="Menu"><span></span></button>
     </div>
-  </div>
-</section>
+  </header>
 
-<!-- =====================  04 — ARSENAL DÉPLOYÉ  ===================== -->
-<section class="sp2-arsenal">
-  <div class="wrap">
-    <div class="sp2-arsenal-grid">
+  <!-- ============================ TRACK HORIZONTAL (7 slides) ============================ -->
+  <section class="project-horizontal-section" id="spSection">
+    <div class="project-horizontal-track" id="spTrack">
 
-      <div>
-        <h2 class="sp2-reveal">L'ARSENAL<br>DÉPLOYÉ</h2>
-        <div class="sp2-arsenal-items">
-
-          <div class="sp2-arsenal-item sp2-reveal">
-            <span class="sp2-arsenal-num">01</span>
-            <h4>Optimisation Core Web Vitals</h4>
-            <p>Nettoyage du code, compression des assets et amélioration des temps de chargement pour renforcer l'expérience mobile.</p>
-          </div>
-
-          <div class="sp2-arsenal-item sp2-reveal">
-            <span class="sp2-arsenal-num">02</span>
-            <h4>Refonte UX / UI</h4>
-            <p>Simplification du parcours, amélioration de la navigation et mise en avant des produits les plus stratégiques.</p>
-          </div>
-
-          <div class="sp2-arsenal-item sp2-reveal">
-            <span class="sp2-arsenal-num">03</span>
-            <h4>Stratégie SEO</h4>
-            <p>Structuration des contenus autour des intentions fortes : parquet, sol, revêtement, pose, rénovation et achat en ligne.</p>
-          </div>
-
-          <div class="sp2-arsenal-item sp2-reveal">
-            <span class="sp2-arsenal-num">04</span>
-            <h4>Google Ads</h4>
-            <p>Création de campagnes Search pour capter les requêtes à forte intention d'achat et maximiser le retour sur investissement.</p>
-          </div>
-
-          <div class="sp2-arsenal-item sp2-reveal">
-            <span class="sp2-arsenal-num">05</span>
-            <h4>Social Media</h4>
-            <p>Création de contenus courts, visuels et rassurants pour renforcer la crédibilité de la marque sur Meta.</p>
-          </div>
-
-          <div class="sp2-arsenal-item sp2-reveal">
-            <span class="sp2-arsenal-num">06</span>
-            <h4>Tracking avancé</h4>
-            <p>Configuration des conversions et événements pour mesurer précisément les performances et optimiser les campagnes.</p>
-          </div>
-
+      <!-- IMAGE SALON « PONT » : une seule image qui s'étend de la slide 1 (droite) à la slide 2
+           (gauche). Enfant du track → elle défile avec lui. Les slides 1-2 sont transparentes. -->
+      <div class="hero-bridge" aria-hidden="true">
+        <img src="../LNDW%20SITE/image/assets/sections/single-project/premibel/images/premibel-hero-interior.png" alt="Premibel Parquet — intérieur salon">
+        <div class="premibel-stat premibel-stat-instagram">
+          <img src="../LNDW%20SITE/image/assets/sections/single-project/premibel/stickers/premibel-stat-instagram-starburst.svg" alt="">
+          <span class="premibel-stat-txt"><strong>+250%</strong>d'impressions<br>sur Instagram</span>
+        </div>
+        <div class="premibel-stat premibel-stat-orders">
+          <img src="../LNDW%20SITE/image/assets/sections/single-project/premibel/stickers/premibel-stat-orders-blob.svg" alt="">
+          <span class="premibel-stat-txt"><strong>2×</strong>de commandes<br>internet</span>
+        </div>
+        <div class="premibel-stat premibel-stat-google">
+          <img src="../LNDW%20SITE/image/assets/sections/single-project/premibel/stickers/premibel-stat-google-starburst.svg" alt="">
+          <span class="premibel-stat-txt"><strong>1<sup>er</sup></strong>sur le moteur<br>Google</span>
         </div>
       </div>
 
-      <!-- Image sticky -->
-      <div class="sp2-arsenal-media sp2-reveal">
-        <img src="assets/sections/mission/premibel-laptop-foire-paris.png"
-             alt="Premibel — Page Foire de Paris sur laptop">
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- =====================  05 — VIDÉO PRINCIPALE  ===================== -->
-<section class="sp2-video">
-  <video autoplay muted loop playsinline>
-    <source src="assets/sections/mission/premibel-video-main.mp4" type="video/mp4">
-  </video>
-</section>
-
-<!-- =====================  06 — FOIRE DE PARIS  ===================== -->
-<section class="sp2-split sp2-reveal">
-  <div class="sp2-split-img">
-    <img src="assets/sections/mission/premibel-laptop-foire-paris.png"
-         alt="Premibel — Page événementielle Foire de Paris">
-  </div>
-  <div class="sp2-split-body">
-    <span class="sp2-split-tag">Web / Événementiel</span>
-    <h3>LA FOIRE<br>DE PARIS</h3>
-    <p>Une page événementielle pensée pour convertir l'intérêt autour de la foire et générer des demandes de devis sur la durée. Intégrée en moins de 14 jours, elle a concentré l'énergie de la marque sur un temps fort. Performance, mémorisation et expérience premium — à l'image de Premibel.</p>
-  </div>
-</section>
-
-<!-- =====================  07 — DUO MÉDIAS  ===================== -->
-<section class="sp2-media-duo">
-  <div class="sp2-media-duo-item sp2-reveal">
-    <img src="assets/sections/mission/premibel-laptop-foire-paris.png"
-         alt="Premibel — Foire de Paris">
-  </div>
-  <div class="sp2-media-duo-item sp2-reveal">
-    <img src="assets/sections/mission/premibel-laptop-catalogue.png"
-         alt="Premibel — Catalogue produits">
-  </div>
-</section>
-
-<!-- =====================  08 — SOCIAL MEDIA ROUGE  ===================== -->
-<section class="sp2-social-red">
-  <div class="sp2-social-red-img sp2-reveal">
-    <img src="assets/sections/mission/premibel-social-media.png"
-         alt="Premibel — Contenus Social Media">
-  </div>
-  <div class="sp2-social-red-txt sp2-reveal">
-    <span class="sp2-split-tag" style="color:rgba(255,255,255,.55)">Social Media &amp; Ads</span>
-    <h3>UNE MARQUE<br>QUI RAYONNE</h3>
-    <p>Une direction artistique forte, des contenus courts et des formats immersifs pour nourrir la visibilité de la marque et renforcer sa présence digitale au quotidien.</p>
-    <div style="display:flex;gap:20px;flex-wrap:wrap;margin-top:4px">
-      <div class="sp2-red-stat">
-        <strong>×7</strong>
-        <span>portée</span>
-      </div>
-      <div class="sp2-red-stat">
-        <strong>+250%</strong>
-        <span>impressions</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- =====================  09 — VIDÉO 2  ===================== -->
-<section class="sp2-video">
-  <video autoplay muted loop playsinline>
-    <source src="assets/sections/mission/premibel-video-29mo.mp4" type="video/mp4">
-  </video>
-</section>
-
-<!-- =====================  10 — TERRAIN / SHOWROOM  ===================== -->
-<section class="sp2-street">
-  <div class="sp2-street-bg">
-    <img src="assets/photos/missions/mission-interior-02.jpg"
-         alt="Premibel — Showroom parquet">
-  </div>
-  <div class="sp2-street-overlay"></div>
-  <div class="sp2-street-content sp2-reveal">
-    <span class="sp2-section-tag" style="color:rgba(255,255,255,.55)">Présence terrain</span>
-    <h3>UN ANCRAGE<br>PHYSIQUE FORT</h3>
-    <p>Une marque qui vit au-delà du digital. Le showroom Premibel incarne l'expérience produit haut de gamme que la stratégie web vient prolonger et amplifier.</p>
-  </div>
-</section>
-
-<!-- =====================  11 — CATALOGUE / SEO  ===================== -->
-<section class="sp2-split sp2-split--rev sp2-reveal">
-  <div class="sp2-split-body">
-    <span class="sp2-split-tag">SEO e-commerce</span>
-    <h3>UN CATALOGUE<br>QUI PERFORME</h3>
-    <p>Architecture SEO repensée de A à Z, balisage sémantique renforcé, fiches produits enrichies et cocon thématique sur le parquet. Résultat : une croissance organique durable qui place Premibel premier sur Google pour les requêtes à fort volume.</p>
-  </div>
-  <div class="sp2-split-img">
-    <img src="assets/sections/mission/premibel-laptop-catalogue.png"
-         alt="Premibel — Catalogue SEO">
-  </div>
-</section>
-
-<!-- =====================  12 — RECAP + PROJET SUIVANT  ===================== -->
-<section class="sp2-recap">
-  <div class="wrap sp2-recap-grid">
-
-    <div class="sp2-reveal">
-      <h2 class="sp2-recap-title">PREMIBEL<br>PARQUET</h2>
-      <p class="sp2-recap-desc">Une mission 360° pensée pour transformer la visibilité digitale d'une marque premium en moteur d'acquisition durable.</p>
-      <div class="chip-row">
-        <span class="chip">WEB</span>
-        <span class="chip">SEO</span>
-        <span class="chip">SOCIAL MEDIA</span>
-        <span class="chip">MARKETING DIGITAL</span>
-        <span class="chip">ADS</span>
-      </div>
-    </div>
-
-    <div class="sp2-reveal">
-      <a class="sp2-next-card" href="missions-clients.html">
-        <img src="assets/photos/missions/mission-fashion.jpg"
-             alt="Maison Quivernay">
-        <div class="sp2-next-card-overlay"></div>
-        <div class="sp2-next-card-body">
-          <span class="sp2-next-label">Mission suivante</span>
-          <span class="sp2-next-name">MAISON QUIVERNAY</span>
-          <span class="sp2-next-cta">VOIR LA MISSION SUIVANTE →</span>
+      <!-- ════════ SLIDE 1 — HERO : texte à gauche (l'image salon vient du PONT, à droite) ════════ -->
+      <section class="project-slide project-slide-hero" data-slide="1">
+        <div class="project-slide-stage hero-stage">
+          <div class="hero-copy">
+            <span class="sp-eyebrow">001 — Mission Clients</span>
+            <h1 class="hero-title">PREMIBEL<br>PARQUET</h1>
+            <p class="hero-text">Passer de simple site vitrine à leader du secteur sur Google. On a combiné technique web et stratégie publicitaire pour que Premibel devienne le premier réflexe de quiconque cherche du parquet.</p>
+            <div class="sp-chips"><span class="chip">WEB</span><span class="chip">SEO</span><span class="chip">SOCIAL MEDIA</span><span class="chip">MARKETING DIGITAL</span><span class="chip">ADS</span></div>
+          </div>
         </div>
-      </a>
+      </section>
+
+      <!-- ════════ SLIDE 2 — PROBLÉMATIQUES + ARSENAL ════════ -->
+      <section class="project-slide project-slide-problems" data-slide="2">
+        <div class="project-slide-stage">
+          <!-- l'image salon (gauche) + stickers proviennent du PONT de la slide 1 -->
+          <div class="problem-content">
+            <span class="problem-kicker">Contexte</span>
+            <h2>PROBLÉMATIQUES</h2>
+            <p>À notre arrivée, le défi était de taille : propulser un site de moins de 12 mois dans une arène dominée par des acteurs historiques. Malgré la qualité premium des produits, l'architecture datée ne permettait pas à Premibel de s'imposer comme une référence. La marque restait invisible : il fallait bâtir une véritable autorité digitale en un temps record.</p>
+            <h2 class="problem-arsenal-title">L'ARSENAL DÉPLOYÉ</h2>
+            <ul class="problem-list">
+              <li><b>Optimisation Core Web Vitals</b> — assets optimisés pour passer sous 1.2s de chargement.</li>
+              <li><b>Refonte UX / UI</b> — parcours client simplifié, « 3 clics pour convertir ».</li>
+              <li><b>Stratégie SEO « Fast Track »</b> — mots-clés de longue traîne ultra-qualifiés.</li>
+              <li><b>Maillage interne intelligent</b> — pages produits connectées au contenu pour booster l'autorité.</li>
+              <li><b>Ciblage chirurgical</b> — campagnes Meta &amp; Google Ads ultra-segmentées.</li>
+              <li><b>Reporting dynamique</b> — tracking avancé des conversions.</li>
+            </ul>
+          </div>
+          <div class="problem-right-visual">
+            <img src="../LNDW%20SITE/image/assets/sections/single-project/premibel/images/premibel-texture-concrete.png" alt="">
+          </div>
+        </div>
+      </section>
+
+      <!-- ════════ SLIDE 3 — DOUBLE VISUEL LAPTOP ════════ -->
+      <section class="project-slide project-slide-laptops" data-slide="3">
+        <div class="project-slide-inner">
+          <div class="sp-band">
+            <figure class="sp-card"><img src="../LNDW%20SITE/image/assets/sections/single-project/premibel/images/premibel-laptop-foire-paris.png" alt="Premibel — campagne Foire de Paris"></figure>
+            <figure class="sp-card"><img src="../LNDW%20SITE/image/assets/sections/single-project/premibel/images/premibel-laptop-website.png" alt="Premibel — site & catalogue"></figure>
+          </div>
+        </div>
+      </section>
+
+      <!-- ════════ SLIDE 4 — BROCHURE (vidéo) + SOCIAL MEDIA ════════ -->
+      <section class="project-slide project-slide-brochure-social" data-slide="4">
+        <div class="project-slide-stage">
+          <figure class="collage-card">
+            <video autoplay muted loop playsinline preload="metadata">
+              <source src="../LNDW%20SITE/image/assets/sections/single-project/premibel/videos/premibel-social-video.mp4" type="video/mp4">
+            </video>
+          </figure>
+          <figure class="collage-card"><img src="../LNDW%20SITE/image/assets/sections/mission/premibel/premibel-social-media.png" alt="Premibel — social media & ads"></figure>
+        </div>
+      </section>
+
+      <!-- ════════ SLIDE 5 — SOCIAL MEDIA + VITRINE / RUE (vidéo) ════════ -->
+      <section class="project-slide project-slide-social-storefront" data-slide="5">
+        <div class="project-slide-stage">
+          <figure class="collage-card"><img src="../LNDW%20SITE/image/assets/sections/mission/premibel/premibel-social-media.png" alt="Premibel — présence sociale"></figure>
+          <figure class="collage-card">
+            <video autoplay muted loop playsinline preload="metadata">
+              <source src="../LNDW%20SITE/image/assets/sections/single-project/premibel/videos/premibel-case-video.mp4" type="video/mp4">
+            </video>
+          </figure>
+        </div>
+      </section>
+
+      <!-- ════════ SLIDE 6 — CONCLUSION + MAISON QUIVERNAY ════════ -->
+      <section class="project-slide project-slide-closing" data-slide="6">
+        <div class="project-slide-inner sp-close-grid">
+          <div class="sp-close-body">
+            <span class="sp-eyebrow">Conclusion</span>
+            <h2 class="sp-hero-title sp-close-title">PREMIBEL<br>PARQUET</h2>
+            <p class="sp-hero-desc">Une mission 360° qui a transformé un site vitrine en leader de son secteur sur Google, avec une stratégie publicitaire, SEO et sociale cohérente.</p>
+            <div class="sp-chips"><span class="chip">WEB</span><span class="chip">SEO</span><span class="chip">SOCIAL MEDIA</span><span class="chip">MARKETING DIGITAL</span><span class="chip">ADS</span></div>
+          </div>
+          <a class="sp-next-card" href="single-project.html">
+            <span class="sp-next-super">Mission suivante —</span>
+            <div class="sp-next-img"><img src="../LNDW%20SITE/image/assets/sections/single-project/premibel/images/premibel-next-maison-quivernay.jpg" alt="Maison Quivernay"></div>
+            <h3 class="sp-next-title">MAISON<br>QUIVERNAY</h3>
+            <span class="sp-next-link">Voir la mission suivante →</span>
+          </a>
+        </div>
+      </section>
+
+      <!-- ════════ SLIDE 7 — CTA FINAL (rien après, pas de footer) ════════ -->
+      <section class="project-slide project-slide-final-cta" data-slide="7">
+        <div class="project-slide-inner">
+          <div class="sp-cta">
+            <a class="btn-mission btn-mission--big" href="contact.html"><span class="rk"><img src="assets/icons/icon-rocket-line.svg" alt=""></span><span>Lancer ma mission ?</span></a>
+          </div>
+        </div>
+      </section>
+
     </div>
-
-  </div>
-</section>
-
-<!-- =====================  CTA FINAL  ===================== -->
-<section class="cta-final-band">
-  <a class="btn-mission" href="contact.html">
-    <span class="rk"><img src="assets/icons/icon-rocket-line.svg" alt=""></span>
-    <span>LANCER MA MISSION ?</span>
-  </a>
-</section>
+  </section>
 
 </main>
 
-<!-- =====================  FOOTER  ===================== -->
-<footer class="footer">
-  <div class="wrap">
-    <div class="footer-top">
-      <div class="footer-brand">
-        <div class="footer-logo">
-          <img src="assets/logos/lndw-logo-white.svg" alt="LNDW — La Nation du Web">
-        </div>
-        <p class="footer-base">propulseur de stratégies.</p>
-      </div>
-      <div class="footer-cols">
-        <div class="footer-col">
-          <h4>Vision</h4>
-          <a href="index.html#vision">Notre vision</a>
-          <a href="missions-clients.html">Missions clients</a>
-        </div>
-        <div class="footer-col">
-          <h4>Expertises</h4>
-          <a href="arsenal.html">Notre arsenal</a>
-          <a href="backlinks.html">Backlinks</a>
-        </div>
-        <div class="footer-col">
-          <h4>Mentions Légales</h4>
-          <a href="mentions-legales.html">Mentions légales</a>
-        </div>
-        <div class="footer-col">
-          <h4>FAQ</h4>
-          <a href="la-nation.html#faq">Questions fréquentes</a>
-        </div>
-        <div class="footer-col">
-          <h4>CGU</h4>
-          <a href="cgu.html">Conditions d'utilisation</a>
-          <a href="cgv.html">CGV</a>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="wrap footer-bar-section">
-    <div class="footer-socials">
-      <a class="fsoc fsoc--li" href="#" aria-label="LinkedIn"></a>
-      <a class="fsoc fsoc--tt" href="#" aria-label="TikTok"></a>
-      <a class="fsoc fsoc--ig" href="#" aria-label="Instagram"></a>
-      <a class="fsoc fsoc--fb" href="#" aria-label="Facebook"></a>
-    </div>
-    <div class="footer-bar">
-      <div class="footer-copy">© 2026 La Nation du Web. Tous droits réservés.</div>
-    </div>
-  </div>
-</footer>
+<!-- barre de progression du scroll horizontal -->
+<div class="sp-progress" aria-hidden="true"><span id="spProgressFill"></span></div>
 
-<!-- =====================  SCRIPTS  ===================== -->
-<script>
-(function () {
-  var header = document.getElementById('site-header');
-  var navToggle = document.querySelector('.nav-toggle');
-
-  /* ─ Header transparent → opaque au scroll */
-  function setHeader(y) {
-    var opaque = y > 60;
-    header.style.background          = opaque ? 'rgba(10,8,20,.94)' : 'transparent';
-    header.style.backdropFilter       = opaque ? 'blur(16px)' : 'none';
-    header.style.webkitBackdropFilter = opaque ? 'blur(16px)' : 'none';
-    header.style.borderBottomColor    = opaque ? 'rgba(250,248,255,.07)' : 'transparent';
-  }
-  setHeader(window.scrollY || 0);
-  window.addEventListener('scroll', function () { setHeader(window.scrollY); }, { passive: true });
-
-  /* ─ Menu mobile */
-  if (navToggle) {
-    navToggle.addEventListener('click', function () {
-      document.body.classList.toggle('nav-open');
-    });
-  }
-
-  /* ─ IntersectionObserver — scroll reveals */
-  if (!('IntersectionObserver' in window)) {
-    document.querySelectorAll('.sp2-reveal,.sp2-badge').forEach(function (el) {
-      el.classList.add('sp2-in');
-    });
-    return;
-  }
-
-  /* Reveals classiques */
-  var revealIO = new IntersectionObserver(function (entries) {
-    entries.forEach(function (e) {
-      if (!e.isIntersecting) return;
-      e.target.classList.add('sp2-in');
-      revealIO.unobserve(e.target);
-    });
-  }, { threshold: 0.10, rootMargin: '0px 0px -40px 0px' });
-
-  document.querySelectorAll('.sp2-reveal').forEach(function (el) {
-    revealIO.observe(el);
-  });
-
-  /* Badges — entrée échelonnée avec spring */
-  var badges = document.querySelectorAll('.sp2-badge');
-  var badgeIO = new IntersectionObserver(function (entries) {
-    entries.forEach(function (e) {
-      if (!e.isIntersecting) return;
-      var idx = Array.from(badges).indexOf(e.target);
-      setTimeout(function () { e.target.classList.add('sp2-in'); }, idx * 200);
-      badgeIO.unobserve(e.target);
-    });
-  }, { threshold: 0.15 });
-
-  badges.forEach(function (b) { badgeIO.observe(b); });
-
-})();
-</script>
+<!-- GSAP + ScrollTrigger (locaux) pour piloter le scroll horizontal -->
+<script src="js/vendor/gsap.min.js"></script>
+<script src="js/vendor/ScrollTrigger.min.js"></script>
+<script src="js/single-project.js"></script>
 </body>
 </html>

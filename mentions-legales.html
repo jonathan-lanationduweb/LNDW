@@ -274,14 +274,6 @@
 
 </footer>
 
-<script>
-  // header: léger fond solide au scroll + menu mobile (autonome, sans dépendance homepage)
-  (function(){
-    var header=document.querySelector('.site-header');
-    addEventListener('scroll',function(){header.style.background=scrollY>40?'rgba(31,30,36,.9)':'rgba(40,39,46,.72)';},{passive:true});
-    var t=document.querySelector('.nav-toggle');
-    if(t)t.addEventListener('click',function(){document.body.classList.toggle('nav-open');});
-  })();
-</script>
+<script src="js/global.js" defer></script>
 </body>
 </html>

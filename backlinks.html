@@ -8,6 +8,16 @@
 <link rel="stylesheet" href="css/base.css">
 <link rel="stylesheet" href="css/sections.css">
 <link rel="stylesheet" href="css/pages.css">
+<link rel="stylesheet" href="css/backlinks.css">
+<script>
+/* Filet de secours images : si servi depuis lndw-code (5501), ../LNDW SITE/... renvoie 404
+   → bascule sur le miroir local assets/... pour ne jamais avoir d'image cassée. */
+(function(){
+  function swap(img){ if(img.dataset.fb) return; var s=img.getAttribute('src')||'';
+    var m=s.match(/LNDW(?:%20| )SITE\/image\/assets\/(.*)$/); if(m){img.dataset.fb='1';img.src='assets/'+m[1];} }
+  document.addEventListener('error',function(e){var t=e.target;if(t&&t.tagName==='IMG')swap(t);},true);
+})();
+</script>
 </head>
 <body class="subpage">
 
@@ -22,7 +32,7 @@
       <a href="arsenal.html">ARSENAL</a>
       <a href="la-nation.html">LA NATION</a>
       <a href="missions-clients.html">MISSIONS CLIENTS</a>
-      <a href="backlinks.html">BACKLINKS</a>
+      <a href="backlinks.html" class="active" aria-current="page">BACKLINKS</a>
       <a href="blog.html">BLOG</a>
     </nav>
     <div class="header-cta">
@@ -44,7 +54,7 @@
       <a class="btn-pill" href="contact.html">Connexion / Inscription</a>
       <p class="bk-hero-lead">LNDW Netlinking vous donne accès à un réseau qualifié de sites éditeurs pour obtenir des liens entrants puissants. Améliorez votre référencement naturel, votre autorité de domaine et votre visibilité durablement.</p>
     </div>
-    <div class="bk-img"><img src="assets/photos/missions/mission-business-01.jpg" alt="Stratégie de netlinking"></div>
+    <div class="bk-img"><img src="../LNDW%20SITE/image/assets/sections/backlinks/images/backlinks-hero-keyboard.png" alt="Mains tapant sur un clavier d'ordinateur"></div>
   </div>
 </section>
 
@@ -85,9 +95,9 @@
   <div class="wrap">
     <h2>Nos promesses</h2>
     <div class="promise-cards">
-      <div class="promise-card"><h3>Des sites vivants</h3><p>Nous publions uniquement sur des sites réellement actifs, à fort trafic et régulièrement mis à jour, pour des liens qui comptent vraiment.</p></div>
-      <div class="promise-card"><h3>Indexation garantie</h3><p>Chaque backlink est suivi jusqu'à son indexation par les moteurs de recherche. Si un lien n'est pas indexé, nous le remplaçons.</p></div>
-      <div class="promise-card"><h3>Budget maîtrisé</h3><p>Vous gardez le contrôle total de vos dépenses, sans engagement caché. Vous payez uniquement les liens dont vous avez besoin.</p></div>
+      <div class="promise-card"><img class="promise-icon" src="../LNDW%20SITE/image/assets/sections/backlinks/icons/icon-sites-vivants-globe.svg" alt=""><h3>Des sites vivants</h3><p>Nous mettons un point d'honneur à maintenir nos sites actifs en publiant régulièrement des articles frais et de qualité.</p></div>
+      <div class="promise-card"><img class="promise-icon" src="../LNDW%20SITE/image/assets/sections/backlinks/icons/icon-indexation-check.svg" alt=""><h3>Indexation garantie</h3><p>Un backlink doit être indexé pour être efficace. Si votre lien n'est pas indexé dans les 21 jours, nous vous offrons un backlink supplémentaire.</p></div>
+      <div class="promise-card"><img class="promise-icon" src="../LNDW%20SITE/image/assets/sections/backlinks/icons/icon-budget-maitrise.svg" alt=""><h3>Budget maîtrisé</h3><p>LNDW Netlinking propose des offres abordables pour les TPE, PME et freelances, tout en garantissant des backlinks efficaces et durables.</p></div>
     </div>
   </div>
 </section>
@@ -154,13 +164,6 @@
 
 </footer>
 
-<script>
-  (function(){
-    var header=document.querySelector('.site-header');
-    addEventListener('scroll',function(){header.style.background=scrollY>40?'rgba(31,30,36,.9)':'rgba(40,39,46,.72)';},{passive:true});
-    var t=document.querySelector('.nav-toggle');
-    if(t)t.addEventListener('click',function(){document.body.classList.toggle('nav-open');});
-  })();
-</script>
+<script src="js/global.js" defer></script>
 </body>
 </html>

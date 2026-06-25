@@ -1,0 +1,18 @@
+/* ============================================================
+   La Nation du Web — cgv.css
+   Styles SPÉCIFIQUES à cgv.html (déplacés depuis le <style> inline).
+   Les styles globaux restent dans base.css / sections.css / pages.css.
+   ============================================================ */
+
+/* Logo (version serrée locale — affichage direct) */
+.brand-base{display:none}
+.cgv-logo{display:block;height:34px;width:auto}
+.footer-logo img{width:min(190px,42vw)}
+/* Sommaire */
+.legal-toc{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:22px 26px;margin:0 0 38px}
+.legal-toc h2{font-family:var(--font-display);font-weight:800;font-size:15px;text-transform:uppercase;letter-spacing:.08em;color:var(--purple-soft,#b9a9f2);margin:0 0 14px}
+.legal-toc ol{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:6px 28px}
+.legal-toc a{color:var(--muted,rgba(250,248,255,.7));font-size:14px;text-decoration:none;display:block;padding:5px 0;border-bottom:1px solid transparent;transition:color .25s,border-color .25s}
+.legal-toc a:hover{color:#fff;border-color:rgba(185,169,242,.4)}
+.legal-article{font-family:var(--font-display);font-weight:800;font-size:clamp(15px,1.3vw,18px);color:#fff;margin:26px 0 8px;scroll-margin-top:110px}
+.legal-section-title{scroll-margin-top:90px}
