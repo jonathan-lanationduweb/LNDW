@@ -12,8 +12,15 @@ body.sp-page{background:#2d2a32}
 .single-project-page{background:#2d2a32;color:#fff;display:block}
 
 /* ===== TRACK HORIZONTAL ===== */
-.project-horizontal-section{position:relative;min-height:100vh;overflow:hidden;background:#2d2a32}
-.project-horizontal-track{position:relative;display:flex;flex-wrap:nowrap;width:max-content;min-height:100vh;will-change:transform}
+/* conteneur à DÉFILEMENT HORIZONTAL natif (barre de scroll horizontale réelle) */
+.project-horizontal-section{position:relative;height:100vh;overflow-x:auto;overflow-y:hidden;background:#2d2a32;
+  overscroll-behavior-x:contain}
+.project-horizontal-track{position:relative;display:flex;flex-wrap:nowrap;width:max-content;height:100vh}
+/* barre de défilement horizontale fine et discrète */
+.project-horizontal-section::-webkit-scrollbar{height:10px}
+.project-horizontal-section::-webkit-scrollbar-track{background:rgba(255,255,255,.06)}
+.project-horizontal-section::-webkit-scrollbar-thumb{background:linear-gradient(90deg,#ff4a1f,#ff00c8,#563bff);border-radius:999px}
+.project-horizontal-section{scrollbar-width:thin;scrollbar-color:#b9a9f2 rgba(255,255,255,.06)}
 .project-slide{flex:0 0 100vw;width:100vw;min-height:100vh;position:relative;overflow:hidden;z-index:2;
   padding-top:96px;box-sizing:border-box;display:flex;align-items:center}
 .project-slide-inner{width:min(1120px,calc(100vw - 96px));height:calc(100vh - 120px);margin:0 auto;
@@ -39,7 +46,7 @@ body.sp-page{background:#2d2a32}
 .project-slide-hero{padding-top:0;background:transparent}
 .project-slide-problems{background:transparent}
 .project-slide-hero .hero-stage{position:absolute;inset:0;z-index:1}
-.hero-copy{position:absolute;left:clamp(56px,6vw,130px);top:50%;transform:translateY(-50%);width:min(440px,40vw);z-index:4}
+.hero-copy{position:absolute;left:clamp(56px,6vw,130px);top:46%;transform:translateY(-50%);width:min(450px,40vw);z-index:4}
 .hero-title{font-family:var(--font-display);font-weight:900;text-transform:uppercase;color:var(--cream);
   font-size:clamp(50px,5vw,92px);line-height:.88;letter-spacing:-.03em;margin:12px 0 22px}
 .hero-text{color:rgba(255,255,255,.82);font-size:15.5px;line-height:1.55;max-width:420px;margin:0 0 22px}
@@ -47,21 +54,23 @@ body.sp-page{background:#2d2a32}
 /* ===== IMAGE SALON « PONT » : enfant du track, s'étend slide 1 (droite) → slide 2 (gauche) =====
    left:44vw → démarre dans la moitié droite de la slide 1 ; width:94vw → finit dans la gauche de
    la slide 2. z-index:1 (sous les slides en z-index:2, qui sont transparentes). */
-.hero-bridge{position:absolute;top:var(--project-header-height);left:44vw;width:94vw;
+.hero-bridge{position:absolute;top:var(--project-header-height);left:48vw;width:74vw;
   height:calc(100vh - var(--project-header-height) - var(--project-progress-height));z-index:1}
-.hero-bridge>img{width:100%;height:100%;object-fit:cover;object-position:center;display:block;
+.hero-bridge>img{width:100%;height:100%;object-fit:cover;object-position:center 22%;display:block;
   border-radius:30px;box-shadow:0 44px 100px -52px rgba(0,0,0,.7)}
 .hero-bridge .premibel-stat{position:absolute;z-index:3;display:grid;place-items:center;aspect-ratio:1;
   text-align:center;pointer-events:none;filter:drop-shadow(0 16px 32px rgba(0,0,0,.45))}
 .hero-bridge .premibel-stat img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain}
 .hero-bridge .premibel-stat-txt{position:relative;z-index:2;font-family:var(--font-display);font-weight:600;font-size:11px;line-height:1.15}
 .hero-bridge .premibel-stat-txt strong{display:block;font-weight:900;font-size:clamp(20px,2vw,28px);line-height:1;margin-bottom:2px}
-.hero-bridge .premibel-stat-instagram{width:clamp(146px,12vw,184px);left:-3%;top:30%}      /* côté slide 1 */
+.hero-bridge .premibel-stat-instagram{width:clamp(180px,15vw,232px);left:-12%;top:16%}      /* gros, à cheval bord gauche (slide 1) */
 .hero-bridge .premibel-stat-instagram .premibel-stat-txt{color:#3a1f4d}
-.hero-bridge .premibel-stat-orders{width:clamp(122px,10vw,154px);left:46%;top:4%}          /* vers la frontière */
+.hero-bridge .premibel-stat-orders{width:clamp(160px,13vw,200px);left:54%;top:6%}           /* gros, haut-droite (slide 1) */
 .hero-bridge .premibel-stat-orders .premibel-stat-txt{color:#2a2336}
-.hero-bridge .premibel-stat-google{width:clamp(136px,11vw,176px);left:13%;top:55%}         /* côté slide 1, bas */
+.hero-bridge .premibel-stat-google{width:clamp(176px,14.5vw,224px);left:18%;top:50%}        /* gros, sur la cheminée (slide 1) */
 .hero-bridge .premibel-stat-google .premibel-stat-txt{color:#fff}
+.hero-bridge .premibel-stat-txt{font-size:13px}
+.hero-bridge .premibel-stat-txt strong{font-size:clamp(26px,2.4vw,34px)}
 
 /* ---------------- SLIDE 2 · PROBLÉMATIQUES + ARSENAL — écran complet, zéro overflow vertical ----------------
    Tout est dans une "stage" de hauteur = viewport - header - barre de progression.
@@ -76,10 +85,10 @@ body.sp-page{background:#2d2a32}
   border-radius:0 32px 32px 0;overflow:hidden;z-index:2;box-shadow:0 40px 90px -46px rgba(0,0,0,.7)}
 .project-slide-problems .problem-left-visual img{width:100%;height:100%;object-fit:cover;object-position:center;display:block}
 
-/* texture béton grise, coupée au bord droit (arrière-plan) — remplit la hauteur de la stage */
-.project-slide-problems .problem-right-visual{position:absolute;right:-70px;top:0;
-  width:min(290px,21vw);height:100%;
-  border-radius:32px 0 0 32px;overflow:hidden;z-index:1}
+/* petit panneau béton dans le coin HAUT-DROITE, partiel (comme la maquette) — pas une grosse bande */
+.project-slide-problems .problem-right-visual{position:absolute;right:-36px;top:0;
+  width:min(230px,16vw);height:min(300px,40vh);
+  border-radius:26px;overflow:hidden;z-index:1}
 .project-slide-problems .problem-right-visual img{width:100%;height:100%;object-fit:cover;object-position:center;display:block}
 
 /* stickers (scopés slide 2) */
@@ -88,14 +97,16 @@ body.sp-page{background:#2d2a32}
 .project-slide-problems .sp-sticker img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain}
 .project-slide-problems .sp-sticker-txt{position:relative;z-index:2;font-family:var(--font-display);font-weight:600;font-size:11px;line-height:1.15}
 .project-slide-problems .sp-sticker-txt strong{display:block;font-weight:900;font-size:clamp(20px,2vw,28px);line-height:1;margin-bottom:2px}
-.project-slide-problems .problem-sticker-orders{top:40px;right:54px;width:clamp(132px,11vw,172px)}
+/* 2× posé sur l'image salon (gauche, fournie par le pont) */
+.project-slide-problems .problem-sticker-orders{left:9%;top:9%;right:auto;width:clamp(128px,10.5vw,164px)}
 .project-slide-problems .problem-sticker-orders .sp-sticker-txt{color:#2a2336}
-.project-slide-problems .problem-sticker-google{left:-118px;bottom:54px;width:clamp(170px,14vw,210px);z-index:7}
+/* 1er partiel, coupé à l'extrême gauche */
+.project-slide-problems .problem-sticker-google{left:-118px;top:42%;bottom:auto;width:clamp(168px,14vw,206px);z-index:7}
 .project-slide-problems .problem-sticker-google .sp-sticker-txt{color:#fff}
 
 /* bloc texte centre/droite — centré verticalement dans la stage, calibré pour tenir */
 .project-slide-problems .problem-content{position:absolute;top:50%;transform:translateY(-50%);
-  left:clamp(470px,37vw,600px);width:min(720px,46vw);z-index:4}
+  left:clamp(360px,30vw,500px);width:min(620px,40vw);z-index:4}
 .project-slide-problems .problem-kicker{display:block;margin-bottom:8px;font-family:var(--font-display);
   font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#cdb5ff;font-weight:800}
 .project-slide-problems .problem-content h2{margin:0 0 16px;font-family:var(--font-display);
@@ -107,30 +118,45 @@ body.sp-page{background:#2d2a32}
 .project-slide-problems .problem-list li::before{content:"";position:absolute;left:0;top:7px;width:7px;height:7px;border-radius:50%;background:var(--grad)}
 .project-slide-problems .problem-list b{color:#fff;font-weight:700}
 
-/* ---------------- SLIDE 3 · DOUBLE LAPTOP (bande) ---------------- */
-.sp-band{width:100%;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:18px}
-.sp-band--single{grid-template-columns:1fr}
-.sp-card{margin:0;height:min(560px,64vh);border-radius:22px;overflow:hidden;background:#15131a;
-  box-shadow:0 34px 78px -42px rgba(0,0,0,.7)}
-.sp-card--wide{height:min(620px,70vh)}
-.sp-card img,.sp-card video{display:block;width:100%;height:100%;object-fit:cover}
-.sp-card figcaption{display:none}
+/* ---------------- SLIDES 3-4-5 · PAIRES MÉDIA CONTENUES (visibles, sans débordement ni bloc noir) ----------------
+   Grille 2 colonnes centrée, hauteur = viewport - header - barre. Laptops entiers (contain),
+   vidéos & panneau rouge plein cadre (cover center). Aucune image coupée n'importe comment. */
+/* ===== SLIDES 2-3 · LAPTOPS « PONT » — les laptops débordent de la slide 2 (droite) vers la slide 3 ===== */
+.project-slide-laptops{padding-top:0;background:transparent}
+.laptops-bridge{position:absolute;top:var(--project-header-height);left:180vw;width:116vw;
+  height:calc(100vh - var(--project-header-height) - var(--project-progress-height));z-index:1;
+  display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:stretch;padding:0 16px;box-sizing:border-box}
+/* cadres PLEINE HAUTEUR (même taille que le salon slide 1) ; laptop entier (contain) avec fond autour */
+.project-laptop-card{margin:0;width:100%;display:flex;flex-direction:column;min-height:0}
+.project-laptop-media{width:100%;flex:1;min-height:0;border-radius:26px;overflow:hidden;background:#26252c}
+.project-laptop-media img{width:100%;height:100%;display:block;object-fit:cover;object-position:center}
+.project-laptop-card figcaption{flex:0 0 auto;margin-top:12px;text-align:center;font-size:13px;color:rgba(255,255,255,.72)}
 
-/* ---------------- SLIDES 4-5 · COLLAGES (vidéo + panneau) — dans la stage, alternés ---------------- */
-.project-slide-brochure-social,.project-slide-social-storefront{padding-top:var(--project-header-height)}
-.project-slide-brochure-social .project-slide-stage,
-.project-slide-social-storefront .project-slide-stage{
-  width:min(1340px,calc(100vw - 80px));margin:0 auto;
-  height:calc(100vh - var(--project-header-height) - var(--project-progress-height));
-  display:grid;gap:20px;align-items:center}
-.project-slide-brochure-social .project-slide-stage{grid-template-columns:1.5fr 1fr}   /* brochure large à gauche */
-.project-slide-social-storefront .project-slide-stage{grid-template-columns:1fr 1.5fr} /* vitrine large à droite */
-.collage-card{margin:0;height:min(100%,580px);border-radius:24px;overflow:hidden;background:#15131a;
-  box-shadow:0 34px 78px -42px rgba(0,0,0,.7)}
-.collage-card img,.collage-card video{display:block;width:100%;height:100%;object-fit:cover;object-position:center}
+/* ===== SLIDES 4-5 · une vidéo par slide (pleine hauteur) + PONT ROUGE partagé (pas de doublon) ===== */
+.project-slide-brochure-social,.project-slide-social-storefront{padding-top:0;background:transparent}
+.project-media-frame{position:relative;margin:0;border-radius:26px;overflow:hidden;background:#15131a;box-shadow:0 34px 78px -42px rgba(0,0,0,.7)}
+.project-media-frame img,.project-media-frame video{width:100%;height:100%;display:block;object-fit:cover;object-position:center}
+/* vidéos positionnées, pleine hauteur (même taille que les slides 2-3) */
+.social-video{position:absolute;top:var(--project-header-height);z-index:2;
+  height:calc(100vh - var(--project-header-height) - var(--project-progress-height))}
+.social-video--brochure{left:16px;width:calc(70vw - 44px)}      /* slide 4 : vidéo brochure (gauche) + ~28px d'écart avant le rouge */
+.social-video--storefront{right:16px;width:calc(44vw - 44px)}   /* slide 5 : vidéo vitrine (droite) + ~28px d'écart après le rouge */
+/* pont rouge : un bout sur la slide 4 (droite) → s'étend sur la slide 5 (gauche) */
+.social-bridge{position:absolute;top:var(--project-header-height);left:370vw;width:86vw;
+  height:calc(100vh - var(--project-header-height) - var(--project-progress-height));z-index:1;
+  border-radius:26px;overflow:hidden;background:#7d1518}
+.social-bridge img{width:100%;height:100%;object-fit:cover;object-position:center;display:block}
+/* pont vitrine/rue : un bout sur la slide 5 (droite) → s'étend sur la slide 6 (gauche = photo rue de la conclusion) */
+.storefront-bridge{position:absolute;top:var(--project-header-height);left:460vw;width:85vw;
+  height:calc(100vh - var(--project-header-height) - var(--project-progress-height));z-index:1;
+  border-radius:26px;overflow:hidden;background:#15131a;box-shadow:0 34px 78px -42px rgba(0,0,0,.7)}
+.storefront-bridge video{width:100%;height:100%;object-fit:cover;object-position:center;display:block}
 
-/* ---------------- SLIDE 6 · CONCLUSION + NEXT ---------------- */
-.sp-close-grid{grid-template-columns:1.2fr .8fr;gap:50px;align-items:center}
+/* ---------------- SLIDE 6 · CONCLUSION + NEXT — décalée à droite (la vidéo rue déborde à gauche depuis la slide 5) ---------------- */
+.project-slide-closing{padding-top:0;background:transparent}
+.project-slide-closing .project-slide-inner{position:absolute;right:24px;top:var(--project-header-height);
+  width:min(880px,54vw);height:calc(100vh - var(--project-header-height) - var(--project-progress-height));margin:0;z-index:2}
+.sp-close-grid{grid-template-columns:1.15fr .85fr;gap:38px;align-items:center}
 .sp-close-title{font-size:clamp(44px,5vw,76px);margin-top:10px}
 .sp-next-card{display:block;text-decoration:none;max-width:360px;margin-left:auto;width:100%;
   background:linear-gradient(160deg,#36343f,#26252f);border-radius:24px;padding:20px;
@@ -153,13 +179,12 @@ body.sp-page{background:#2d2a32}
 /* ---------------- FALLBACK MOBILE : sous 900px, on désactive l'horizontal
    (inutilisable au doigt) et on empile verticalement ---------------- */
 @media (max-width:900px){
-  .project-horizontal-section{overflow:visible}
-  .project-horizontal-track{transform:none !important;display:block;width:100%}
+  .project-horizontal-section{overflow:visible;height:auto}
+  .project-horizontal-track{transform:none !important;display:block;width:100%;height:auto}
   .project-slide{width:100%;min-height:0;padding:84px 22px 44px}
   .project-slide-inner{width:100%;height:auto}
   .sp-progress{display:none}
   .sp-close-grid{grid-template-columns:1fr;gap:34px}
-  .sp-band{grid-template-columns:1fr;gap:16px}
   /* slide 2 : on dé-absolutise (stage statique) et on empile image / texte */
   .project-slide-problems{padding:84px 22px 44px}
   .project-slide-problems .project-slide-stage{position:static;height:auto}
@@ -168,13 +193,18 @@ body.sp-page{background:#2d2a32}
   .project-slide-problems .problem-content{position:static;left:auto;top:auto;transform:none;width:100%;margin-top:26px}
   .project-slide-problems .problem-sticker-google{left:0;bottom:auto;top:8px;width:130px}
   .project-slide-problems .problem-sticker-orders{right:8px;top:8px;width:128px}
-  .sp-card,.sp-card--wide{height:auto;min-height:230px}
-  .sp-card img,.sp-card video{height:auto}
-  /* collages 4-5 : empilés */
-  .project-slide-brochure-social .project-slide-stage,
-  .project-slide-social-storefront .project-slide-stage{grid-template-columns:1fr;height:auto;width:100%;gap:16px}
-  .collage-card{height:auto;min-height:220px}
-  .collage-card img,.collage-card video{height:auto}
+  /* laptops « pont » : redevient un bloc statique empilé (slide 3) */
+  .laptops-bridge{position:static;left:auto;top:auto;width:calc(100% - 36px);height:auto;margin:90px auto 0;
+    grid-template-columns:1fr;gap:22px;padding:0}
+  .project-laptop-media{height:auto}
+  .project-laptop-media img{height:auto}
+  /* slides 4-5 : vidéos + pont rouge empilés en blocs statiques */
+  .social-video{position:static;width:100%!important;height:230px;margin:0 auto 16px}
+  .social-bridge{position:static;left:auto;top:auto;width:calc(100% - 36px);height:230px;margin:16px auto 0}
+  .storefront-bridge{position:static;left:auto;top:auto;width:calc(100% - 36px);height:230px;margin:16px auto 0}
+  .project-media-frame video{height:100%}
+  /* conclusion : repasse en flux normal */
+  .project-slide-closing .project-slide-inner{position:static;right:auto;top:auto;width:100%;height:auto}
   .sp-next-card{margin:0 auto}
   /* slide 1 hero : texte empilé ; l'image PONT devient un bloc image en haut du track */
   .project-slide-hero{padding:12px 22px 44px}

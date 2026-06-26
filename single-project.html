@@ -69,6 +69,33 @@
         </div>
       </div>
 
+      <!-- LAPTOPS « PONT » : les laptops s'étendent de la slide 2 (droite) à la slide 3.
+           Enfant du track → défile avec lui. Slides 2-3 transparentes. -->
+      <div class="laptops-bridge" aria-hidden="true">
+        <figure class="project-laptop-card">
+          <div class="project-laptop-media"><img src="../LNDW%20SITE/image/assets/sections/single-project/premibel/images/premibel-laptop-foire-paris.png" alt="Laptop Foire de Paris"></div>
+          <figcaption>La Foire de Paris — page événementielle</figcaption>
+        </figure>
+        <figure class="project-laptop-card">
+          <div class="project-laptop-media"><img src="../LNDW%20SITE/image/assets/sections/single-project/premibel/images/premibel-laptop-website.png" alt="Catalogue Premibel"></div>
+          <figcaption>Un catalogue qui performe</figcaption>
+        </figure>
+      </div>
+
+      <!-- PANNEAU ROUGE « PONT » : une seule image social qui s'étend de la slide 4 (droite) à la slide 5
+           (gauche). Évite le doublon. Enfant du track, slides 4-5 transparentes. -->
+      <div class="social-bridge" aria-hidden="true">
+        <img src="../LNDW%20SITE/image/assets/sections/mission/premibel/premibel-social-media.png" alt="Premibel — social media & ads">
+      </div>
+
+      <!-- VITRINE/RUE « PONT » : la vidéo s'étend de la slide 5 (droite) à la slide 6 (gauche, = la photo rue de la conclusion) -->
+      <div class="storefront-bridge" aria-hidden="true">
+        <video autoplay muted loop playsinline preload="metadata">
+          <source src="../LNDW%20SITE/image/assets/sections/single-project/premibel/videos/premibel-case-video.mp4" type="video/mp4">
+          <source src="assets/sections/single-project/premibel/videos/premibel-case-video.mp4" type="video/mp4">
+        </video>
+      </div>
+
       <!-- ════════ SLIDE 1 — HERO : texte à gauche (l'image salon vient du PONT, à droite) ════════ -->
       <section class="project-slide project-slide-hero" data-slide="1">
         <div class="project-slide-stage hero-stage">
@@ -84,7 +111,7 @@
       <!-- ════════ SLIDE 2 — PROBLÉMATIQUES + ARSENAL ════════ -->
       <section class="project-slide project-slide-problems" data-slide="2">
         <div class="project-slide-stage">
-          <!-- l'image salon (gauche) + stickers proviennent du PONT de la slide 1 -->
+          <!-- l'image salon (gauche) provient du PONT de la slide 1 -->
           <div class="problem-content">
             <span class="problem-kicker">Contexte</span>
             <h2>PROBLÉMATIQUES</h2>
@@ -99,45 +126,24 @@
               <li><b>Reporting dynamique</b> — tracking avancé des conversions.</li>
             </ul>
           </div>
-          <div class="problem-right-visual">
-            <img src="../LNDW%20SITE/image/assets/sections/single-project/premibel/images/premibel-texture-concrete.png" alt="">
-          </div>
         </div>
       </section>
 
-      <!-- ════════ SLIDE 3 — DOUBLE VISUEL LAPTOP ════════ -->
-      <section class="project-slide project-slide-laptops" data-slide="3">
-        <div class="project-slide-inner">
-          <div class="sp-band">
-            <figure class="sp-card"><img src="../LNDW%20SITE/image/assets/sections/single-project/premibel/images/premibel-laptop-foire-paris.png" alt="Premibel — campagne Foire de Paris"></figure>
-            <figure class="sp-card"><img src="../LNDW%20SITE/image/assets/sections/single-project/premibel/images/premibel-laptop-website.png" alt="Premibel — site & catalogue"></figure>
-          </div>
-        </div>
-      </section>
+      <!-- ════════ SLIDE 3 — DOUBLE LAPTOP (les laptops viennent du PONT, qui déborde depuis la slide 2) ════════ -->
+      <section class="project-slide project-slide-laptops" data-slide="3"></section>
 
-      <!-- ════════ SLIDE 4 — BROCHURE (vidéo) + SOCIAL MEDIA ════════ -->
+      <!-- ════════ SLIDE 4 — BROCHURE (vidéo) + un bout du PONT ROUGE (qui appartient à la slide 5) ════════ -->
       <section class="project-slide project-slide-brochure-social" data-slide="4">
-        <div class="project-slide-stage">
-          <figure class="collage-card">
-            <video autoplay muted loop playsinline preload="metadata">
-              <source src="../LNDW%20SITE/image/assets/sections/single-project/premibel/videos/premibel-social-video.mp4" type="video/mp4">
-            </video>
-          </figure>
-          <figure class="collage-card"><img src="../LNDW%20SITE/image/assets/sections/mission/premibel/premibel-social-media.png" alt="Premibel — social media & ads"></figure>
-        </div>
+        <figure class="project-media-frame social-video social-video--brochure">
+          <video autoplay muted loop playsinline preload="metadata">
+            <source src="../LNDW%20SITE/image/assets/sections/single-project/premibel/videos/premibel-social-video.mp4" type="video/mp4">
+            <source src="assets/sections/single-project/premibel/videos/premibel-social-video.mp4" type="video/mp4">
+          </video>
+        </figure>
       </section>
 
-      <!-- ════════ SLIDE 5 — SOCIAL MEDIA + VITRINE / RUE (vidéo) ════════ -->
-      <section class="project-slide project-slide-social-storefront" data-slide="5">
-        <div class="project-slide-stage">
-          <figure class="collage-card"><img src="../LNDW%20SITE/image/assets/sections/mission/premibel/premibel-social-media.png" alt="Premibel — présence sociale"></figure>
-          <figure class="collage-card">
-            <video autoplay muted loop playsinline preload="metadata">
-              <source src="../LNDW%20SITE/image/assets/sections/single-project/premibel/videos/premibel-case-video.mp4" type="video/mp4">
-            </video>
-          </figure>
-        </div>
-      </section>
+      <!-- ════════ SLIDE 5 — PONT ROUGE (depuis slide 4) + PONT VITRINE (vers slide 6) : visuels depuis les ponts ════════ -->
+      <section class="project-slide project-slide-social-storefront" data-slide="5"></section>
 
       <!-- ════════ SLIDE 6 — CONCLUSION + MAISON QUIVERNAY ════════ -->
       <section class="project-slide project-slide-closing" data-slide="6">
@@ -157,14 +163,7 @@
         </div>
       </section>
 
-      <!-- ════════ SLIDE 7 — CTA FINAL (rien après, pas de footer) ════════ -->
-      <section class="project-slide project-slide-final-cta" data-slide="7">
-        <div class="project-slide-inner">
-          <div class="sp-cta">
-            <a class="btn-mission btn-mission--big" href="contact.html"><span class="rk"><img src="assets/icons/icon-rocket-line.svg" alt=""></span><span>Lancer ma mission ?</span></a>
-          </div>
-        </div>
-      </section>
+      <!-- (CTA "LANCER MA MISSION ?" retiré : il faisait partie du footer de base, non voulu ici) -->
 
     </div>
   </section>
@@ -174,9 +173,7 @@
 <!-- barre de progression du scroll horizontal -->
 <div class="sp-progress" aria-hidden="true"><span id="spProgressFill"></span></div>
 
-<!-- GSAP + ScrollTrigger (locaux) pour piloter le scroll horizontal -->
-<script src="js/vendor/gsap.min.js"></script>
-<script src="js/vendor/ScrollTrigger.min.js"></script>
+<!-- Défilement horizontal natif (pas de librairie) -->
 <script src="js/single-project.js"></script>
 </body>
 </html>
