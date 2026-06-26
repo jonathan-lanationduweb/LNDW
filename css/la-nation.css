@@ -529,8 +529,8 @@ html.flat .ln-missions-sticky{ min-height:0; padding:90px 0; }
 }
 .ln-cta-card p b{ color:#1d1a2e; font-weight:800; }
 .btn-mission--big{
-  font-size:clamp(18px,2vw,28px) !important;
-  padding:22px 46px 22px 34px !important;
+  font-size:clamp(16px,1.4vw,22px) !important;
+  padding:15px 38px 15px 28px !important;
 }
 
 /* ======================== RESPONSIVE ======================== */

@@ -184,30 +184,30 @@ section{position:relative}
 .vision-path{position:absolute;right:-6%;top:-4%;width:70%;opacity:0;pointer-events:none}
 
 /* ============================ FOOTER ============================ */
-.footer{padding:96px 0 0;overflow:hidden}
-.footer-top{display:grid;grid-template-columns:1.1fr 1fr;gap:50px;align-items:start;
-  padding-bottom:70px}
-.footer-logo img{width:min(560px,46vw);max-width:100%}
+.footer{padding:64px 0 0;overflow:hidden}
+.footer-top{display:grid;grid-template-columns:1.1fr 1fr;gap:40px;align-items:start;
+  padding-bottom:44px}
+.footer-logo img{width:min(300px,30vw);max-width:100%}
 .footer-base{font-family:var(--font-display);font-style:italic;font-weight:600;
-  text-transform:none;font-size:clamp(18px,1.7vw,26px);color:var(--cream);
+  text-transform:none;font-size:clamp(15px,1.4vw,20px);color:var(--cream);
   margin-top:6px;margin-left:6px}
-.footer-cols{display:grid;grid-template-columns:repeat(5,1fr);gap:20px}
+.footer-cols{display:grid;grid-template-columns:repeat(5,1fr);gap:18px}
 .footer-col h4{font-family:var(--font-display);font-weight:800;font-style:italic;
-  font-size:16px;margin-bottom:14px;color:#fff}
+  font-size:15px;margin-bottom:11px;color:#fff}
 .footer-col a{display:block;color:var(--muted-2);font-style:italic;font-weight:500;
-  font-size:15px;padding:5px 0;transition:color .3s var(--ease),transform .3s var(--ease)}
+  font-size:14px;padding:4px 0;transition:color .3s var(--ease),transform .3s var(--ease)}
 .footer-col a:hover{color:var(--cream);transform:translateX(4px)}
 /* Wrapper qui contient les icônes sociales + la barre, pour permettre le chevauchement */
 .footer-bar-section{position:relative}
 .footer-socials{
-  display:flex;gap:12px;align-items:center;
-  padding-left:44px;
+  display:flex;gap:10px;align-items:center;
+  padding-left:40px;
   position:relative;z-index:5;
-  margin-bottom:-22px; /* chevauche la barre de la moitié de la hauteur des icônes */
+  margin-bottom:-16px; /* chevauche légèrement la barre */
 }
 .footer-bar{
   position:relative;background:var(--grad);background-size:180% 100%;
-  border-radius:34px 34px 0 0;padding:26px 44px;display:flex;align-items:center;
+  border-radius:28px 28px 0 0;padding:16px 40px;display:flex;align-items:center;
   justify-content:flex-end;gap:20px;animation:bar-drift 14s var(--ease-soft) infinite;
 }
 .soc{
@@ -228,9 +228,10 @@ section{position:relative}
 .fsoc{
   display:block;width:44px;height:44px;flex-shrink:0;
   background-repeat:no-repeat;
+  transform:scale(.8);transform-origin:center bottom; /* icônes plus petites, sprite intact */
   transition:transform .35s var(--ease),opacity .35s;
 }
-.fsoc:hover{transform:translateY(-4px) scale(1.09);opacity:.85}
+.fsoc:hover{transform:translateY(-4px) scale(.88);opacity:.85}
 /* LinkedIn  bbox(630,268)→(756,393) 126×125 → 40px */
 .fsoc--li{
   background-image:url('../assets/icons/socials/icon-linkedin.svg');

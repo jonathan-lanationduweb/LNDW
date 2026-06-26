@@ -4,11 +4,20 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Missions Clients | La Nation du Web</title>
-<meta name="description" content="Découvrez les missions clients réalisées par La Nation du Web — Premibel Parquet, Maison Quivernay, Ashoka et plus.">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide-core.min.css" crossorigin="anonymous">
+<meta name="description" content="Découvrez les missions clients réalisées par La Nation du Web — Premibel Parquet, Maison Quivernay, Ashoka, Annuaire Français.">
 <link rel="stylesheet" href="css/base.css">
 <link rel="stylesheet" href="css/sections.css">
 <link rel="stylesheet" href="css/pages.css">
+<link rel="stylesheet" href="css/missions-clients.css">
+<script>
+/* Filet de secours images : si servi depuis lndw-code (5501), ../LNDW SITE/... renvoie 404
+   → bascule sur le miroir local assets/... (mêmes chemins). */
+(function(){
+  function swap(el,attr){ if(el.dataset.fb) return; var s=el.getAttribute(attr)||'';
+    var m=s.match(/LNDW(?:%20| )SITE\/image\/assets\/(.*)$/); if(m){el.dataset.fb='1';el.setAttribute(attr,'assets/'+m[1]);} }
+  document.addEventListener('error',function(e){var t=e.target;if(t&&t.tagName==='IMG')swap(t,'src');},true);
+})();
+</script>
 </head>
 <body class="subpage mc-page">
 
@@ -36,100 +45,44 @@
   </div>
 </header>
 
-<main>
+<main class="missions-page">
 
-<!-- ============================ HERO ============================ -->
-<section class="mc-hero">
+  <!-- ============================ SHOWCASE PROJETS (1 écran — molette + clic) ============================ -->
+  <section class="missions-showcase" id="mcShowcase">
 
-  <!-- fond plein écran -->
-  <div class="mc-hero-bg" aria-hidden="true">
-    <img src="assets/photos/missions/premibel-hero-bg.png"
-         alt="Intérieur parquet Premibel — cheminée et parquet clair">
-  </div>
+    <!-- fond dynamique (couches une par projet, fondu doux ; rempli par le JS) -->
+    <div class="missions-bg" id="missionBg" aria-hidden="true"></div>
+    <!-- overlay sombre : géré par .missions-showcase::after (CSS) -->
 
-  <!-- contenu hero -->
-  <div class="mc-hero-inner">
-    <div class="mc-layout">
+    <!-- contenu au-dessus du fond -->
+    <div class="missions-content">
 
-      <!-- ── GAUCHE : texte projet ── -->
-      <div class="mc-left">
-        <h1 class="mc-title">PREMIBEL<br>PARQUET</h1>
-
-        <p class="mc-desc">Passer de simple site vitrine à leader du secteur sur Google. On a combiné technique web et stratégie publicitaire pour que Premibel devienne le premier réflexe de quiconque cherche du parquet.</p>
-
-        <a class="btn-pill" href="single-project.html">VOIR LA MISSION</a>
-
-        <div class="chip-row mc-tags">
-          <span class="chip">WEB</span>
-          <span class="chip">SEO</span>
-          <span class="chip">SOCIAL MEDIA</span>
-          <span class="chip">MARKETING DIGITAL</span>
-          <span class="chip">ADS</span>
-        </div>
+      <!-- ── GAUCHE : contenu du projet actif ── -->
+      <div class="missions-copy">
+        <span class="mc-eyebrow">Missions Clients</span>
+        <h1 class="mc-title" id="missionTitle">PREMIBEL<br>PARQUET</h1>
+        <p class="mc-desc" id="missionDescription"></p>
+        <a class="btn-pill mission-button" id="missionButton" href="single-project.html?project=premibel-parquet">VOIR LA MISSION</a>
+        <div class="chip-row mc-tags" id="missionTags"></div>
       </div>
 
-      <!-- ── DROITE : carrousel + barre progression ── -->
-      <div class="mc-right">
-        <div class="splide mc-carousel" id="mcSplide" aria-label="Projets clients">
-          <div class="splide__track">
-            <ul class="splide__list">
+      <!-- ── DROITE : cartes projets (remplies par le JS, molette + clic) ── -->
+      <div class="missions-cards" id="missionCards"></div>
 
-              <li class="splide__slide">
-                <a class="mc-card" href="single-project.html">
-                  <img src="assets/photos/missions/mission-fashion.jpg"
-                       alt="Maison Quivernay">
-                  <span class="mc-cap">MAISON QUIVERNAY</span>
-                </a>
-              </li>
+    </div>
 
-              <li class="splide__slide">
-                <a class="mc-card" href="single-project.html">
-                  <img src="assets/photos/missions/mission-maison-quivernay.jpg"
-                       alt="Ashoka">
-                  <span class="mc-cap">ASHOKA</span>
-                </a>
-              </li>
+    <!-- barre de progression -->
+    <div class="missions-progress" aria-hidden="true"><span id="mcProgress"></span></div>
 
-              <li class="splide__slide">
-                <a class="mc-card" href="single-project.html">
-                  <img src="assets/photos/missions/mission-business-01.jpg"
-                       alt="Annuaire France Gratuit">
-                  <span class="mc-cap">ANNUAIRE FRANCE GRATUIT</span>
-                </a>
-              </li>
+  </section>
 
-              <li class="splide__slide">
-                <a class="mc-card" href="single-project.html">
-                  <img src="assets/photos/missions/mission-interior-01.jpg"
-                       alt="Over Parquet">
-                  <span class="mc-cap">OVER PARQUET</span>
-                </a>
-              </li>
-
-            </ul>
-          </div>
-        </div>
-
-        <!-- barre de progression -->
-        <div class="mc-progress-wrap">
-          <div class="mc-progress">
-            <div class="mc-progress-fill" id="mcProgress"></div>
-          </div>
-        </div>
-      </div>
-
-    </div><!-- /.mc-layout -->
-  </div><!-- /.mc-hero-inner -->
-
-</section>
-
-<!-- ============================ CTA FINAL ============================ -->
-<section class="cta-final-band">
-  <a class="btn-mission" href="contact.html">
-    <span class="rk"><img src="assets/icons/icon-rocket-line.svg" alt=""></span>
-    <span>LANCER MA MISSION ?</span>
-  </a>
-</section>
+  <!-- ============================ CTA FINAL ============================ -->
+  <section class="cta-final-band">
+    <a class="btn-mission btn-mission--big" href="contact.html">
+      <span class="rk"><img src="assets/icons/icon-rocket-line.svg" alt=""></span>
+      <span>LANCER MA MISSION ?</span>
+    </a>
+  </section>
 
 </main>
 
@@ -137,43 +90,19 @@
 <footer class="footer">
   <div class="wrap">
     <div class="footer-top">
-
       <div class="footer-brand">
-        <div class="footer-logo">
-          <img src="assets/logos/lndw-logo-white.svg" alt="LNDW — La Nation du Web">
-        </div>
+        <div class="footer-logo"><img src="assets/logos/lndw-logo-white.svg" alt="LNDW — La Nation du Web"></div>
         <p class="footer-base">propulseur de stratégies.</p>
       </div>
-
       <div class="footer-cols">
-        <div class="footer-col">
-          <h4>Vision</h4>
-          <a href="index.html#vision">Notre vision</a>
-          <a href="missions-clients.html">Missions clients</a>
-        </div>
-        <div class="footer-col">
-          <h4>Expertises</h4>
-          <a href="arsenal.html">Notre arsenal</a>
-          <a href="backlinks.html">Backlinks</a>
-        </div>
-        <div class="footer-col">
-          <h4>Mentions Légales</h4>
-          <a href="mentions-legales.html">Mentions légales</a>
-        </div>
-        <div class="footer-col">
-          <h4>FAQ</h4>
-          <a href="la-nation.html#faq">Questions fréquentes</a>
-        </div>
-        <div class="footer-col">
-          <h4>CGU</h4>
-          <a href="cgu.html">Conditions d'utilisation</a>
-          <a href="cgv.html">CGV</a>
-        </div>
+        <div class="footer-col"><h4>Vision</h4><a href="index.html#vision">Notre vision</a><a href="missions-clients.html">Missions clients</a></div>
+        <div class="footer-col"><h4>Expertises</h4><a href="arsenal.html">Notre arsenal</a><a href="backlinks.html">Backlinks</a></div>
+        <div class="footer-col"><h4>Mentions Légales</h4><a href="mentions-legales.html">Mentions légales</a></div>
+        <div class="footer-col"><h4>FAQ</h4><a href="la-nation.html#faq">Questions fréquentes</a></div>
+        <div class="footer-col"><h4>CGU</h4><a href="cgu.html">Conditions d'utilisation</a><a href="cgv.html">CGV</a></div>
       </div>
-
     </div>
   </div>
-
   <div class="wrap footer-bar-section">
     <div class="footer-socials">
       <a class="fsoc fsoc--li" href="#" aria-label="LinkedIn"></a>
@@ -181,14 +110,11 @@
       <a class="fsoc fsoc--ig" href="#" aria-label="Instagram"></a>
       <a class="fsoc fsoc--fb" href="#" aria-label="Facebook"></a>
     </div>
-    <div class="footer-bar">
-      <div class="footer-copy">© 2026 La Nation du Web. Tous droits réservés.</div>
-    </div>
+    <div class="footer-bar"><div class="footer-copy">© 2026 La Nation du Web. Tous droits réservés.</div></div>
   </div>
 </footer>
 
 <!-- ============================ SCRIPTS ============================ -->
-<script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js" crossorigin="anonymous"></script>
-<script src="js/missions-clients.js" defer></script>
+<script src="js/missions-clients.js"></script>
 </body>
 </html>
