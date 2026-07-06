@@ -108,10 +108,8 @@
 .ln-line-la{     animation:ln-rise .8s cubic-bezier(.2,.7,.2,1) .35s both; }
 .ln-line-nation{ animation:ln-rise .8s cubic-bezier(.2,.7,.2,1) .55s both; }
 .ln-hero-text{   animation:ln-rise .9s cubic-bezier(.2,.7,.2,1) .82s both; }
-/* Accessibilité : pas de mouvement si l'utilisateur le refuse → état final directement */
-@media (prefers-reduced-motion:reduce){
-  .ln-shuriken,.ln-line-la,.ln-line-nation,.ln-hero-text{ animation:none; }
-}
+/* NB : animation d'entrée voulue même si l'OS a "réduire les animations" activé
+   (Windows le fait souvent) → on ne la désactive pas sous prefers-reduced-motion. */
 
 /* Logo (version serrée locale — affichage direct, sans recadrage) */
 .brand-base{ display:none; }
