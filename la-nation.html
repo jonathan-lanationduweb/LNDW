@@ -11,25 +11,7 @@
 <link rel="stylesheet" href="css/base.css?v=7">
 <link rel="stylesheet" href="css/sections.css?v=7">
 <link rel="stylesheet" href="css/pages.css?v=7">
-<link rel="stylesheet" href="css/la-nation.css?v=7">
-<script>
-/* Filet de secours images : si le serveur est lancé depuis lndw-code (au lieu du
-   dossier parent), les chemins ../LNDW SITE/... renvoient 404. On bascule alors
-   automatiquement sur le miroir local assets/... pour ne JAMAIS avoir d'image cassée.
-   Servi depuis le parent : les ../LNDW%20SITE/... chargent et ce filet ne sert pas. */
-(function(){
-  function swap(img){
-    if(img.dataset.fb) return;
-    var s = img.getAttribute('src') || '';
-    var m = s.match(/LNDW(?:%20| )SITE\/image\/assets\/(.*)$/);
-    if(m){ img.dataset.fb='1'; img.src = 'assets/' + m[1]; }
-  }
-  document.addEventListener('error', function(e){
-    var t = e.target;
-    if(t && t.tagName === 'IMG') swap(t);
-  }, true);
-})();
-</script>
+<link rel="stylesheet" href="css/la-nation.css?v=27">
 </head>
 <body class="subpage">
 
@@ -61,14 +43,15 @@
 <!-- ======================== S1 — HERO ======================== -->
 <section class="ln-hero" id="lnHero">
   <div class="wrap ln-hero-inner">
-    <h1 class="ln-title">LA<br>NATION</h1>
+    <h1 class="ln-title"><span class="ln-line ln-line-la">LA</span><br><span class="ln-line ln-line-nation">NATION</span></h1>
     <div class="ln-hero-text">
       <p>"Le digital est un univers qui s'étend sans fin, et il est facile de s'y perdre entre des outils déconnectés. La Nation du Web est née pour être votre point de ralliement."</p>
     </div>
   </div>
-  <!-- Shuriken -->
+  <!-- Shuriken : asset officiel violet, version recadrée (viewBox) pour un centrage
+       propre + rotation nette. Simple <img> → l'animation fonctionne comme avant. -->
   <img class="ln-shuriken" id="lnShuriken"
-       src="../LNDW%20SITE/image/assets/decorations/sticker-shuriken-purple.svg"
+       src="assets/sections/nation/hero/nation-hero-shuriken-fit.svg"
        alt="" aria-hidden="true">
 </section>
 
@@ -77,33 +60,27 @@
   <div class="wrap">
     <div class="ln-tl-stage">
 
-      <!-- Tracé pointillé violet → blanc (décoratif, statique) + nœuds -->
-      <svg class="ln-tl-wave" viewBox="0 0 1280 600" preserveAspectRatio="none" aria-hidden="true">
-        <defs>
-          <linearGradient id="tlGrad" x1="0" y1="0" x2="1" y2="0">
-            <stop offset="0" stop-color="#8a35e6"/>
-            <stop offset="0.42" stop-color="#a86bff"/>
-            <stop offset="0.58" stop-color="#ffffff"/>
-            <stop offset="1" stop-color="#ffffff"/>
-          </linearGradient>
-        </defs>
-        <path d="M 150 250 C 340 250 400 440 560 440 S 800 250 940 300 S 1150 210 1240 250"
-          fill="none" stroke="url(#tlGrad)" stroke-width="3.5"
-          stroke-linecap="round" stroke-dasharray="1 17" vector-effect="non-scaling-stroke"/>
-        <circle cx="560" cy="440" r="8" fill="#a86bff"/>
-        <circle cx="940" cy="300" r="9" fill="#fff"/>
+      <!-- Trajectoire pointillée de la timeline : UNE seule courbe (slide 2 uniquement).
+           viewBox calé sur le stage (1340x700, preserveAspectRatio none) → coords = pixels.
+           Violet : 2016 → 2020 ; Blanc : 2020 → 2026 puis légère continuation à droite. -->
+      <svg class="ln-tl-wave" viewBox="0 0 1340 700" preserveAspectRatio="none" aria-hidden="true">
+        <path class="ln-tl-line ln-tl-line--purple" d="M 205 200 C 330 226, 360 430, 520 502"/>
+        <path class="ln-tl-line ln-tl-line--white"  d="M 520 502 C 690 548, 815 300, 955 245 C 1085 197, 1185 205, 1255 220"/>
+        <circle class="ln-tl-dot" cx="205" cy="200" r="7"/>
+        <circle class="ln-tl-dot" cx="520" cy="502" r="8"/>
+        <circle class="ln-tl-dot" cx="955" cy="245" r="8"/>
       </svg>
 
       <!-- Fusée (badge recadré) posée sur le tracé, statique -->
       <span class="ln-tl-rocket imgcrop" aria-hidden="true"
-            style="--fx:.0322;--fy:.0469;--fw:.0966;--fh:.1706;left:44%;top:60%">
-        <img src="../LNDW%20SITE/image/assets/decorations/sticker-rocket-purple.svg" alt="">
+            style="--fx:.0322;--fy:.0469;--fw:.0966;--fh:.1706;left:57%;top:42%">
+        <img src="assets/decorations/sticker-rocket-purple.svg" alt="">
       </span>
 
       <!-- 2016 — haut gauche -->
       <div class="ln-tl-block" data-year="2016">
-        <div class="ln-tl-media imgcrop" style="aspect-ratio:.632;--fx:.4305;--fy:.2969;--fw:.1508;--fh:.4245">
-          <img src="../LNDW%20SITE/image/assets/photos/missions/mission-business-01.jpg" alt="">
+        <div class="ln-tl-media imgcrop" style="aspect-ratio:.75;--fx:.4202;--fy:.3125;--fw:.1581;--fh:.375">
+          <img src="assets/sections/nation/timeline/timeline-bigbang.png" alt="">
         </div>
         <div class="ln-tl-text">
           <span class="ln-tl-year">2016 — Le Big Bang.</span>
@@ -114,7 +91,7 @@
       <!-- 2020 — centre bas -->
       <div class="ln-tl-block" data-year="2020">
         <div class="ln-tl-media imgcrop" style="aspect-ratio:.622;--fx:.4114;--fy:.2396;--fw:.1903;--fh:.5443">
-          <img src="../LNDW%20SITE/image/assets/photos/missions/mission-fashion.jpg" alt="">
+          <img src="assets/photos/missions/mission-fashion.jpg" alt="">
         </div>
         <div class="ln-tl-text">
           <span class="ln-tl-year">2020 — Le Saut Hyperespace.</span>
@@ -125,7 +102,7 @@
       <!-- 2026 — droite -->
       <div class="ln-tl-block" data-year="2026">
         <div class="ln-tl-media imgcrop" style="aspect-ratio:.6296;--fx:.41;--fy:.2422;--fw:.1918;--fh:.5417">
-          <img src="../LNDW%20SITE/image/assets/photos/missions/mission-interior-01.jpg" alt="">
+          <img src="assets/photos/missions/mission-interior-01.jpg" alt="">
         </div>
         <div class="ln-tl-text">
           <span class="ln-tl-year">2026 — Le Renouveau.</span>
@@ -146,7 +123,7 @@
 
       <!-- Diamond gradient — +300% -->
       <div class="ln-stat imgcrop" data-shape="diamond" style="aspect-ratio:.959;--fx:.3294;--fy:.1328;--fw:.3411;--fh:.6328">
-        <img src="../LNDW%20SITE/image/assets/sections/nation/stats/stat-diamond-gradient.png" alt="">
+        <img src="assets/sections/nation/stats/stat-diamond-gradient.png" alt="">
         <div class="ln-stat-txt">
           <b>+300%</b>
           <span>de croissance</span>
@@ -155,7 +132,7 @@
 
       <!-- Starburst lavender — +900h -->
       <div class="ln-stat imgcrop" data-shape="lavender" style="aspect-ratio:1;--fx:.3631;--fy:.2083;--fw:.2724;--fh:.4844">
-        <img src="../LNDW%20SITE/image/assets/sections/nation/stats/stat-starburst-lavender.png" alt="">
+        <img src="assets/sections/nation/stats/stat-starburst-lavender.png" alt="">
         <div class="ln-stat-txt magenta">
           <b>+900h</b>
           <span>d'IA intégrée</span>
@@ -164,7 +141,7 @@
 
       <!-- Starburst purple — 10 ans -->
       <div class="ln-stat imgcrop" data-shape="purple" style="aspect-ratio:1;--fx:.3279;--fy:.1771;--fw:.3441;--fh:.6120">
-        <img src="../LNDW%20SITE/image/assets/sections/nation/stats/stat-starburst-purple.png" alt="">
+        <img src="assets/sections/nation/stats/stat-starburst-purple.png" alt="">
         <div class="ln-stat-txt">
           <b>10 ans</b>
           <span>d'exploration</span>
@@ -173,7 +150,7 @@
 
       <!-- Blob white — 8 -->
       <div class="ln-stat imgcrop" data-shape="blob" style="aspect-ratio:1;--fx:.3601;--fy:.2526;--fw:.2782;--fh:.4948">
-        <img src="../LNDW%20SITE/image/assets/sections/nation/stats/stat-blob-white.png" alt="">
+        <img src="assets/sections/nation/stats/stat-blob-white.png" alt="">
         <div class="ln-stat-txt dark rot">
           <b>8</b>
           <span>pôles d'expertises</span>
@@ -214,25 +191,25 @@
     <div class="ln-why-cards" id="lnWhyCards">
 
       <div class="ln-why-card" data-i="0" style="--rot:-5deg">
-        <img class="ln-why-card-icon" src="../LNDW%20SITE/image/assets/sections/nation/timeline/why/why-icon-vision-galactique.svg" alt="">
+        <img class="ln-why-card-icon" src="assets/sections/nation/timeline/why/why-icon-vision-galactique.svg" alt="">
         <h4>VISION GALACTIQUE (360°)</h4>
         <p>Nous brisons les silos. Chez nous, votre site, votre SEO et vos Ads ne sont pas des projets isolés, mais un écosystème interconnecté. Chaque levier nourrit l'autre pour maximiser votre impact global.</p>
       </div>
 
       <div class="ln-why-card" data-i="1" style="--rot:4deg">
-        <img class="ln-why-card-icon" src="../LNDW%20SITE/image/assets/sections/nation/timeline/why/why-icon-arsenal-technologique.svg" alt="">
+        <img class="ln-why-card-icon" src="assets/sections/nation/timeline/why/why-icon-arsenal-technologique.svg" alt="">
         <h4>ARSENAL TECHNOLOGIQUE</h4>
         <p>Nous ne suivons pas les tendances, nous maîtrisons les outils. De l'automatisation par l'IA au développement haute performance, nous utilisons la technologie pour supprimer vos barrières de croissance.</p>
       </div>
 
       <div class="ln-why-card" data-i="2" style="--rot:-3deg">
-        <img class="ln-why-card-icon" src="../LNDW%20SITE/image/assets/sections/nation/timeline/why/why-icon-transparence-radicale.svg" alt="">
+        <img class="ln-why-card-icon" src="assets/sections/nation/timeline/why/why-icon-transparence-radicale.svg" alt="">
         <h4>TRANSPARENCE RADICALE</h4>
         <p>Fini les "boîtes noires" marketing. Vous gardez le contrôle total avec un accès 24/7 à vos dashboards de performance. Nous sommes votre tour de contrôle : vous savez exactement où va chaque euro.</p>
       </div>
 
       <div class="ln-why-card" data-i="3" style="--rot:5deg">
-        <img class="ln-why-card-icon" src="../LNDW%20SITE/image/assets/sections/nation/timeline/why/why-icon-expertise-terrain.svg" alt="">
+        <img class="ln-why-card-icon" src="assets/sections/nation/timeline/why/why-icon-expertise-terrain.svg" alt="">
         <h4>EXPERTISE TERRAIN</h4>
         <p>Depuis 2016, nous avons traversé toutes les révolutions digitales. Cette expérience nous permet d'anticiper les mutations du marché et de vous proposer des stratégies qui ont déjà fait leurs preuves.</p>
       </div>
@@ -253,51 +230,51 @@
 
     <!-- Pointillés réacteur (calques pleine largeur superposés) -->
     <div class="ln-reactor-paths" aria-hidden="true">
-      <img src="../LNDW%20SITE/image/assets/sections/nation/reactor/paths/reactor-path-06.svg" class="ln-reactor-path" data-rpath="6" alt="">
-      <img src="../LNDW%20SITE/image/assets/sections/nation/reactor/paths/reactor-path-07.svg" class="ln-reactor-path" data-rpath="7" alt="">
-      <img src="../LNDW%20SITE/image/assets/sections/nation/reactor/paths/reactor-path-08.svg" class="ln-reactor-path" data-rpath="8" alt="">
-      <img src="../LNDW%20SITE/image/assets/sections/nation/reactor/paths/reactor-path-09.svg" class="ln-reactor-path" data-rpath="9" alt="">
-      <img src="../LNDW%20SITE/image/assets/sections/nation/reactor/paths/reactor-path-10.svg" class="ln-reactor-path" data-rpath="10" alt="">
+      <img src="assets/sections/nation/reactor/paths/reactor-path-06.svg" class="ln-reactor-path" data-rpath="6" alt="">
+      <img src="assets/sections/nation/reactor/paths/reactor-path-07.svg" class="ln-reactor-path" data-rpath="7" alt="">
+      <img src="assets/sections/nation/reactor/paths/reactor-path-08.svg" class="ln-reactor-path" data-rpath="8" alt="">
+      <img src="assets/sections/nation/reactor/paths/reactor-path-09.svg" class="ln-reactor-path" data-rpath="9" alt="">
+      <img src="assets/sections/nation/reactor/paths/reactor-path-10.svg" class="ln-reactor-path" data-rpath="10" alt="">
     </div>
 
     <!-- Stickers décoratifs -->
-    <img class="ln-reactor-deco ln-reactor-deco--globe" src="../LNDW%20SITE/image/assets/decorations/sticker-globe-gradient.svg" alt="" aria-hidden="true">
-    <img class="ln-reactor-deco ln-reactor-deco--asterisk" src="../LNDW%20SITE/image/assets/decorations/sticker-asterisk-purple.svg" alt="" aria-hidden="true">
-    <img class="ln-reactor-deco ln-reactor-deco--star" src="../LNDW%20SITE/image/assets/decorations/sticker-star-small.svg" alt="" aria-hidden="true">
+    <img class="ln-reactor-deco ln-reactor-deco--globe" src="assets/decorations/sticker-globe-gradient.svg" alt="" aria-hidden="true">
+    <img class="ln-reactor-deco ln-reactor-deco--asterisk" src="assets/decorations/sticker-asterisk-purple.svg" alt="" aria-hidden="true">
+    <img class="ln-reactor-deco ln-reactor-deco--star" src="assets/decorations/sticker-star-small.svg" alt="" aria-hidden="true">
     <span class="ln-reactor-deco ln-reactor-deco--rocket imgcrop" aria-hidden="true" style="--fx:.0322;--fy:.0469;--fw:.0966;--fh:.1706">
-      <img src="../LNDW%20SITE/image/assets/decorations/sticker-rocket-purple.svg" alt="">
+      <img src="assets/decorations/sticker-rocket-purple.svg" alt="">
     </span>
 
     <!-- Profils équipe (collage) -->
     <div class="ln-profiles">
 
       <div class="ln-profile imgcrop" data-pos="thailyce" style="aspect-ratio:1.385;--fx:.3397;--fy:.2943;--fw:.3206;--fh:.4115">
-        <img src="../LNDW%20SITE/image/assets/sections/nation/reactor/reactor-thailyce.png" alt="Thaïlyce">
+        <img src="assets/sections/nation/reactor/reactor-thailyce.png" alt="Thaïlyce">
         <div class="ln-profile-label"><b>THAÏLYCE</b><span>social / ads</span></div>
       </div>
 
       <div class="ln-profile imgcrop" data-pos="thomas" style="aspect-ratio:1.499;--fx:.3719;--fy:.349;--fw:.2548;--fh:.3021">
-        <img src="../LNDW%20SITE/image/assets/sections/nation/reactor/reactor-thomas.png" alt="Thomas">
+        <img src="assets/sections/nation/reactor/reactor-thomas.png" alt="Thomas">
         <div class="ln-profile-label"><b>THOMAS</b><span>web</span></div>
       </div>
 
       <div class="ln-profile imgcrop" data-pos="vincent" style="aspect-ratio:1.503;--fx:.3572;--fy:.3307;--fw:.284;--fh:.3359">
-        <img src="../LNDW%20SITE/image/assets/sections/nation/reactor/reactor-vincent.png" alt="Vincent">
+        <img src="assets/sections/nation/reactor/reactor-vincent.png" alt="Vincent">
         <div class="ln-profile-label"><b>VINCENT</b><span>web</span></div>
       </div>
 
       <div class="ln-profile imgcrop" data-pos="jonathan" style="aspect-ratio:1.261;--fx:.3587;--fy:.2995;--fw:.2826;--fh:.3984">
-        <img src="../LNDW%20SITE/image/assets/sections/nation/reactor/reactor-jonathan.png" alt="Jonathan">
+        <img src="assets/sections/nation/reactor/reactor-jonathan.png" alt="Jonathan">
         <div class="ln-profile-label"><b>JONATHAN</b><span>ia</span></div>
       </div>
 
       <div class="ln-profile imgcrop" data-pos="amine" style="aspect-ratio:1.411;--fx:.3294;--fy:.2839;--fw:.3411;--fh:.4297">
-        <img src="../LNDW%20SITE/image/assets/sections/nation/reactor/reactor-amine.png" alt="Amine">
+        <img src="assets/sections/nation/reactor/reactor-amine.png" alt="Amine">
         <div class="ln-profile-label"><b>AMINE</b><span>seo</span></div>
       </div>
 
       <div class="ln-profile imgcrop" data-pos="sofia" style="aspect-ratio:1.515;--fx:.3133;--fy:.2917;--fw:.3529;--fh:.4141">
-        <img src="../LNDW%20SITE/image/assets/sections/nation/reactor/reactor-sofia.png" alt="Sofia">
+        <img src="assets/sections/nation/reactor/reactor-sofia.png" alt="Sofia">
         <div class="ln-profile-label"><b>SOFIA</b><span>graphisme</span></div>
       </div>
 
@@ -364,7 +341,6 @@
         <div class="footer-logo">
           <img src="assets/logos/lndw-logo-white.svg" alt="LNDW — La Nation du Web">
         </div>
-        <p class="footer-base">propulseur de stratégies.</p>
       </div>
       <div class="footer-cols">
         <div class="footer-col">

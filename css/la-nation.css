@@ -28,49 +28,89 @@
 /* ======================== S1 — HERO ======================== */
 .ln-hero{
   position:relative;
-  padding:150px 0 80px;
-  min-height:90vh;
+  padding:0 0 24px;
+  min-height:780px;
   overflow:hidden;
   background:var(--ln-dark);
 }
+/* conteneur large (surcharge .wrap) pour une compo horizontale comme la maquette */
 .ln-hero-inner{
-  display:grid;
-  grid-template-columns:1fr .52fr;
-  gap:40px;
-  align-items:start;
+  display:block;
   position:relative;
   z-index:2;
+  max-width:1580px;
+  width:100%;
+  margin:0 auto;
+  padding:85px 80px 0;
+  box-sizing:border-box;
 }
 .ln-title{
   font-family:var(--font-display);
   font-weight:900;
   text-transform:uppercase;
-  line-height:.82;
-  font-size:clamp(86px,15.6vw,212px);
+  line-height:.84;
   color:var(--cream,#faf8ff);
-  letter-spacing:-.02em;
+  letter-spacing:-.05em;
   text-shadow:0 20px 70px rgba(0,0,0,.35);
+  margin:0 0 0 60px;                        /* le titre commence ~12% (pas collé au bord) */
+  white-space:nowrap;
 }
-.ln-hero-text{padding-top:34px}
+/* NATION un peu plus grand que LA, pour aller chercher le shuriken (jamais coupé) */
+.ln-line-la{     font-size:clamp(150px,13vw,245px); }
+.ln-line-nation{ font-size:clamp(165px,13.6vw,272px); white-space:nowrap; }
+/* Citation : à droite de "LA", AU-DESSUS de "NATION" — compacte, ne chevauche rien */
+.ln-hero-text{
+  position:absolute;
+  top:96px;
+  left:44%;
+  right:auto;
+  width:min(650px,38vw);
+}
 .ln-hero-text p{
-  color:rgba(255,255,255,.92);
-  font-size:clamp(17px,1.55vw,23px);
-  line-height:1.55;
-  max-width:600px;
+  color:#fff;
+  font-size:clamp(23px,1.45vw,31px);
+  line-height:1.28;
+  max-width:none;
   font-style:italic;
   font-weight:400;
 }
 .ln-letter{display:inline-block}
 
-/* Shuriken — gros burst violet en bas à droite (sous la citation) */
+/* Shuriken violet (asset officiel, recadré via imgcrop) — à droite de NATION */
 .ln-shuriken{
   position:absolute;
-  width:clamp(200px,24vw,360px);
-  right:-26px;
-  bottom:-46px;
+  width:clamp(330px,21vw,400px);   /* grand mais pas dominant */
+  height:auto;
+  left:62%;                         /* chevauche la FIN de NATION, déborde à droite */
+  right:auto;
+  top:272px;                        /* remonté : au niveau du milieu/bas de NATION */
+  opacity:1;
+  mix-blend-mode:normal;
   pointer-events:none;
-  z-index:1;
-  filter:drop-shadow(0 24px 50px rgba(104,0,219,.4));
+  z-index:1;                        /* derrière le titre → NATION reste net au chevauchement */
+  filter:drop-shadow(0 30px 70px rgba(112,0,255,.45));   /* seulement une ombre douce violette */
+}
+
+/* ===== Animation d'entrée slide 1 (CSS pur, au chargement) =====
+   Le shuriken arrive de tout à gauche en tournant, ralentit et se cale à droite.
+   Les textes (LA, NATION, citation) apparaissent progressivement en léger fondu+montée. */
+@keyframes ln-shuriken-in{
+  0%   { transform:translateX(-165vw) rotate(-900deg); opacity:0; }
+  10%  { opacity:1; }
+  100% { transform:translateX(0) rotate(0deg); opacity:1; }
+}
+@keyframes ln-rise{
+  from { opacity:0; transform:translateY(30px); }
+  to   { opacity:1; transform:translateY(0); }
+}
+.ln-shuriken{ animation:ln-shuriken-in 1.6s cubic-bezier(.16,.8,.28,1) .15s both; will-change:transform,opacity; }
+.ln-line{ display:inline-block; }
+.ln-line-la{     animation:ln-rise .8s cubic-bezier(.2,.7,.2,1) .35s both; }
+.ln-line-nation{ animation:ln-rise .8s cubic-bezier(.2,.7,.2,1) .55s both; }
+.ln-hero-text{   animation:ln-rise .9s cubic-bezier(.2,.7,.2,1) .82s both; }
+/* Accessibilité : pas de mouvement si l'utilisateur le refuse → état final directement */
+@media (prefers-reduced-motion:reduce){
+  .ln-shuriken,.ln-line-la,.ln-line-nation,.ln-hero-text{ animation:none; }
 }
 
 /* Logo (version serrée locale — affichage direct, sans recadrage) */
@@ -87,16 +127,17 @@
 }
 .ln-tl-stage{
   position:relative;
-  max-width:1180px;
+  max-width:1340px;
   margin:0 auto;
-  height:620px;
+  height:700px;
 }
-/* Tracé pointillé décoratif (violet → blanc) */
-.ln-tl-wave{
-  position:absolute; inset:0;
-  width:100%; height:100%;
-  z-index:1; pointer-events:none; overflow:visible;
-}
+/* Trajectoire pointillée : UNE seule courbe SVG (2016 → 2020 → 2026).
+   Violet de 2016 à 2020, blanc de 2020 à 2026 ; points blancs sur les nœuds. */
+.ln-tl-wave{ position:absolute; inset:0; width:100%; height:100%; z-index:1; pointer-events:none; overflow:visible; }
+.ln-tl-line{ fill:none; stroke-width:4; stroke-linecap:round; stroke-dasharray:2 16; vector-effect:non-scaling-stroke; }
+.ln-tl-line--purple{ stroke:#7a00ff; }
+.ln-tl-line--white{ stroke:rgba(255,255,255,.9); }
+.ln-tl-dot{ fill:#fff; filter:drop-shadow(0 0 8px rgba(255,255,255,.55)); }
 /* Fusée (badge recadré) posée statiquement sur le tracé */
 .ln-tl-rocket{
   position:absolute;
@@ -110,35 +151,35 @@
 .ln-tl-block{
   position:absolute;
   display:flex;
-  gap:22px;
+  gap:26px;
   align-items:flex-start;
-  width:min(440px,42%);
+  width:min(480px,44%);
   z-index:2;
 }
-.ln-tl-block[data-year="2016"]{ left:0;   top:6px;   }
-.ln-tl-block[data-year="2020"]{ left:30%; top:330px; }
-.ln-tl-block[data-year="2026"]{ left:57%; top:46px;  }
+.ln-tl-block[data-year="2016"]{ left:0;   top:0;     }
+.ln-tl-block[data-year="2020"]{ left:30%; top:410px; }
+.ln-tl-block[data-year="2026"]{ left:63%; top:30px;  }
 .ln-tl-media{
   flex:0 0 auto;
-  width:clamp(130px,12vw,160px);
-  border-radius:16px;
-  box-shadow:0 22px 48px rgba(0,0,0,.5);
+  width:clamp(182px,15.8vw,228px);
+  border-radius:18px;
+  box-shadow:0 24px 54px rgba(0,0,0,.55);
 }
-.ln-tl-text{ flex:1; padding-top:4px; }
+.ln-tl-text{ flex:1; padding-top:6px; }
 .ln-tl-year{
   display:block;
   font-family:var(--font-display);
   font-weight:900;
   text-transform:uppercase;
-  font-size:clamp(16px,1.4vw,21px);
+  font-size:clamp(18px,1.65vw,25px);
   line-height:1.12;
-  margin-bottom:12px;
+  margin-bottom:13px;
   color:var(--cream,#faf8ff);
 }
 .ln-tl-text p{
-  color:rgba(250,248,255,.7);
-  font-size:clamp(13px,1vw,15px);
-  line-height:1.65;
+  color:rgba(250,248,255,.72);
+  font-size:clamp(13.5px,1.05vw,16px);
+  line-height:1.66;
 }
 
 /* Mode vérification "flat" (captures only) : neutralise les hauteurs en vh */
@@ -162,8 +203,8 @@ html.flat .ln-missions-sticky{ min-height:0; padding:90px 0; }
 }
 .ln-stats-cluster{
   position:relative;
-  height:480px;
-  max-width:1100px;
+  height:560px;
+  max-width:1200px;
   margin:0 auto;
 }
 .ln-stat{position:absolute;}
@@ -183,12 +224,12 @@ html.flat .ln-missions-sticky{ min-height:0; padding:90px 0; }
 .ln-stat-txt b{
   font-family:var(--font-display);
   font-weight:900;
-  font-size:clamp(26px,3.1vw,46px);
+  font-size:clamp(32px,4.1vw,60px);
   color:#fff;
   line-height:1;
 }
 .ln-stat-txt span{
-  font-size:clamp(11px,.95vw,14px);
+  font-size:clamp(12px,1.1vw,17px);
   color:rgba(255,255,255,.92);
   font-weight:600;
 }
@@ -199,10 +240,10 @@ html.flat .ln-missions-sticky{ min-height:0; padding:90px 0; }
 .ln-stat-txt.rot{transform:rotate(-7deg);}
 
 /* Positions/tailles calquées sur la maquette (formes grandes qui se chevauchent) */
-.ln-stat[data-shape="diamond"]{ left:3%;  top:40px;  width:420px; z-index:3; transform:rotate(-10deg); }
-.ln-stat[data-shape="lavender"]{ left:40%; top:0;     width:300px; z-index:2; }
-.ln-stat[data-shape="purple"]{   left:25%; top:135px; width:392px; z-index:4; }
-.ln-stat[data-shape="blob"]{     right:1%; top:95px;  width:344px; z-index:1; }
+.ln-stat[data-shape="diamond"]{ left:3%;  top:30px;  width:480px; z-index:3; transform:rotate(-12deg); }
+.ln-stat[data-shape="lavender"]{ left:42%; top:0;     width:366px; z-index:2; }
+.ln-stat[data-shape="purple"]{   left:26%; top:185px; width:450px; z-index:4; }
+.ln-stat[data-shape="blob"]{     right:0;  top:150px; width:392px; z-index:1; }
 
 /* ======================== S4 — NOS MISSIONS ======================== */
 /* Défaut (sans JS) : panneau violet plein, 4 lignes — fidèle maquette */
@@ -212,7 +253,7 @@ html.flat .ln-missions-sticky{ min-height:0; padding:90px 0; }
 }
 .ln-missions-sticky{
   position:relative;
-  min-height:clamp(440px,70vh,640px);
+  min-height:clamp(480px,74vh,700px);
   display:grid;
   place-items:center;
   overflow:hidden;
@@ -258,8 +299,8 @@ html.flat .ln-missions-sticky{ min-height:0; padding:90px 0; }
   font-family:var(--font-display);
   font-weight:900;
   text-transform:uppercase;
-  font-size:clamp(28px,5.5vw,76px);
-  line-height:1.04;
+  font-size:clamp(30px,6.4vw,94px);
+  line-height:1.02;
   color:rgba(255,255,255,.16);
   user-select:none;
   white-space:nowrap;
@@ -290,7 +331,7 @@ html.flat .ln-missions-sticky{ min-height:0; padding:90px 0; }
 }
 .ln-why-inner{
   position:relative;
-  max-width:1180px;
+  max-width:1300px;
   margin:0 auto;
   padding:0 24px;
 }
@@ -308,7 +349,7 @@ html.flat .ln-missions-sticky{ min-height:0; padding:90px 0; }
 .ln-why-bg{
   position:absolute;
   left:0; right:0;
-  top:46%;
+  top:41%;
   transform:translateY(-50%);
   text-align:center;
   pointer-events:none;
@@ -320,27 +361,28 @@ html.flat .ln-missions-sticky{ min-height:0; padding:90px 0; }
   text-transform:uppercase;
   line-height:.9;
   white-space:nowrap;
-  font-size:clamp(64px,13.5vw,190px);
-  color:rgba(250,248,255,.07);
+  font-size:clamp(66px,14vw,196px);
+  color:rgba(250,248,255,.14);
 }
-/* Rangée de 4 cartes inclinées */
+/* Rangée de 4 cartes inclinées — UNE seule ligne desktop, étalée sur la largeur */
 .ln-why-cards{
   position:relative;
   z-index:5;
   display:flex;
-  justify-content:center;
+  flex-wrap:nowrap;
+  justify-content:space-between;
   align-items:center;
-  gap:20px;
-  padding-top:90px;
+  gap:clamp(10px,1.4vw,22px);
+  padding-top:80px;
 }
 .ln-why-card{
   background:linear-gradient(150deg,#ffffff 0%,#efe9ff 100%);
   color:#211c2e;
   border-radius:22px;
-  padding:28px 24px;
-  width:clamp(230px,20vw,270px);
-  min-height:300px;
-  flex:0 0 auto;
+  padding:26px 22px;
+  width:clamp(228px,23.5vw,300px);
+  min-height:312px;
+  flex:1 1 0;
   box-shadow:
     -12px 20px 40px -14px rgba(232,0,140,.32),
     12px 32px 64px -18px rgba(0,0,0,.55);
@@ -397,21 +439,21 @@ html.flat .ln-missions-sticky{ min-height:0; padding:90px 0; }
 /* Stage collage */
 .ln-reactor-stage{
   position:relative;
-  height:580px;
-  max-width:1200px;
-  margin:10px auto 0;
+  height:740px;
+  max-width:1340px;
+  margin:18px auto 0;
 }
 .ln-reactor-paths{position:absolute;inset:0;z-index:1;pointer-events:none;}
 .ln-reactor-path{
   position:absolute;inset:0;width:100%;height:100%;
-  object-fit:contain;opacity:.7;
+  object-fit:contain;opacity:.92;
 }
 /* Stickers déco */
 .ln-reactor-deco{position:absolute;pointer-events:none;z-index:4;}
-.ln-reactor-deco--globe{ width:92px; left:40%; top:32%; }
-.ln-reactor-deco--asterisk{ width:60px; left:50%; top:14%; }
-.ln-reactor-deco--star{ width:38px; left:62%; top:54%; }
-.ln-reactor-deco--rocket{ width:88px; aspect-ratio:1; right:0; top:40%;
+.ln-reactor-deco--globe{ width:104px; left:42%; top:55%; }
+.ln-reactor-deco--asterisk{ width:64px; left:62%; top:30%; }
+.ln-reactor-deco--star{ width:42px; left:30%; top:16%; }
+.ln-reactor-deco--rocket{ width:84px; aspect-ratio:1; right:30%; top:6%;
   filter:drop-shadow(0 8px 20px rgba(104,0,219,.45)); }
 
 /* Profils équipe (collage) */
@@ -440,12 +482,12 @@ html.flat .ln-missions-sticky{ min-height:0; padding:90px 0; }
   display:block;font-size:10.5px;color:#c9a7ff;font-weight:600;
 }
 /* Positions du collage (calquées sur la maquette) */
-.ln-profile[data-pos="thailyce"]{ left:0;   top:20%; --pw:250px; }
-.ln-profile[data-pos="thomas"]  { left:30%; top:0;   --pw:230px; }
-.ln-profile[data-pos="jonathan"]{ left:66%; top:5%;  --pw:240px; }
-.ln-profile[data-pos="vincent"] { left:24%; top:44%; --pw:214px; }
-.ln-profile[data-pos="sofia"]   { left:44%; top:46%; --pw:348px; }
-.ln-profile[data-pos="amine"]   { left:1%;  top:60%; --pw:244px; }
+.ln-profile[data-pos="thailyce"]{ left:0;   top:2%;  --pw:362px; }
+.ln-profile[data-pos="thomas"]  { left:50%; top:0;   --pw:322px; }
+.ln-profile[data-pos="vincent"] { left:29%; top:31%; --pw:322px; }
+.ln-profile[data-pos="jonathan"]{ left:70%; top:25%; --pw:322px; }
+.ln-profile[data-pos="amine"]   { left:1%;  top:56%; --pw:362px; }
+.ln-profile[data-pos="sofia"]   { left:37%; top:60%; --pw:384px; }
 
 /* ======================== S7 — FAQ ======================== */
 .ln-faq{
@@ -458,32 +500,32 @@ html.flat .ln-missions-sticky{ min-height:0; padding:90px 0; }
   font-family:var(--font-display);
   font-weight:900;
   text-transform:uppercase;
-  font-size:clamp(150px,27vw,380px);
-  color:rgba(250,248,255,.95);
-  line-height:.74;
+  font-size:clamp(170px,30vw,430px);
+  color:rgba(250,248,255,.96);
+  line-height:.72;
   position:absolute;
-  left:-10px;
-  top:30px;
+  left:-14px;
+  top:24px;
   pointer-events:none;
   z-index:1;
 }
 .ln-faq-grid{
   position:relative;
   z-index:2;
-  padding-left:clamp(150px,15vw,220px);
+  padding-left:clamp(180px,19vw,300px);
 }
-.faq-list{max-width:880px;}
+.faq-list{max-width:920px;}
 .faq-item{ border-bottom:1px solid rgba(255,255,255,.10); }
 .faq-q{
   width:100%;
   text-align:left;
-  padding:18px 0;
+  padding:20px 0;
   font-family:var(--font-display);
   font-weight:800;
   text-transform:uppercase;
   color:#fff;
-  font-size:clamp(14px,1.15vw,17px);
-  line-height:1.35;
+  font-size:clamp(15px,1.25vw,19px);
+  line-height:1.34;
   display:flex;
   justify-content:space-between;
   gap:16px;
@@ -535,9 +577,9 @@ html.flat .ln-missions-sticky{ min-height:0; padding:90px 0; }
 
 /* ======================== RESPONSIVE ======================== */
 @media (max-width:1100px){
-  .ln-hero-inner{ grid-template-columns:1fr; gap:18px; }
+  .ln-hero-text{ position:static; width:auto; margin-top:18px; }
   .ln-hero-text p{ max-width:560px; }
-  .ln-shuriken{ width:clamp(170px,30vw,250px); bottom:-40px; }
+  .ln-shuriken{ width:clamp(170px,30vw,250px); top:auto; bottom:-30px; right:-10px; }
   /* Timeline statique : blocs absolus → flux vertical sur tablette/mobile */
   .ln-tl-stage{ height:auto; display:flex; flex-direction:column; gap:34px; }
   .ln-tl-wave, .ln-tl-rocket{ display:none; }
