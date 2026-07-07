@@ -11,7 +11,7 @@
 <link rel="stylesheet" href="css/base.css?v=7">
 <link rel="stylesheet" href="css/sections.css?v=7">
 <link rel="stylesheet" href="css/pages.css?v=7">
-<link rel="stylesheet" href="css/la-nation.css?v=28">
+<link rel="stylesheet" href="css/la-nation.css?v=62">
 </head>
 <body class="subpage">
 
@@ -30,7 +30,7 @@
     </nav>
     <div class="header-cta">
       <a class="btn-mission" href="contact.html">
-        <span class="rk"><svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg></span>
+        <span class="rk"><img src="../LNDW%20SITE/image/assets/icons/icon-rocket-line.svg" alt="" onerror="this.onerror=null;this.src='assets/icons/icon-rocket-line.svg'"></span>
         <span>Lancer ma mission ?</span>
       </a>
     </div>
@@ -60,18 +60,9 @@
   <div class="wrap">
     <div class="ln-tl-stage">
 
-      <!-- Trajectoire pointillée de la timeline : UNE seule courbe (slide 2 uniquement).
-           viewBox calé sur le stage (1340x700, preserveAspectRatio none) → coords = pixels.
-           Violet : 2016 → 2020 ; Blanc : 2020 → 2026 puis légère continuation à droite. -->
-      <svg class="ln-tl-wave" viewBox="0 0 1340 700" preserveAspectRatio="none" aria-hidden="true">
-        <path class="ln-tl-line ln-tl-line--purple" d="M 205 200 C 330 226, 360 430, 520 502"/>
-        <path class="ln-tl-line ln-tl-line--white"  d="M 520 502 C 690 548, 815 300, 955 245 C 1085 197, 1185 205, 1255 220"/>
-        <circle class="ln-tl-dot" cx="205" cy="200" r="7"/>
-        <circle class="ln-tl-dot" cx="520" cy="502" r="8"/>
-        <circle class="ln-tl-dot" cx="955" cy="245" r="8"/>
-      </svg>
+      <!-- (Trajectoire pointillée supprimée à la demande — plus aucun pointillé slide 2.) -->
 
-      <!-- Fusée (badge recadré) posée sur le tracé, statique -->
+      <!-- Fusée (badge recadré), statique -->
       <span class="ln-tl-rocket imgcrop" aria-hidden="true"
             style="--fx:.0322;--fy:.0469;--fw:.0966;--fh:.1706;left:57%;top:42%">
         <img src="assets/decorations/sticker-rocket-purple.svg" alt="">
@@ -118,8 +109,9 @@
 <section class="ln-stats" id="lnStats">
   <div class="wrap">
     <h2 class="ln-stats-title">AUJOURD'HUI C'EST,</h2>
+  </div>
 
-    <div class="ln-stats-cluster" aria-label="Chiffres clés">
+  <div class="ln-stats-cluster" aria-label="Chiffres clés">
 
       <!-- Diamond gradient — +300% -->
       <div class="ln-stat imgcrop" data-shape="diamond" style="aspect-ratio:.959;--fx:.3294;--fy:.1328;--fw:.3411;--fh:.6328">
@@ -157,7 +149,6 @@
         </div>
       </div>
 
-    </div>
   </div>
 </section>
 
@@ -187,32 +178,32 @@
       <span>NOUS CHOISIR&nbsp;?</span>
     </div>
 
-    <!-- 4 cartes inclinées -->
+    <!-- 4 cartes inclinées, posées devant le grand texte -->
     <div class="ln-why-cards" id="lnWhyCards">
 
-      <div class="ln-why-card" data-i="0" style="--rot:-5deg">
-        <img class="ln-why-card-icon" src="assets/sections/nation/timeline/why/why-icon-vision-galactique.svg" alt="">
+      <article class="ln-why-card why-card-1" data-i="0" style="--rot:-7deg">
+        <img class="ln-why-card-icon" src="assets/sections/nation/why/why-icon-vision-galactique.svg" alt="">
         <h4>VISION GALACTIQUE (360°)</h4>
         <p>Nous brisons les silos. Chez nous, votre site, votre SEO et vos Ads ne sont pas des projets isolés, mais un écosystème interconnecté. Chaque levier nourrit l'autre pour maximiser votre impact global.</p>
-      </div>
+      </article>
 
-      <div class="ln-why-card" data-i="1" style="--rot:4deg">
-        <img class="ln-why-card-icon" src="assets/sections/nation/timeline/why/why-icon-arsenal-technologique.svg" alt="">
-        <h4>ARSENAL TECHNOLOGIQUE</h4>
+      <article class="ln-why-card why-card-2" data-i="1" style="--rot:1deg">
+        <img class="ln-why-card-icon" src="assets/sections/nation/why/why-icon-arsenal-technologique.svg" alt="">
+        <h4>ARSENAL<br>TECHNOLOGIQUE</h4>
         <p>Nous ne suivons pas les tendances, nous maîtrisons les outils. De l'automatisation par l'IA au développement haute performance, nous utilisons la technologie pour supprimer vos barrières de croissance.</p>
-      </div>
+      </article>
 
-      <div class="ln-why-card" data-i="2" style="--rot:-3deg">
-        <img class="ln-why-card-icon" src="assets/sections/nation/timeline/why/why-icon-transparence-radicale.svg" alt="">
-        <h4>TRANSPARENCE RADICALE</h4>
+      <article class="ln-why-card why-card-3" data-i="2" style="--rot:-1deg">
+        <img class="ln-why-card-icon" src="assets/sections/nation/why/why-icon-transparence-radicale.svg" alt="">
+        <h4>TRANSPARENCE<br>RADICALE</h4>
         <p>Fini les "boîtes noires" marketing. Vous gardez le contrôle total avec un accès 24/7 à vos dashboards de performance. Nous sommes votre tour de contrôle : vous savez exactement où va chaque euro.</p>
-      </div>
+      </article>
 
-      <div class="ln-why-card" data-i="3" style="--rot:5deg">
-        <img class="ln-why-card-icon" src="assets/sections/nation/timeline/why/why-icon-expertise-terrain.svg" alt="">
+      <article class="ln-why-card why-card-4" data-i="3" style="--rot:7deg">
+        <img class="ln-why-card-icon" src="assets/sections/nation/why/why-icon-expertise-terrain.svg" alt="">
         <h4>EXPERTISE TERRAIN</h4>
         <p>Depuis 2016, nous avons traversé toutes les révolutions digitales. Cette expérience nous permet d'anticiper les mutations du marché et de vous proposer des stratégies qui ont déjà fait leurs preuves.</p>
-      </div>
+      </article>
 
     </div>
   </div>
@@ -228,14 +219,7 @@
 
   <div class="ln-reactor-stage" id="lnReactorStage">
 
-    <!-- Pointillés réacteur (calques pleine largeur superposés) -->
-    <div class="ln-reactor-paths" aria-hidden="true">
-      <img src="assets/sections/nation/reactor/paths/reactor-path-06.svg" class="ln-reactor-path" data-rpath="6" alt="">
-      <img src="assets/sections/nation/reactor/paths/reactor-path-07.svg" class="ln-reactor-path" data-rpath="7" alt="">
-      <img src="assets/sections/nation/reactor/paths/reactor-path-08.svg" class="ln-reactor-path" data-rpath="8" alt="">
-      <img src="assets/sections/nation/reactor/paths/reactor-path-09.svg" class="ln-reactor-path" data-rpath="9" alt="">
-      <img src="assets/sections/nation/reactor/paths/reactor-path-10.svg" class="ln-reactor-path" data-rpath="10" alt="">
-    </div>
+    <!-- (Chemins pointillés réacteur supprimés à la demande — plus aucun pointillé slide 6.) -->
 
     <!-- Stickers décoratifs -->
     <img class="ln-reactor-deco ln-reactor-deco--globe" src="assets/decorations/sticker-globe-gradient.svg" alt="" aria-hidden="true">
@@ -245,38 +229,56 @@
       <img src="assets/decorations/sticker-rocket-purple.svg" alt="">
     </span>
 
-    <!-- Profils équipe (collage) -->
-    <div class="ln-profiles">
+    <!-- Collage équipe — composition libre (position absolue, pas de grille) -->
+    <div class="reactor-board" id="lnReactorBoard">
 
-      <div class="ln-profile imgcrop" data-pos="thailyce" style="aspect-ratio:1.385;--fx:.3397;--fy:.2943;--fw:.3206;--fh:.4115">
-        <img src="assets/sections/nation/reactor/reactor-thailyce.png" alt="Thaïlyce">
-        <div class="ln-profile-label"><b>THAÏLYCE</b><span>social / ads</span></div>
-      </div>
+      <article class="reactor-card reactor-card--thailyce">
+        <span class="reactor-media imgcrop" style="aspect-ratio:1.385;--fx:.3397;--fy:.2943;--fw:.3206;--fh:.4115">
+          <img src="assets/sections/nation/reactor/reactor-thailyce.png" alt="Thaïlyce">
+        </span>
+        <div class="reactor-label"><strong>THAÏLYCE</strong><span>social/ads</span></div>
+        <span class="reactor-dot"></span>
+      </article>
 
-      <div class="ln-profile imgcrop" data-pos="thomas" style="aspect-ratio:1.499;--fx:.3719;--fy:.349;--fw:.2548;--fh:.3021">
-        <img src="assets/sections/nation/reactor/reactor-thomas.png" alt="Thomas">
-        <div class="ln-profile-label"><b>THOMAS</b><span>web</span></div>
-      </div>
+      <article class="reactor-card reactor-card--thomas">
+        <span class="reactor-media imgcrop" style="aspect-ratio:1.499;--fx:.3719;--fy:.349;--fw:.2548;--fh:.3021">
+          <img src="assets/sections/nation/reactor/reactor-thomas.png" alt="Thomas">
+        </span>
+        <div class="reactor-label"><strong>THOMAS</strong><span>web</span></div>
+        <span class="reactor-dot"></span>
+      </article>
 
-      <div class="ln-profile imgcrop" data-pos="vincent" style="aspect-ratio:1.503;--fx:.3572;--fy:.3307;--fw:.284;--fh:.3359">
-        <img src="assets/sections/nation/reactor/reactor-vincent.png" alt="Vincent">
-        <div class="ln-profile-label"><b>VINCENT</b><span>web</span></div>
-      </div>
+      <article class="reactor-card reactor-card--vincent">
+        <span class="reactor-media imgcrop" style="aspect-ratio:1.503;--fx:.3572;--fy:.3307;--fw:.284;--fh:.3359">
+          <img src="assets/sections/nation/reactor/reactor-vincent.png" alt="Vincent">
+        </span>
+        <div class="reactor-label"><strong>VINCENT</strong><span>web</span></div>
+        <span class="reactor-dot"></span>
+      </article>
 
-      <div class="ln-profile imgcrop" data-pos="jonathan" style="aspect-ratio:1.261;--fx:.3587;--fy:.2995;--fw:.2826;--fh:.3984">
-        <img src="assets/sections/nation/reactor/reactor-jonathan.png" alt="Jonathan">
-        <div class="ln-profile-label"><b>JONATHAN</b><span>ia</span></div>
-      </div>
+      <article class="reactor-card reactor-card--jonathan">
+        <span class="reactor-media imgcrop" style="aspect-ratio:1.261;--fx:.3587;--fy:.2995;--fw:.2826;--fh:.3984">
+          <img src="assets/sections/nation/reactor/reactor-jonathan.png" alt="Jonathan">
+        </span>
+        <div class="reactor-label"><strong>JONATHAN</strong><span>ia</span></div>
+        <span class="reactor-dot"></span>
+      </article>
 
-      <div class="ln-profile imgcrop" data-pos="amine" style="aspect-ratio:1.411;--fx:.3294;--fy:.2839;--fw:.3411;--fh:.4297">
-        <img src="assets/sections/nation/reactor/reactor-amine.png" alt="Amine">
-        <div class="ln-profile-label"><b>AMINE</b><span>seo</span></div>
-      </div>
+      <article class="reactor-card reactor-card--amine">
+        <span class="reactor-media imgcrop" style="aspect-ratio:1.411;--fx:.3294;--fy:.2839;--fw:.3411;--fh:.4297">
+          <img src="assets/sections/nation/reactor/reactor-amine.png" alt="Amine">
+        </span>
+        <div class="reactor-label"><strong>AMINE</strong><span>seo</span></div>
+        <span class="reactor-dot"></span>
+      </article>
 
-      <div class="ln-profile imgcrop" data-pos="sofia" style="aspect-ratio:1.515;--fx:.3133;--fy:.2917;--fw:.3529;--fh:.4141">
-        <img src="assets/sections/nation/reactor/reactor-sofia.png" alt="Sofia">
-        <div class="ln-profile-label"><b>SOFIA</b><span>graphisme</span></div>
-      </div>
+      <article class="reactor-card reactor-card--sofia">
+        <span class="reactor-media imgcrop" style="aspect-ratio:1.515;--fx:.3133;--fy:.2917;--fw:.3529;--fh:.4141">
+          <img src="assets/sections/nation/reactor/reactor-sofia.png" alt="Sofia">
+        </span>
+        <div class="reactor-label"><strong>SOFIA</strong><span>graphisme</span></div>
+        <span class="reactor-dot"></span>
+      </article>
 
     </div>
   </div>
@@ -324,7 +326,7 @@
     <div class="ln-cta-card">
       <p>Ne restez pas <b>sans réponse</b>. Contactez <b>la Nation</b> et transformez votre <b>trajectoire</b> dès aujourd'hui.</p>
       <a class="btn-mission btn-mission--big" href="contact.html">
-        <span class="rk"><svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg></span>
+        <span class="rk"><img src="../LNDW%20SITE/image/assets/icons/icon-rocket-line.svg" alt="" onerror="this.onerror=null;this.src='assets/icons/icon-rocket-line.svg'"></span>
         <span>LANCER MA MISSION ?</span>
       </a>
     </div>
@@ -382,14 +384,10 @@
   </div>
 </footer>
 
-<!-- GSAP + ScrollTrigger + MotionPathPlugin (fusée timeline) -->
-<!-- Animations DÉSACTIVÉES temporairement — la maquette statique est prioritaire.
-     GSAP gardé en local pour plus tard (non chargé pour l'instant).
+<!-- GSAP + ScrollTrigger (slide 4 « Nos missions » : textes pilotés au scroll, section pinned) -->
 <script src="js/vendor/gsap.min.js"></script>
 <script src="js/vendor/ScrollTrigger.min.js"></script>
-<script src="js/vendor/MotionPathPlugin.min.js"></script>
--->
-<script src="js/la-nation.js?v=10"></script>
+<script src="js/la-nation.js?v=13"></script>
 
 </body>
 </html>

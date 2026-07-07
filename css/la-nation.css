@@ -183,27 +183,34 @@
 /* Mode vérification "flat" (captures only) : neutralise les hauteurs en vh */
 html.flat .ln-hero{ min-height:0; }
 html.flat .ln-missions-sticky{ min-height:0; padding:90px 0; }
+html.flat .ln-why-section{ min-height:0; padding:90px 0; }
+html.flat .ln-faq{ min-height:0; }
 
 /* ======================== S3 — STATS ======================== */
 .ln-stats{
-  padding:clamp(60px,7vw,96px) 0 clamp(40px,5vw,70px);
+  position:relative;
   background:var(--ln-dark);
+  min-height:1060px;        /* assez haute → aucune forme ne déborde sur la section suivante */
+  overflow:hidden;
+  padding-top:45px;
 }
 .ln-stats-title{
   font-family:var(--font-display);
   font-weight:900;
   text-transform:uppercase;
-  font-size:clamp(24px,3vw,42px);
+  font-size:clamp(42px,3.4vw,64px);
   color:var(--cream,#faf8ff);
   text-align:center;
-  margin-bottom:30px;
-  letter-spacing:.01em;
+  margin:0;
+  letter-spacing:-.025em;
+  line-height:1;
 }
 .ln-stats-cluster{
   position:relative;
-  height:560px;
-  max-width:1200px;
-  margin:0 auto;
+  width:1420px;
+  max-width:96vw;
+  height:790px;
+  margin:55px auto 0;
 }
 .ln-stat{position:absolute;}
 /* Les PNG de formes ont ~70% de padding transparent → on recadre (imgcrop) */
@@ -222,89 +229,106 @@ html.flat .ln-missions-sticky{ min-height:0; padding:90px 0; }
 .ln-stat-txt b{
   font-family:var(--font-display);
   font-weight:900;
-  font-size:clamp(32px,4.1vw,60px);
+  font-size:clamp(42px,5.4vw,82px);
   color:#fff;
   line-height:1;
 }
 .ln-stat-txt span{
-  font-size:clamp(12px,1.1vw,17px);
+  font-size:clamp(15px,1.7vw,25px);
   color:rgba(255,255,255,.92);
   font-weight:600;
 }
-.ln-stat-txt.magenta b,
-.ln-stat-txt.magenta span{color:#b81fc9;}
+/* +900h : chiffre en dégradé (orange→magenta→violet) comme la maquette */
+.ln-stat-txt.magenta b{
+  background:linear-gradient(90deg,#ff5a1f 0%,#ff00c8 45%,#7a00ff 100%);
+  -webkit-background-clip:text;background-clip:text;
+  -webkit-text-fill-color:transparent;color:transparent;
+}
+.ln-stat-txt.magenta span{color:#c026a8;}
 .ln-stat-txt.dark b{color:#1d1a2e;}
 .ln-stat-txt.dark span{color:rgba(29,26,46,.78);}
 .ln-stat-txt.rot{transform:rotate(-7deg);}
+/* L'asset losange est à 45° ; -18° → carré penché ~27° (comme la maquette). Texte contre-rotaté. */
+.ln-stat[data-shape="diamond"] .ln-stat-txt{ transform:rotate(18deg); }
 
-/* Positions/tailles calquées sur la maquette (formes grandes qui se chevauchent) */
-.ln-stat[data-shape="diamond"]{ left:3%;  top:30px;  width:480px; z-index:3; transform:rotate(-12deg); }
-.ln-stat[data-shape="lavender"]{ left:42%; top:0;     width:366px; z-index:2; }
-.ln-stat[data-shape="purple"]{   left:26%; top:185px; width:450px; z-index:4; }
-.ln-stat[data-shape="blob"]{     right:0;  top:150px; width:392px; z-index:1; }
+/* Composition panoramique — positions fixes (base fournie), formes entières, rien de coupé.
+   z-order : diamond 1 (derrière) · lavender 2 · blob 3 · purple 4 (devant). */
+.ln-stat[data-shape="diamond"]{ left:40px;  top:120px; width:520px; z-index:1; transform:rotate(-18deg); }
+.ln-stat[data-shape="lavender"]{ left:650px; top:45px;  width:420px; z-index:2; }
+.ln-stat[data-shape="blob"]{     left:985px; top:270px; width:405px; z-index:3; transform:rotate(6deg); }
+.ln-stat[data-shape="purple"]{   left:405px; top:360px; width:520px; z-index:4; }
 
 /* ======================== S4 — NOS MISSIONS ======================== */
 /* Défaut (sans JS) : panneau violet plein, 4 lignes — fidèle maquette */
 .ln-missions-section{
-  background:var(--ln-dark);
+  background:var(--ln-purple);   /* fond violet plein écran / pleine largeur */
   padding:0;
 }
 .ln-missions-sticky{
   position:relative;
-  min-height:clamp(480px,74vh,700px);
+  min-height:100vh;
   display:grid;
   place-items:center;
   overflow:hidden;
-}
-.ln-missions-square{
-  position:absolute;
-  inset:0;
   background:var(--ln-purple);
-  z-index:0;
 }
-.ln-missions-layout{position:relative;z-index:2;width:100%;}
-
-/* Avec JS : section haute + sticky 100vh ; le carré violet GRANDIT au scroll,
-   et les 4 lignes s'activent successivement (texte) pendant l'expansion. */
-.gsap-ready .ln-missions-section{ height:300vh; }
-.gsap-ready .ln-missions-sticky{
-  position:sticky; top:0; height:100vh; min-height:0;
+.ln-missions-square{ display:none; }   /* plus de carré : le violet occupe tout l'écran */
+.ln-missions-layout{
+  position:relative; z-index:2; width:100%;
+  display:flex; flex-direction:column; align-items:center;
 }
-.gsap-ready .ln-missions-square{
-  inset:auto;
-  left:50%; top:50%;
-  transform:translate(-50%,-50%);
-  width:44vw; height:50vh;
-  border-radius:42px;
-  box-shadow:0 50px 130px -30px rgba(104,0,219,.75);
-}
-.gsap-ready .ln-missions-layout{ opacity:0; }   /* révélé par le JS pendant l'expansion */
 .ln-missions-eyebrow{
   font-family:var(--font-body);
   font-weight:500;
-  font-size:clamp(22px,2.4vw,34px);
-  color:rgba(250,248,255,.62);
-  margin-bottom:.2em;
+  font-size:clamp(20px,2.2vw,32px);
+  color:rgba(250,248,255,.6);
+  margin:0 0 clamp(26px,4.5vh,60px);
   text-align:center;
+  letter-spacing:.01em;
 }
+
+/* Scène : les 4 textes empilés au même endroit — un seul dominant à la fois */
 .ln-missions-list{
   list-style:none;
+  position:relative;
+  width:100%;
+  height:clamp(150px,32vh,320px);
+  margin:0; padding:0;
   display:grid;
-  gap:0;
-  text-align:center;
+  place-items:center;
 }
 .ln-mission-item{
+  position:absolute;
+  inset:0;
+  display:flex; align-items:center; justify-content:center;
   font-family:var(--font-display);
   font-weight:900;
   text-transform:uppercase;
-  font-size:clamp(30px,6.4vw,94px);
-  line-height:1.02;
-  color:rgba(255,255,255,.16);
+  font-size:clamp(30px,5vw,80px);
+  line-height:1.04;
+  color:#fff;
   user-select:none;
-  white-space:nowrap;
+  max-width:90vw;
+  margin:0 auto;
+  text-wrap:balance;
+  text-align:center;
+  text-shadow:0 0 60px rgba(255,255,255,.18);
+  will-change:opacity, transform;
 }
+/* Mode animé (GSAP prêt) : tout est caché au départ, révélé un par un par le JS */
+.gsap-ready .ln-mission-item{ opacity:0; }
 
-/* Bouton CTA : recadre le badge fusée (canvas paddé) dans le cercle .rk */
+/* Fallback SANS JS / reduced-motion / mode flat : liste verticale lisible */
+.ln-missions-list:not(.js){ display:block; height:auto; text-align:center; }
+.ln-missions-list:not(.js) .ln-mission-item{
+  position:static; inset:auto; opacity:1; text-shadow:none;
+  font-size:clamp(30px,6.4vw,94px);
+}
+.ln-missions-list:not(.js) .ln-mission-item[data-i="0"]{ color:#fff; }
+.ln-missions-list:not(.js) .ln-mission-item[data-i="1"]{ color:rgba(255,255,255,.34); }
+.ln-missions-list:not(.js) .ln-mission-item[data-i="2"]{ color:rgba(255,255,255,.22); }
+.ln-missions-list:not(.js) .ln-mission-item[data-i="3"]{ color:rgba(255,255,255,.14); }
+
 /* Fusée du bouton : SVG inline (trait blanc) dans le cercle .rk */
 .btn-mission .rk svg{
   width:62%;
@@ -312,99 +336,151 @@ html.flat .ln-missions-sticky{ min-height:0; padding:90px 0; }
   stroke:#fff;
   fill:none;
 }
-.ln-mission-item[data-i="0"]{ color:#fff; }
-.ln-mission-item[data-i="1"]{ color:rgba(255,255,255,.34); }
-.ln-mission-item[data-i="2"]{ color:rgba(255,255,255,.22); }
-.ln-mission-item[data-i="3"]{ color:rgba(255,255,255,.14); }
-/* Mode JS : la ligne active passe en blanc successivement au scroll */
-.ln-missions-list.js .ln-mission-item{ color:rgba(255,255,255,.2)!important; transition:color .45s ease, text-shadow .45s ease; }
-.ln-missions-list.js .ln-mission-item.ln-mission-active{ color:#fff!important; text-shadow:0 0 50px rgba(255,255,255,.25); }
 
 /* ======================== S5 — POURQUOI NOUS CHOISIR ======================== */
 .ln-why-section{
   position:relative;
-  background:var(--ln-dark);
-  padding:clamp(70px,8vw,110px) 0 clamp(80px,9vw,120px);
+  min-height:100vh;
+  background:var(--ln-dark);            /* fond sombre ~#2d2a32 */
   overflow:hidden;
+  display:flex;
+  align-items:center;
+  justify-content:center;
 }
 .ln-why-inner{
   position:relative;
-  max-width:1300px;
+  width:100%;
+  max-width:1720px;
   margin:0 auto;
-  padding:0 24px;
+  padding:clamp(70px,9vh,110px) 36px clamp(90px,10vh,130px);
+  text-align:center;
 }
 .ln-why-eyebrow{
+  position:relative;
+  z-index:5;
+  margin:0 0 clamp(46px,6vh,75px);
+  color:#d5b5ff;                        /* violet clair */
   font-family:var(--font-display);
   font-weight:900;
-  text-align:center;
-  color:#b89cf2;
-  font-size:clamp(34px,4.4vw,60px);
+  font-size:clamp(34px,3vw,54px);
   line-height:1;
-  margin-bottom:8px;
-  position:relative;
-  z-index:6;
 }
+/* Grand texte de fond, DERRIÈRE les cartes, bien visible, déborde sur les côtés */
 .ln-why-bg{
   position:absolute;
-  left:0; right:0;
-  top:41%;
-  transform:translateY(-50%);
-  text-align:center;
-  pointer-events:none;
+  left:50%; top:48%;
+  transform:translate(-50%,-50%);
+  width:150vw;
   z-index:1;
+  pointer-events:none;
+  text-align:center;
 }
 .ln-why-bg span{
   font-family:var(--font-display);
   font-weight:900;
   text-transform:uppercase;
-  line-height:.9;
   white-space:nowrap;
-  font-size:clamp(66px,14vw,196px);
-  color:rgba(250,248,255,.14);
+  font-size:clamp(130px,15vw,270px);
+  line-height:.85;
+  letter-spacing:-.07em;
+  color:rgba(255,255,255,.16);
 }
-/* Rangée de 4 cartes inclinées — UNE seule ligne desktop, étalée sur la largeur */
+/* 4 grandes cartes blanches AU PREMIER PLAN, une ligne, inclinées */
 .ln-why-cards{
   position:relative;
-  z-index:5;
+  z-index:6;
   display:flex;
   flex-wrap:nowrap;
-  justify-content:space-between;
   align-items:center;
-  gap:clamp(10px,1.4vw,22px);
-  padding-top:80px;
+  justify-content:center;
+  gap:clamp(20px,1.8vw,40px);
+  width:100%;
 }
 .ln-why-card{
-  background:linear-gradient(150deg,#ffffff 0%,#efe9ff 100%);
-  color:#211c2e;
-  border-radius:22px;
-  padding:26px 22px;
-  width:clamp(228px,23.5vw,300px);
-  min-height:312px;
-  flex:1 1 0;
+  position:relative;
+  flex:0 1 auto;
+  width:clamp(240px,19.5vw,360px);
+  min-height:clamp(430px,30vw,540px);
+  background:#fbf9ff;
+  color:#27232d;
+  border-radius:26px;
+  padding:clamp(34px,2.6vw,46px) clamp(24px,2vw,34px) clamp(30px,2.2vw,40px);
+  text-align:center;
   box-shadow:
-    -12px 20px 40px -14px rgba(232,0,140,.32),
-    12px 32px 64px -18px rgba(0,0,0,.55);
+    0 35px 70px rgba(120,0,255,.34),
+    0 0 0 2px rgba(135,0,255,.85);            /* liseré violet + glow */
+  transform-origin:center center;
   transform:rotate(var(--rot,0deg));
+  will-change:transform, opacity;
 }
-.ln-why-card:nth-child(odd){ margin-top:-26px; }
-.ln-why-card:nth-child(even){ margin-top:30px; }
+/* contour fin dégradé violet/orange par-dessus le liseré */
+.ln-why-card::before{
+  content:"";
+  position:absolute;
+  inset:-2px;
+  border-radius:inherit;
+  padding:2px;
+  background:linear-gradient(135deg,#ff4b1f,#ff00d4,#5b2cff);
+  -webkit-mask:linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite:xor;
+          mask-composite:exclude;
+  pointer-events:none;
+}
+/* petits décalages verticaux (cartes du milieu pas parfaitement alignées) */
+.ln-why-card.why-card-2{ transform:rotate(var(--rot)) translateY(-18px); }
+.ln-why-card.why-card-3{ transform:rotate(var(--rot)) translateY(-14px); }
 .ln-why-card-icon{
-  width:48px;height:48px;margin-bottom:16px;display:block;object-fit:contain;
+  display:block;
+  width:clamp(58px,4vw,74px);
+  height:clamp(58px,4vw,74px);
+  object-fit:contain;
+  margin:0 auto clamp(24px,2vw,34px);
 }
 .ln-why-card h4{
   font-family:var(--font-display);
   font-weight:900;
   text-transform:uppercase;
-  font-size:14px;
-  color:#1d1a2e;
-  margin-bottom:11px;
-  line-height:1.18;
+  text-align:center;
+  font-size:clamp(19px,1.5vw,28px);   /* taille unique pour les 4 cartes */
+  line-height:1.05;
+  letter-spacing:-.02em;
+  color:#25212b;
+  margin:0 0 clamp(22px,2vw,32px);
 }
 .ln-why-card p{
-  font-size:12.5px;
-  line-height:1.62;
-  color:#4a4458;
+  margin:0 auto;
+  max-width:94%;
+  font-weight:400;
+  text-align:center;
+  font-size:clamp(16px,1.15vw,22px);
+  line-height:1.4;
+  color:#332f39;
 }
+/* Centrage renforcé des cartes 2 (Arsenal) & 3 (Transparence) : titre sur 2 lignes propres, centré */
+.ln-why-card.why-card-2,
+.ln-why-card.why-card-3{ text-align:center; }
+.ln-why-card.why-card-2 .ln-why-card-icon,
+.ln-why-card.why-card-3 .ln-why-card-icon{ margin-left:auto; margin-right:auto; }
+.ln-why-card.why-card-2 h4,
+.ln-why-card.why-card-3 h4{
+  width:100%;
+  max-width:360px;
+  margin-left:auto;
+  margin-right:auto;
+  text-align:center;
+  white-space:normal;
+  overflow-wrap:normal;
+}
+.ln-why-card.why-card-2 p,
+.ln-why-card.why-card-3 p{
+  max-width:360px;
+  margin-left:auto;
+  margin-right:auto;
+  text-align:center;
+}
+
+/* GSAP prêt : cartes cachées au départ → elles arrivent au scroll */
+.gsap-ready .ln-why-card{ opacity:0; }
 
 /* ======================== S6 — LE CŒUR DU RÉACTEUR ======================== */
 .ln-reactor{
@@ -437,9 +513,6 @@ html.flat .ln-missions-sticky{ min-height:0; padding:90px 0; }
 /* Stage collage */
 .ln-reactor-stage{
   position:relative;
-  height:740px;
-  max-width:1340px;
-  margin:18px auto 0;
 }
 .ln-reactor-paths{position:absolute;inset:0;z-index:1;pointer-events:none;}
 .ln-reactor-path{
@@ -454,91 +527,160 @@ html.flat .ln-missions-sticky{ min-height:0; padding:90px 0; }
 .ln-reactor-deco--rocket{ width:84px; aspect-ratio:1; right:30%; top:6%;
   filter:drop-shadow(0 8px 20px rgba(104,0,219,.45)); }
 
-/* Profils équipe (collage) */
-.ln-profiles{position:absolute;inset:0;z-index:3;}
-.ln-profile{
-  position:absolute;
-  width:var(--pw,210px);
-  border-radius:14px;
-  overflow:hidden;
-  box-shadow:0 14px 34px rgba(80,20,160,.22);
+/* ===== Collage équipe — composition libre en position absolue (PAS de grille) ===== */
+.reactor-board{
+  position:relative;
+  width:min(1600px,92vw);
+  height:clamp(820px,66vw,1080px);   /* assez haut pour contenir Sofia (bas) sans coupe */
+  margin:48px auto 0;
+  z-index:3;
 }
-.ln-profile-label{
-  position:absolute;
-  bottom:10px; left:10px;
-  background:#2a1147;
-  border-radius:8px;
-  padding:5px 11px;
-}
-.ln-profile-label b{
+.reactor-card{ position:absolute; }
+/* la photo (recadrée via imgcrop), sans gros wrapper blanc */
+.reactor-media{
   display:block;
+  width:100%;
+  overflow:hidden;                     /* recadre la photo (imgcrop) */
+  border-radius:12px;
+  filter:drop-shadow(0 18px 30px rgba(70,0,130,.24));
+}
+/* labels posés PAR-DESSUS les images : 2 blocs séparés (violet + noir), AUCUN wrapper/fond blanc */
+.reactor-label{
+  position:absolute;
+  z-index:20;
+  display:inline-flex;
+  flex-direction:column;
+  align-items:flex-start;
+  line-height:1;
+  pointer-events:none;
+}
+.reactor-label strong{
+  display:inline-block;
+  background:#6b00d7; color:#fff;
   font-family:var(--font-display);
-  font-weight:900;font-size:12px;text-transform:uppercase;
-  color:#fff;letter-spacing:.03em;line-height:1.15;
+  font-weight:900; text-transform:uppercase;
+  font-size:clamp(20px,1.6vw,34px);
+  line-height:.95;
+  padding:7px 14px 8px;
+  border-radius:8px;
+  letter-spacing:-.04em;
 }
-.ln-profile-label span{
-  display:block;font-size:10.5px;color:#c9a7ff;font-weight:600;
+.reactor-label span{
+  display:inline-block;
+  width:fit-content;
+  background:#2d2a32; color:#fff;
+  font-weight:500;
+  font-size:clamp(17px,1.25vw,30px);
+  line-height:1;
+  padding:7px 14px 9px;
+  border-radius:0 0 8px 8px;
+  margin-top:-1px;
 }
-/* Positions du collage (calquées sur la maquette) */
-.ln-profile[data-pos="thailyce"]{ left:0;   top:2%;  --pw:362px; }
-.ln-profile[data-pos="thomas"]  { left:50%; top:0;   --pw:322px; }
-.ln-profile[data-pos="vincent"] { left:29%; top:31%; --pw:322px; }
-.ln-profile[data-pos="jonathan"]{ left:70%; top:25%; --pw:322px; }
-.ln-profile[data-pos="amine"]   { left:1%;  top:56%; --pw:362px; }
-.ln-profile[data-pos="sofia"]   { left:37%; top:60%; --pw:384px; }
+.reactor-dot{
+  position:absolute;
+  z-index:18;
+  width:clamp(26px,1.8vw,42px); height:clamp(26px,1.8vw,42px);
+  border-radius:999px;
+  background:#6b00d7;
+  box-shadow:0 0 18px rgba(107,0,215,.35);
+  pointer-events:none;
+}
+/* Positions (screen 1) — libres, denses, qui se chevauchent */
+.reactor-card--thailyce{ left:2%;  top:8%;  width:34%; transform:rotate(-6deg); z-index:4; }
+.reactor-card--thomas  { left:52%; top:1%;  width:31%; transform:rotate(0deg);  z-index:3; }
+.reactor-card--vincent { left:33%; top:32%; width:35%; transform:rotate(0deg);  z-index:5; }
+.reactor-card--jonathan{ left:70%; top:39%; width:29%; transform:rotate(9deg);  z-index:4; }
+.reactor-card--amine   { left:5%;  top:57%; width:37%; transform:rotate(-4deg); z-index:3; }
+.reactor-card--sofia   { left:48%; top:69%; width:39%; transform:rotate(0deg);  z-index:4; }
+/* placement fin des labels + pastilles (comme le screen 1) */
+.reactor-card--thailyce .reactor-label{ left:6%;   top:42%; }
+.reactor-card--thailyce .reactor-dot{   left:62%;  top:48%; }
+
+.reactor-card--thomas .reactor-label{ right:-8%; left:auto; top:42%; }
+.reactor-card--thomas .reactor-dot{   left:58%;  top:52%; }
+
+.reactor-card--vincent .reactor-label{ right:-7%; left:auto; top:36%; }
+.reactor-card--vincent .reactor-dot{   left:50%;  top:52%; }
+
+.reactor-card--jonathan .reactor-label{ right:-16%; left:auto; top:34%; }
+.reactor-card--jonathan .reactor-dot{   right:16%;  top:58%; }
+
+.reactor-card--amine .reactor-label{ left:7%;  top:48%; }
+.reactor-card--amine .reactor-dot{   left:44%; top:43%; }
+
+.reactor-card--sofia .reactor-label{ right:7%;  left:auto; top:38%; }
+.reactor-card--sofia .reactor-dot{   right:34%; top:42%; }
 
 /* ======================== S7 — FAQ ======================== */
 .ln-faq{
-  padding:clamp(60px,7vw,90px) 0 clamp(50px,6vw,80px);
   position:relative;
+  min-height:100vh;
   overflow:hidden;
   background:var(--ln-dark);
+  padding:clamp(80px,10vh,120px) 0 clamp(90px,11vh,130px);
+  display:flex;
+  align-items:center;
 }
+/* Énorme FAQ vertical, blanc, coupé par le bord gauche */
 .ln-faq-head{
+  position:absolute;
+  left:clamp(-72px,-4vw,-38px);
+  top:clamp(28px,6vh,64px);
+  z-index:1;
   font-family:var(--font-display);
   font-weight:900;
   text-transform:uppercase;
-  font-size:clamp(170px,30vw,430px);
-  color:rgba(250,248,255,.96);
-  line-height:.72;
-  position:absolute;
-  left:-14px;
-  top:24px;
+  color:#fff;
+  font-size:clamp(180px,19vw,360px);
+  line-height:.78;
+  letter-spacing:-.08em;
   pointer-events:none;
-  z-index:1;
 }
+/* Contenu large, placé à droite (annule la grille 2 colonnes de pages.css) */
 .ln-faq-grid{
+  display:block;
   position:relative;
   z-index:2;
-  padding-left:clamp(180px,19vw,300px);
+  width:min(1320px,72vw);
+  max-width:none;
+  margin-left:24vw;
+  padding-left:0;
+  grid-template-columns:none;
 }
-.faq-list{max-width:920px;}
-.faq-item{ border-bottom:1px solid rgba(255,255,255,.10); }
+.faq-list{ width:100%; max-width:1300px; }
+.faq-item{ border:none; margin:0 0 clamp(18px,2.2vh,30px); padding:0; }
 .faq-q{
   width:100%;
   text-align:left;
-  padding:20px 0;
+  background:none;
+  border:none;
+  cursor:pointer;
+  padding:0;
   font-family:var(--font-display);
-  font-weight:800;
+  font-weight:900;
   text-transform:uppercase;
   color:#fff;
-  font-size:clamp(15px,1.25vw,19px);
-  line-height:1.34;
-  display:flex;
-  justify-content:space-between;
-  gap:16px;
+  font-size:clamp(26px,2.1vw,46px);
+  line-height:1.12;
+  letter-spacing:-.035em;
+  display:block;
 }
-.faq-item.open .faq-q{ color:#b06bff; }
-.faq-q .pm{ color:#b06bff; flex:0 0 auto; transition:transform .3s; font-weight:400; }
-.faq-item.open .faq-q .pm{ transform:rotate(45deg); }
+.faq-item.open .faq-q{ color:#d5b5ff; }
+.faq-q .pm{ display:none !important; }         /* plus de "+" */
 .faq-a{
-  max-height:0;overflow:hidden;
-  transition:max-height .4s var(--ease,ease);
-  color:rgba(250,248,255,.6);
-  line-height:1.6;
+  max-height:0; overflow:hidden;
+  transition:max-height .5s var(--ease,ease);
 }
-.faq-item.open .faq-a{ max-height:320px; }
-.faq-a p{ padding:0 0 20px; font-size:clamp(13px,1vw,15px); max-width:760px; }
+.faq-item.open .faq-a{ max-height:800px; }
+.faq-a p{
+  margin:clamp(18px,2.2vh,30px) 0 0;
+  padding:0;
+  color:#d5b5ff;
+  font-weight:400;
+  font-size:clamp(22px,1.9vw,40px);
+  line-height:1.26;
+  max-width:1240px;
+}
 
 /* ======================== S8 — CTA FINAL ======================== */
 .ln-cta-final{
@@ -571,6 +713,18 @@ html.flat .ln-missions-sticky{ min-height:0; padding:90px 0; }
 .btn-mission--big{
   font-size:clamp(16px,1.4vw,22px) !important;
   padding:15px 38px 15px 28px !important;
+  gap:18px;
+}
+/* CTA final « LANCER MA MISSION ? » — pastille propre + vraie fusée icon-rocket-line.svg (screen 1).
+   Scopé à .btn-mission--big : le bouton du header n'est PAS affecté. */
+.btn-mission--big .rk{
+  width:44px; height:44px;
+  background:rgba(255,255,255,.16);
+}
+.btn-mission--big .rk img{
+  width:25px; height:25px;
+  display:block;
+  object-fit:contain;
 }
 
 /* ======================== RESPONSIVE ======================== */
@@ -592,8 +746,11 @@ html.flat .ln-missions-sticky{ min-height:0; padding:90px 0; }
   .ln-why-cards{ flex-wrap:wrap; }
   .ln-why-card{ width:min(250px,80vw); margin-top:0!important; transform:none!important; }
   .ln-why-bg{ display:none; }
-  .ln-reactor-stage{ height:auto; display:grid; grid-template-columns:repeat(2,1fr); gap:16px; }
-  .ln-profile{ position:relative!important; left:auto!important; top:auto!important; width:100%!important; }
+  /* Collage → colonne simple sur tablette/mobile */
+  .reactor-board{ height:auto!important; display:flex; flex-direction:column; align-items:center; gap:26px; margin-top:30px; }
+  .reactor-card{ position:relative!important; left:auto!important; right:auto!important; top:auto!important; width:min(430px,86vw)!important; transform:none!important; }
+  .reactor-card .reactor-label{ left:16px!important; right:auto!important; bottom:16px!important; top:auto!important; }
+  .reactor-card .reactor-dot{ display:none; }
   .ln-reactor-deco{ display:none; }
   .ln-faq-grid{ padding-left:0; }
   .ln-faq-head{ font-size:clamp(110px,26vw,200px); opacity:.12; }
@@ -603,6 +760,5 @@ html.flat .ln-missions-sticky{ min-height:0; padding:90px 0; }
   .ln-title{ font-size:clamp(64px,20vw,110px); }
   .ln-stats-cluster{ grid-template-columns:1fr; max-width:320px; }
   .ln-mission-item{ font-size:clamp(26px,8vw,46px); }
-  .ln-reactor-stage{ grid-template-columns:1fr; }
   .ln-cta-card{ padding:28px 20px; }
 }
